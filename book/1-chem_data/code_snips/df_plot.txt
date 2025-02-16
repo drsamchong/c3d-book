@@ -1,0 +1,9 @@
+nmr_spec.plot(x="ppm", 
+              y="intensity",
+              xlabel="Chemical shift $\\delta$ / ppm",
+              ylabel="Intensity",
+              legend=False)
+
+plt.xlim((70, 0))
+plt.title(r"$\mathregular{^{13}C}$ NMR spectrum of ethanol")
+plt.show()

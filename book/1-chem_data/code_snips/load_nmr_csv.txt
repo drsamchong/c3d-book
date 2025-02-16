@@ -1,0 +1,2 @@
+nmr_spec = pd.read_csv("data/13C_EtOH.csv")
+nmr_spec

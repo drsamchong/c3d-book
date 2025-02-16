@@ -1,0 +1,4 @@
+step = nmr_spec["ppm"].diff()
+step_mean = step.mean()
+print(step)
+print(f"Mean step size for the spectrum: {step_mean:.7f}")

@@ -1,0 +1,4 @@
+from sklearn.metrics import r2_score
+
+r2 = r2_score(nmr_spec["intensity"], lor_spec_y)
+r2

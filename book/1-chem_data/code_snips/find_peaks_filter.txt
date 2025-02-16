@@ -1,0 +1,6 @@
+intensity_threshold = nmr_spec["intensity"].max() / 10
+width_threshold = 1
+peak_idx, peak_info = find_peaks(nmr_spec["intensity"], height=intensity_threshold, width=width_threshold)
+
+print(peak_idx)
+peak_info

@@ -1,0 +1,2 @@
+step_size = abs(nmr_spec["ppm"].diff().mean())
+peak_info["widths"] = peak_info["widths"] * step_size

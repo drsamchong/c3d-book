@@ -1,0 +1,13 @@
+popt_list = []
+pcov_list = []
+for pk in range(len(peak_idx)):
+    popt, pcov = curve_fit(lorentzian, 
+                           xdata=nmr_spec["ppm"], 
+                           ydata=nmr_spec["intensity"], 
+                           p0=[peak_info["peak_heights"][pk]*peak_info["widths"][pk],
+                               peak_info["centres"][pk], 
+                               peak_info["widths"][pk] ])
+    popt_list.append(popt)
+    pcov_list.append(pcov)
+
+display(popt_list, pcov_list)

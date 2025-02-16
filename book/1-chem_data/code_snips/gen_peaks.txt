@@ -1,0 +1,9 @@
+x = np.linspace(0, 2, 200) # an array of 200 equally-spaced values between 0 and 2
+y_lor = lorentzian(x, 10, 1, 0.1)
+y_gauss = gaussian(x, 10, 1, 0.1)
+
+# Plot the data
+plt.plot(x, y_lor, label="Lorentzian")
+plt.plot(x, y_gauss, label="Gaussian")
+plt.legend()
+plt.show()

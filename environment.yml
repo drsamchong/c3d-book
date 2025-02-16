@@ -1,0 +1,23 @@
+name: chem502
+channels:
+  - conda-forge
+dependencies:
+  - matplotlib
+  - numpy
+  - pandas
+  - scipy
+  - jupyterlab
+  - seaborn
+  - scikit-learn
+  - rdkit
+  - ca-certificates
+  - certifi
+  - openssl
+  - sphinx
+  - ipywidgets
+  - py3dmol
+  - cairosvg
+  - networkx
+  - jupyter-book
+  - ghp-import
+
