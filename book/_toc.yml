@@ -14,6 +14,7 @@ parts:
       - file: 1-chem_data/spectrum_analysis_full
   - caption: Data fundamentals
     chapters:
-    - file:  
+    - file: 2-data_fundamentals/eda
   - caption: Intro to ML
     chapters:
+    - file: 3-ml_intro/ml_models
