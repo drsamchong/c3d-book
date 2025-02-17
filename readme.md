@@ -2,6 +2,8 @@ This repo will host book content for CHEM502 Chemical Data, Discovery and Design
 
 The book uses [Jupyter Book](https://jupyterbook.org/en/stable/intro.html)
 
+The module book is available at https://drsamchong.github.io/c3d-book/. Yes, I do wish I had had the foresight to use a different github username.
+
 The repo will (hopefully) be available on [Binder](https://mybinder.org) - link to follow...
 
 
