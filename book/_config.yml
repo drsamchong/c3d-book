@@ -46,3 +46,15 @@ html:
 sphinx:
   config:
 #    html_theme: "sphinx-book-theme"
+
+parse:
+  myst_enable_extensions: [
+    dollarmath,
+    linkify,
+    substitution,
+    colon_fence,
+    smartquotes,
+    deflist,
+    attrs_inline,
+    attrs_block
+  ]
