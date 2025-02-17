@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Molecular descriptors &#8212; CHEM502 - Chemical Data, Discovery and Design</title>
+    <title>Molecular descriptors and similarity &#8212; CHEM502 - Chemical Data, Discovery and Design</title>
   
   
   
@@ -173,7 +173,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chemical data</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Molecular descriptors</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Molecular descriptors and similarity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fingerprints.html">Notebook exercise - molecular fingerprints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="spectrum_analysis.html">Notebook exercise - working with spectral data (or patterns)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="least_squares_opt.html">Least squares optimisation</a></li>
@@ -367,7 +367,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Molecular descriptors</h1>
+    <h1>Molecular descriptors and similarity</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -377,10 +377,13 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-descriptors">Calculating descriptors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-descriptors-classed-by-dimension">Molecular descriptors classed by dimension</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-fingerprints">Molecular fingerprints</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-molecular-fingerprints-a-non-exhaustive-list"><strong>Types of Molecular Fingerprints</strong> (a non-exhaustive list)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-descriptors">Molecular descriptors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-descriptors">Calculating descriptors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-descriptors-classed-by-dimension">Molecular descriptors classed by dimension</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-fingerprints">Molecular fingerprints</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-molecular-fingerprints-a-non-exhaustive-list"><strong>Types of Molecular Fingerprints</strong> (a non-exhaustive list)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-similarity">Molecular Similarity</a><ul class="nav section-nav flex-column">
@@ -389,9 +392,7 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-applications"><strong>Example applications</strong></a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-you-to-consider">For you to consider</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
@@ -409,15 +410,17 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="molecular-descriptors">
-<h1>Molecular descriptors<a class="headerlink" href="#molecular-descriptors" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="molecular-descriptors-and-similarity">
+<h1>Molecular descriptors and similarity<a class="headerlink" href="#molecular-descriptors-and-similarity" title="Link to this heading">#</a></h1>
+<section id="molecular-descriptors">
+<h2>Molecular descriptors<a class="headerlink" href="#molecular-descriptors" title="Link to this heading">#</a></h2>
 <p>Molecular descriptors provide a way of encoding information about the structure or properties of a molecule in a primarily numerical form.</p>
 <p>Roberto Todeschini and Viviana Consonni who literally wrote several books on molecular descriptors (including <a class="reference external" href="https://onlinelibrary.wiley.com/doi/book/10.1002/9783527628766">this one</a> [1] which you can access through UoL library) defined molecular descriptors as follows:</p>
 <p>“<em>The molecular descriptor is the final result of a logic and mathematical procedure which transforms chemical information
 encoded within a symbolic representation of a molecule into a useful number, or the result of some standardized experiment.</em>”[2]</p>
 </br>
 <section id="calculating-descriptors">
-<h2>Calculating descriptors<a class="headerlink" href="#calculating-descriptors" title="Link to this heading">#</a></h2>
+<h3>Calculating descriptors<a class="headerlink" href="#calculating-descriptors" title="Link to this heading">#</a></h3>
 <p>Molecular descriptors are usually calculated based on a molecular representation [3], like a SMILES string or a molecular graph.</p>
 <p>You have worked with some notation systems to represent molecules, such as SMILES and InChI. The distinction between a molecular representation and some types of molecular descriptors that encode structural information like molecular fingerprints can seem unclear. The table below summarises the information and how it is expressed and used for different types of molecular representations and descriptors.</p>
 </br>
@@ -468,7 +471,7 @@ encoded within a symbolic representation of a molecule into a useful number, or 
 </div>
 </section>
 <section id="molecular-descriptors-classed-by-dimension">
-<h2>Molecular descriptors classed by dimension<a class="headerlink" href="#molecular-descriptors-classed-by-dimension" title="Link to this heading">#</a></h2>
+<h3>Molecular descriptors classed by dimension<a class="headerlink" href="#molecular-descriptors-classed-by-dimension" title="Link to this heading">#</a></h3>
 <p>Descriptors are often described in terms of their dimensionality, which depends on the level of information about the molecule required to generate the descriptor. For example, a 0D descriptor like molecular weight or the number of atoms present can be calculated just from the molecular formula; whereas a 1D property like the number of hydrogen bond donors required some information about the molecule’s connectivity.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -506,7 +509,7 @@ encoded within a symbolic representation of a molecule into a useful number, or 
 <p>One type of descriptor that finds broad use and has become extremely prevalent due to the rising application of AI and machine learning are molecular fingerprint. This is a very brief introduction to what they are and how they can be used for measuring the similarity of chemical compounds.</p>
 </section>
 <section id="molecular-fingerprints">
-<h2>Molecular fingerprints<a class="headerlink" href="#molecular-fingerprints" title="Link to this heading">#</a></h2>
+<h3>Molecular fingerprints<a class="headerlink" href="#molecular-fingerprints" title="Link to this heading">#</a></h3>
 <p>A <strong>molecular fingerprint</strong> is a type of <strong>descriptor</strong> (rather than a representation).</p>
 <ul class="simple">
 <li><p>It is a <strong>computed numerical encoding</strong> of a molecule’s structure, typically represented as a <strong>bit vector</strong> or <strong>hashed feature vector</strong>.</p></li>
@@ -514,7 +517,7 @@ encoded within a symbolic representation of a molecule into a useful number, or 
 <li><p>Fingerprints are <strong>derived from molecular structure</strong>, making them <strong>descriptors</strong> rather than raw representations.</p></li>
 </ul>
 <section id="types-of-molecular-fingerprints-a-non-exhaustive-list">
-<h3><strong>Types of Molecular Fingerprints</strong> (a non-exhaustive list)<a class="headerlink" href="#types-of-molecular-fingerprints-a-non-exhaustive-list" title="Link to this heading">#</a></h3>
+<h4><strong>Types of Molecular Fingerprints</strong> (a non-exhaustive list)<a class="headerlink" href="#types-of-molecular-fingerprints-a-non-exhaustive-list" title="Link to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p><strong>Structural (key-based) fingerprints</strong></p>
 <ul class="simple">
@@ -552,6 +555,7 @@ encoded within a symbolic representation of a molecule into a useful number, or 
 <p>This <a class="reference external" href="https://greglandrum.github.io/rdkit-blog/posts/2023-01-18-fingerprint-generator-tutorial.html#some-advanced-topics">RDKit blog post</a> details how to generate various types of fingerprint in the RDKit.
 The RDKit <a class="reference external" href="https://www.rdkit.org/docs/GettingStartedInPython.html#fingerprinting-and-molecular-similarity">Getting Started guide</a> also has info on fingerprints and similarity (see later section), and <a class="reference external" href="https://www.rdkit.org/docs/GettingStartedInPython.html#explaining-bits-from-fingerprints">understanding what bits</a> in the fingerprints mean with some visualisations.</p>
 </br>
+</section>
 </section>
 </section>
 <section id="molecular-similarity">
@@ -632,11 +636,11 @@ The RDKit <a class="reference external" href="https://www.rdkit.org/docs/Getting
 </br>
 </section>
 </section>
-</section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h3>
 <p>Molecular descriptors and similarity measures are central to data-driven chemistry, enabling drug design, materials discovery, and predictive modelling.</p>
 <p>No single fingerprint or similarity measure works universally across all fields, necessitating custom approaches for complex systems like crystals [14-16], polymers and soft matter [17, 18]. Graph-based methods and machine learning are key frontiers in tackling these challenges, offering new ways to encode and compare complex chemical structures.</p>
+</section>
 <section id="for-you-to-consider">
 <h3>For you to consider<a class="headerlink" href="#for-you-to-consider" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -753,10 +757,13 @@ The RDKit <a class="reference external" href="https://www.rdkit.org/docs/Getting
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-descriptors">Calculating descriptors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-descriptors-classed-by-dimension">Molecular descriptors classed by dimension</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-fingerprints">Molecular fingerprints</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-molecular-fingerprints-a-non-exhaustive-list"><strong>Types of Molecular Fingerprints</strong> (a non-exhaustive list)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-descriptors">Molecular descriptors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-descriptors">Calculating descriptors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-descriptors-classed-by-dimension">Molecular descriptors classed by dimension</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-fingerprints">Molecular fingerprints</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-molecular-fingerprints-a-non-exhaustive-list"><strong>Types of Molecular Fingerprints</strong> (a non-exhaustive list)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-similarity">Molecular Similarity</a><ul class="nav section-nav flex-column">
@@ -765,9 +772,7 @@ The RDKit <a class="reference external" href="https://www.rdkit.org/docs/Getting
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-applications"><strong>Example applications</strong></a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-you-to-consider">For you to consider</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
