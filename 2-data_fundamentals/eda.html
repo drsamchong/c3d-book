@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>EDA &#8212; CHEM502 - Chemical Data, Discovery and Design</title>
+    <title>Exploratory Data Analysis (EDA) &#8212; CHEM502 - Chemical Data, Discovery and Design</title>
   
   
   
@@ -171,14 +171,14 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chemical data</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../1-chem_data/descriptors-similarity.html">Molecular descriptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-chem_data/descriptors-similarity.html">Molecular descriptors and similarity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1-chem_data/fingerprints.html">Notebook exercise - molecular fingerprints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1-chem_data/spectrum_analysis.html">Notebook exercise - working with spectral data (or patterns)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1-chem_data/least_squares_opt.html">Least squares optimisation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data fundamentals</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">EDA</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exploratory Data Analysis (EDA)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro to ML</span></p>
 <ul class="nav bd-sidenav">
@@ -383,7 +383,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -394,11 +396,19 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>EDA</h1>
+    <h1>Exploratory Data Analysis (EDA)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation">Visualisation</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -408,15 +418,41 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="exploratory-data-analysis-eda">
+<h1>Exploratory Data Analysis (EDA)<a class="headerlink" href="#exploratory-data-analysis-eda" title="Link to this heading">#</a></h1>
+<p><img alt="data process" src="../_images/data_process.png" /></p>
+<p>What is EDA?
+: Process of examining, summarising and visualising data</p>
+<ul class="simple">
+<li><p>A first “triaging” step in a workflow to assess a set of data.</p></li>
+<li><p>Aims to uncover patterns, detect anomalies, and gain insights before applying formal models or statistical tests.</p></li>
+<li><p>Why is EDA important?</p>
+<ul>
+<li><p>Understand data structure – Identify key variables, distributions, and relationships.</p></li>
+<li><p>Detect errors and biases – Spot missing values, outliers, or inconsistencies.</p></li>
+<li><p>Generate hypotheses – Reveal trends that can guide further investigation.</p></li>
+<li><p>Choose appropriate models – Decide whether data fits assumptions for statistical methods or machine learning models.</p></li>
+</ul>
+</li>
+</ul>
+<p>Understand data structure – Identify key variables, distributions, and relationships.
+Detect errors and biases – Spot missing values, outliers, or inconsistencies.
+Generate hypotheses – Reveal trends that can guide further investigation.
+Choose appropriate models – Decide whether data fits assumptions for statistical methods or machine learning models.</p>
+<section id="visualisation">
+<h2>Visualisation<a class="headerlink" href="#visualisation" title="Link to this heading">#</a></h2>
+<p>{attribution=”John Tukey”}</p>
+<blockquote>
+<div><p>The simple graph has brought more information to the data analyst’s mind than any other device.</p>
+</div></blockquote>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="eda">
-<h1>EDA<a class="headerlink" href="#eda" title="Link to this heading">#</a></h1>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -473,6 +509,22 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation">Visualisation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
