@@ -3,7 +3,7 @@
 
 title: CHEM502 - Chemical Data, Discovery and Design
 author: Sam Chong
-logo: assets/images/c3d_logo.png
+logo: assets/images/c3d_logo_white.png
 
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
