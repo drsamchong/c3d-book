@@ -33,8 +33,8 @@ repository:
 # Launch button settings
 launch_buttons:
   notebook_interface        : jupyterlab  # The interface interactive links will activate ["classic", "jupyterlab"]
-  binderhub_url             : https://mybinder.org/v2/gh/drsamchong/binder-test/HEAD  # The URL of the BinderHub (e.g., https://mybinder.org)
-  thebe                     : false  # Add a thebe button to pages (requires the repository to run on Binder)
+  binderhub_url             : https://mybinder.org/v2/gh/drsamchong/c3d-book/HEAD  # The URL of the BinderHub (e.g., https://mybinder.org)
+  thebe                     : true  # Add a thebe button to pages (requires the repository to run on Binder)
 
 
 # Add GitHub buttons to your book
