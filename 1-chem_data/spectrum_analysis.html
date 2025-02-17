@@ -409,7 +409,7 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysing-spectra">Analysing spectra</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-spectra-involves-modelling-data">Processing spectra involves modelling data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aim-of-this-notebook-exercise">Aim of this notebook exercise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-processing-in-scipy">Peak processing in scipy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-finding-getting-initial-model-parameters">Peak finding - getting initial model parameters</a></li>
 </ul>
@@ -440,10 +440,14 @@
 <p>Determining information about the structure of molecules in the sample usually starts with extracting information about the peaks present in the NMR spectrum. The peak information can then be interpreted to provide specific information about the composition and connectivity of the molecule.</p>
 <p>In general, fitting peaks with a function that models the shape serves several purposes including: to gain some fundamental understanding of the nature of the data (e.g. does the method and/or specific instrument produce a particular peak shape); if the peaks are modelled well, the information on their centres, amplitudes can be more precise.</p>
 </section>
-<section id="processing-spectra-involves-modelling-data">
-<h2>Processing spectra involves modelling data<a class="headerlink" href="#processing-spectra-involves-modelling-data" title="Link to this heading">#</a></h2>
+<section id="aim-of-this-notebook-exercise">
+<h2>Aim of this notebook exercise<a class="headerlink" href="#aim-of-this-notebook-exercise" title="Link to this heading">#</a></h2>
 <p>To get an overview how 1D spectral data can be analysed to acquire information about the peaks - positions of the centres, widths, intensities, etc. - we will look at a simple NMR spectrum and practise some pandas, matplotlib and scipy skills along the way.</p>
-<p>It also gives us a chance to look more closely at how a model is being applied to the data and see some of the considerations and issues you should be aware of as you work with even simple data problems.</p>
+<p><em>Processing spectra involves modelling data.</em> This exercise also gives us a chance to look more closely at how a model is being applied to the data and see some of the considerations and issues you should be aware of as you work with even simple data problems.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To see the complete notebook, click <a class="reference internal" href="spectrum_analysis_full.html"><span class="std std-doc">here</span></a>.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import statements</span>
@@ -939,7 +943,7 @@ remember the rectangular approximation.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysing-spectra">Analysing spectra</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-spectra-involves-modelling-data">Processing spectra involves modelling data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aim-of-this-notebook-exercise">Aim of this notebook exercise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-processing-in-scipy">Peak processing in scipy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-finding-getting-initial-model-parameters">Peak finding - getting initial model parameters</a></li>
 </ul>
