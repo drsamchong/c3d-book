@@ -876,27 +876,39 @@ Pearson correlation coefficient: 0.817
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anscombe_plots</span><span class="p">(</span><span class="n">anscombe_df</span><span class="p">,</span> <span class="n">show_stats</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_fit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
 <img alt="../_images/7dd54ecaa757a314231735c48621d9f1fd834c057de5ebbb9b8572cdab3a12e2.png" src="../_images/7dd54ecaa757a314231735c48621d9f1fd834c057de5ebbb9b8572cdab3a12e2.png" />
 </div>
+</details>
 </div>
 <p>From the scatter plots we can immediately see that the datasets are quite distinct.
 If we calculate a linear regression line through the data, do the coefficients of the equation help to distinguish the data numerically?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anscombe_plots</span><span class="p">(</span><span class="n">anscombe_df</span><span class="p">,</span> <span class="n">show_stats</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_fit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
 <div class="cell_output docutils container">
 <img alt="../_images/ca1676db9c50919d86aca7d61877310ef32ccbdbe15f55622fc9dc298c5d9bcd.png" src="../_images/ca1676db9c50919d86aca7d61877310ef32ccbdbe15f55622fc9dc298c5d9bcd.png" />
 </div>
+</details>
 </div>
 <p>The best fit line is also identical and the r-squared value indicates that numerically, at least, it fits all of the datasets equally well (or badly).</p>
 <p>However, we can see from the visualisations that the regression line is only really appropriate for the first dataset.</p>
