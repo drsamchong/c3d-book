@@ -13,6 +13,7 @@ parts:
   - caption: Data fundamentals
     chapters:
     - file: 2-data_fundamentals/eda
+    - file: 2-data_fundamentals/eda_visualisation
   - caption: Intro to ML
     chapters:
     - file: 3-ml_intro/ml_models
