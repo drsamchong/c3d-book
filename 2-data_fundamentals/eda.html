@@ -64,7 +64,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '2-data_fundamentals/eda';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="ML intro" href="../3-ml_intro/ml_models.html" />
+    <link rel="next" title="Notebook - Visualisation in EDA" href="eda_visualisation.html" />
     <link rel="prev" title="Least squares optimisation" href="../1-chem_data/least_squares_opt.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -179,6 +179,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data fundamentals</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Exploratory Data Analysis (EDA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eda_visualisation.html">Notebook - Visualisation in EDA</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro to ML</span></p>
 <ul class="nav bd-sidenav">
@@ -229,37 +230,6 @@
         <div class="header-article-item">
 
 <div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://mybinder.org/v2/gh/drsamchong/binder-test/HEAD/v2/gh/drsamchong/c3d-book/main?urlpath=lab/tree/book/2-data_fundamentals/eda.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch on Binder"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  
-    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
-  </span>
-<span class="btn__text-container">Binder</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
 
 
 
@@ -320,7 +290,7 @@
       
       
       
-      <li><a href="../_sources/2-data_fundamentals/eda.ipynb" target="_blank"
+      <li><a href="../_sources/2-data_fundamentals/eda.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -330,7 +300,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -406,7 +376,12 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation">Visualisation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-eda">What is EDA?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-eda-important">Why is EDA important?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-eda-chemistry-context">Examples of EDA (chemistry context)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-techniques">EDA Techniques</a></li>
 </ul>
             </nav>
         </div>
@@ -421,36 +396,73 @@
   <section class="tex2jax_ignore mathjax_ignore" id="exploratory-data-analysis-eda">
 <h1>Exploratory Data Analysis (EDA)<a class="headerlink" href="#exploratory-data-analysis-eda" title="Link to this heading">#</a></h1>
 <p><img alt="data process" src="../_images/data_process.png" /></p>
-<p>What is EDA?</p>
-<p>: Process of examining, summarising and visualising data</p>
+<section id="what-is-eda">
+<h2>What is EDA?<a class="headerlink" href="#what-is-eda" title="Link to this heading">#</a></h2>
 <ul class="simple">
+<li><p>Process of examining, summarising and visualising data</p></li>
 <li><p>A first “triaging” step in a workflow to assess a set of data.</p></li>
 <li><p>Aims to uncover patterns, detect anomalies, and gain insights before applying formal models or statistical tests.</p></li>
-<li><p>Why is EDA important?</p>
-<ul>
+</ul>
+</br>
+</section>
+<section id="why-is-eda-important">
+<h2>Why is EDA important?<a class="headerlink" href="#why-is-eda-important" title="Link to this heading">#</a></h2>
+<ul class="simple">
 <li><p>Understand data structure – Identify key variables, distributions, and relationships.</p></li>
 <li><p>Detect errors and biases – Spot missing values, outliers, or inconsistencies.</p></li>
 <li><p>Generate hypotheses – Reveal trends that can guide further investigation.</p></li>
 <li><p>Choose appropriate models – Decide whether data fits assumptions for statistical methods or machine learning models.</p></li>
 </ul>
+<section id="examples-of-eda-chemistry-context">
+<h3>Examples of EDA (chemistry context)<a class="headerlink" href="#examples-of-eda-chemistry-context" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Reaction kinetics</strong> – Plotting rate vs. concentration may reveal non-linear trends that indicate appropriate rate-order models.</p></li>
+<li><p><strong>Spectroscopy</strong> – Visualising raw IR or NMR spectra can help identify baseline shifts requiring additional processing or unexpected peaks before analysis.</p></li>
+<li><p><strong>Materials science</strong> – Initial exploration of crystal structure datasets may reveal possible correlations between lattice parameters and properties.</p></li>
+</ul>
+</section>
+</section>
+<section id="eda-techniques">
+<h2>EDA Techniques<a class="headerlink" href="#eda-techniques" title="Link to this heading">#</a></h2>
+<p>The aim of EDA is an initial assessment of</p>
+<ul class="simple">
+<li><p>Whether values are “reasonable” or as expected.</p></li>
+<li><p>Shape of data and distributions.</p></li>
+<li><p>Relationships between variables (features).</p></li>
+</ul>
+</br>
+<p>To achieve this, generally a variety of techniques are required; most commonly involving some/all of the following:</p>
+<ul class="simple">
+<li><p>Descriptive statistics</p>
+<ul>
+<li><p>Mean, median, standard deviation</p></li>
+<li><p>Quantitative ways to assess and compare central tendency 	(e.g. mean/median/mode)
+Spread of data (e.g. range, standard deviation, percentile ranges)</p></li>
+</ul>
+</li>
+<li><p>Visualisations</p>
+<ul>
+<li><p>Histograms, scatter plots, box plots</p></li>
+</ul>
+</li>
+<li><p>Missing data checks</p>
+<ul>
+<li><p>Heatmaps, bar charts of missing values</p></li>
+</ul>
+</li>
+<li><p>Correlation analysis</p>
+<ul>
+<li><p>Pairwise plots, correlation matrices</p></li>
+<li><p>Quantify strength and direction of relationships between variables</p></li>
+</ul>
 </li>
 </ul>
-<p>Understand data structure – Identify key variables, distributions, and relationships.
-Detect errors and biases – Spot missing values, outliers, or inconsistencies.
-Generate hypotheses – Reveal trends that can guide further investigation.
-Choose appropriate models – Decide whether data fits assumptions for statistical methods or machine learning models.</p>
-<section id="visualisation">
-<h2>Visualisation<a class="headerlink" href="#visualisation" title="Link to this heading">#</a></h2>
-<p>{attribution=”John Tukey”}</p>
-<blockquote>
-<div><p>The simple graph has brought more information to the data analyst’s mind than any other device.</p>
-</div></blockquote>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-</pre></div>
-</div>
-</div>
+</br>
+If we can quantify the data distribution and feature correlation, why bother visualising the data?
+<p>Why is visualisation important - <a class="reference internal" href="eda_visualisation.html"><span class="doc std std-doc">notebook</span></a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://weisscharlesj.github.io/SciCompforChemists/notebooks/chapter_10/chap_10_notebook.html">Plotting with Seaborn</a></p>
 </div>
 </section>
 </section>
@@ -495,11 +507,11 @@ Choose appropriate models – Decide whether data fits assumptions for statisti
       </div>
     </a>
     <a class="right-next"
-       href="../3-ml_intro/ml_models.html"
+       href="eda_visualisation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">ML intro</p>
+        <p class="prev-next-title">Notebook - Visualisation in EDA</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -520,7 +532,12 @@ Choose appropriate models – Decide whether data fits assumptions for statisti
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation">Visualisation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-eda">What is EDA?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-eda-important">Why is EDA important?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-eda-chemistry-context">Examples of EDA (chemistry context)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-techniques">EDA Techniques</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Visualisation in EDA &#8212; CHEM502 - Chemical Data, Discovery and Design</title>
+    <title>Notebook - Visualisation in EDA &#8212; CHEM502 - Chemical Data, Discovery and Design</title>
   
   
   
@@ -63,9 +63,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '2-data_fundamentals/visualisation_anscombe';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2-data_fundamentals/eda_visualisation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ML intro" href="../3-ml_intro/ml_models.html" />
+    <link rel="prev" title="Exploratory Data Analysis (EDA)" href="eda.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -116,8 +118,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -179,9 +179,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../1-chem_data/least_squares_opt.html">Least squares optimisation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data fundamentals</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="eda.html">Exploratory Data Analysis (EDA)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eda_visualisation.html">Notebook - Visualisation in EDA</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Notebook - Visualisation in EDA</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro to ML</span></p>
 <ul class="nav bd-sidenav">
@@ -245,7 +245,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/drsamchong/binder-test/HEAD/v2/gh/drsamchong/c3d-book/main?urlpath=lab/tree/book/2-data_fundamentals/visualisation_anscombe.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/drsamchong/binder-test/HEAD/v2/gh/drsamchong/c3d-book/main?urlpath=lab/tree/book/2-data_fundamentals/eda_visualisation.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -293,7 +293,7 @@
       
       
       
-      <li><a href="https://github.com/drsamchong/c3d-book/issues/new?title=Issue%20on%20page%20%2F2-data_fundamentals/visualisation_anscombe.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/drsamchong/c3d-book/issues/new?title=Issue%20on%20page%20%2F2-data_fundamentals/eda_visualisation.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -323,7 +323,7 @@
       
       
       
-      <li><a href="../_sources/2-data_fundamentals/visualisation_anscombe.ipynb" target="_blank"
+      <li><a href="../_sources/2-data_fundamentals/eda_visualisation.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -399,7 +399,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Visualisation in EDA</h1>
+    <h1>Notebook - Visualisation in EDA</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -428,8 +428,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="visualisation-in-eda">
-<h1>Visualisation in EDA<a class="headerlink" href="#visualisation-in-eda" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="notebook-visualisation-in-eda">
+<h1>Notebook - Visualisation in EDA<a class="headerlink" href="#notebook-visualisation-in-eda" title="Link to this heading">#</a></h1>
 <p><img alt="data process" src="../_images/data_process.png" /></p>
 <section id="visualisation">
 <h2>Visualisation<a class="headerlink" href="#visualisation" title="Link to this heading">#</a></h2>
@@ -871,7 +871,7 @@ If we calculate a linear regression line through the data, do the coefficients o
 <p>The best fit line is also identical and the r-squared value indicates that numerically, at least, it fits all of the datasets equally well (or badly).</p>
 <p>However, we can see from the visualisations that the regression line is only really appropriate for the first dataset.</p>
 <p>If we look at some of the other descriptive statistics, particularly relating to the data distribution (max/min, percentiles), these show there are differences between the data. But the simple scatter plot visualisations make the contrasts unmissable.</p>
-<p>In the case of Anscombe’s quartet, the scatter plots are sufficient to highlight the differences. For more complex data, there are other visualisations that highlight the differences between the distributions of the datasets. The <a class="reference external" href="https://seaborn.pydata.org/index.html">seaborn</a> visualisation library makes it particularly straightforward to look at distributions of multiple variables and correlations between variables.</p>
+<p>In the case of Anscombe’s quartet, the scatter plots are sufficient to highlight the differences. For more complex data, there are other visualisations that highlight the differences between the distributions of the datasets.</p>
 <section id="key-points-summary">
 <h3><strong>Key points summary</strong><a class="headerlink" href="#key-points-summary" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -886,6 +886,10 @@ If we calculate a linear regression line through the data, do the coefficients o
 <h4>Things to try/consider<a class="headerlink" href="#things-to-try-consider" title="Link to this heading">#</a></h4>
 <p>In the case of Anscombe’s quartet, the scatter plots are sufficient to highlight the differences.</p>
 <p>For more complex data, there are other visualisations that highlight the differences between the distributions of the datasets. The <a class="reference external" href="https://seaborn.pydata.org/index.html">seaborn</a> visualisation library makes it particularly straightforward to look at distributions of multiple variables and correlations between variables.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://weisscharlesj.github.io/SciCompforChemists/notebooks/chapter_10/chap_10_notebook.html">Plotting with Seaborn</a></p>
+</div>
 <p>What kinds of plot might help to highlight the differences between the datasets or identify issues that might affect how the data is modelled, e.g. for dataset 3, there is a single isolated point; how does this affect the best-fit linear model; how might this be identified?</p>
 </section>
 </section>
@@ -922,6 +926,24 @@ If we calculate a linear regression line through the data, do the coefficients o
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="eda.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exploratory Data Analysis (EDA)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../3-ml_intro/ml_models.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">ML intro</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
