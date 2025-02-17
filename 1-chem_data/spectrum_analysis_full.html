@@ -173,7 +173,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chemical data</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="descriptors-similarity.html">Molecular descriptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="descriptors-similarity.html">Molecular descriptors and similarity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fingerprints.html">Notebook exercise - molecular fingerprints</a></li>
 <li class="toctree-l1"><a class="reference internal" href="spectrum_analysis.html">Notebook exercise - working with spectral data (or patterns)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="least_squares_opt.html">Least squares optimisation</a></li>
@@ -679,7 +679,10 @@ $<span class="math notranslate nohighlight">\(W = \sigma\sqrt{8\:\ln2}\)</span>$
 <p>We now know that the functions can model the shape of Lorentzian and Gaussian peaks. So we should be able to use them to try to fit the peaks in the NMR spectrum. The fitting process optimises the model’s parameters to obtain a calculated spectrum that is as close as possible to the experimentally observed data.</p>
 <p>Both the Lorentzian and Gaussian models have three parameters that can be varied to modify the peak shape: the amplitude, position of the peak’s centre and the peak’s width. Depending on the type of measurement, all three can provide information about the analyte.</p>
 <p>We will use <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html"><code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code></a> to fit the peaks in the spectrum. It uses <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html#scipy.optimize.least_squares">non-linear least squares</a> to fit a function - in this case the Lorentzian we defined - to a set of data.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
 <p>Here is a basic intro to <a class="reference internal" href="least_squares_opt.html"><span class="doc std std-doc">Least Squares Optimisation</span></a>.</p>
+</div>
 <p></br></br></p>
 <section id="peak-finding-getting-initial-model-parameters">
 <h3>Peak finding - getting initial model parameters<a class="headerlink" href="#peak-finding-getting-initial-model-parameters" title="Link to this heading">#</a></h3>
