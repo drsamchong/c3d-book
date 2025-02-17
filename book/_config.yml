@@ -3,7 +3,7 @@
 
 title: CHEM502 - Chemical Data, Discovery and Design
 author: Sam Chong
-logo: assets/images/logo.png
+logo: assets/images/c3d_logo.png
 
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
@@ -13,7 +13,7 @@ only_build_toc_files        : false
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  execute_notebooks: cache
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -26,7 +26,7 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/drsamchong/binder-test  # Online location of your book
+  url: https://github.com/drsamchong/c3d-book  # Online location of your book
   path_to_book: book  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 

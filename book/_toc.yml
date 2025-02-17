@@ -6,12 +6,10 @@ root: intro
 parts:
   - caption: Chemical data
     chapters:
-    - file: 1-chem_data/molecular_descriptors
+    - file: 1-chem_data/descriptors-similarity
     - file: 1-chem_data/fingerprints
     - file: 1-chem_data/spectrum_analysis
-    sections:
-      - file: 1-chem_data/least_squares_opt
-      - file: 1-chem_data/spectrum_analysis_full
+    - file: 1-chem_data/least_squares_opt
   - caption: Data fundamentals
     chapters:
     - file: 2-data_fundamentals/eda
