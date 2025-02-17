@@ -1,0 +1,826 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Molecular descriptors &#8212; CHEM502 - Chemical Data, Discovery and Design</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=89ec2937" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1-chem_data/descriptors-similarity';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chemical data - molecular descriptors" href="fingerprints.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/c3d_logo.png" class="logo__image only-light" alt="CHEM502 - Chemical Data, Discovery and Design - Home"/>
+    <img src="../_static/c3d_logo.png" class="logo__image only-dark pst-js-only" alt="CHEM502 - Chemical Data, Discovery and Design - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chemical data</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Molecular descriptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fingerprints.html">Chemical data - molecular descriptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="least_squares_opt.html">Least squares optimisation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro to ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3-ml_intro/ml_models.html">ML intro</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/drsamchong/c3d-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/drsamchong/c3d-book/issues/new?title=Issue%20on%20page%20%2F1-chem_data/descriptors-similarity.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/1-chem_data/descriptors-similarity.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Molecular descriptors</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-descriptors">Calculating descriptors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-descriptors-classed-by-dimension">Molecular descriptors classed by dimension</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-fingerprints">Molecular fingerprints</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-molecular-fingerprints-a-non-exhaustive-list"><strong>Types of Molecular Fingerprints</strong> (a non-exhaustive list)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-similarity">Molecular Similarity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-molecular-similarity-work-with-fingerprints"><strong>How does molecular similarity work with fingerprints?</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#similarity-measures">Similarity measures</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-applications"><strong>Example applications</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-you-to-consider">For you to consider</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="molecular-descriptors">
+<h1>Molecular descriptors<a class="headerlink" href="#molecular-descriptors" title="Link to this heading">#</a></h1>
+<p>Molecular descriptors provide a way of encoding information about the structure or properties of a molecule in a primarily numerical form.</p>
+<p>Roberto Todeschini and Viviana Consonni who literally wrote several books on molecular descriptors (including <a class="reference external" href="https://onlinelibrary.wiley.com/doi/book/10.1002/9783527628766">this one</a> [1] which you can access through UoL library) defined molecular descriptors as follows:</p>
+<p>“<em>The molecular descriptor is the final result of a logic and mathematical procedure which transforms chemical information
+encoded within a symbolic representation of a molecule into a useful number, or the result of some standardized experiment.</em>”[2]</p>
+</br>
+<section id="calculating-descriptors">
+<h2>Calculating descriptors<a class="headerlink" href="#calculating-descriptors" title="Link to this heading">#</a></h2>
+<p>Molecular descriptors are usually calculated based on a molecular representation [3], like a SMILES string or a molecular graph.</p>
+<p>You have worked with some notation systems to represent molecules, such as SMILES and InChI. The distinction between a molecular representation and some types of molecular descriptors that encode structural information like molecular fingerprints can seem unclear. The table below summarises the information and how it is expressed and used for different types of molecular representations and descriptors.</p>
+</br>
+<div id="rep-desc">
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Feature</strong></p></th>
+<th class="head"><p><strong>String-Based <br>Representation</strong></p></th>
+<th class="head"><p><strong>Molecular Graph (Representation)</strong></p></th>
+<th class="head"><p><strong>Molecular Fingerprint (Descriptor)</strong></p></th>
+<th class="head"><p><strong>Property Descriptor</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Definition</strong></p></td>
+<td><p>Linear or hierarchical text notation of molecular structure</p></td>
+<td><p>Graph-based connectivity model</p></td>
+<td><p>Encoded numerical feature set</p></td>
+<td><p>Numerical value representing physical, chemical or biological property</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Format</strong></p></td>
+<td><p>Text string (ASCII)</p></td>
+<td><p>Nodes (atoms) and edges (bonds)</p></td>
+<td><p>Bit vector, integer array</p></td>
+<td><p>Scalar, vector, or matrix</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Examples</strong></p></td>
+<td><p>SMILES (<code class="docutils literal notranslate"><span class="pre">CCO</span></code>), InChI (<code class="docutils literal notranslate"><span class="pre">InChI=1S/C2H6O/...</span></code>)</p></td>
+<td><p>Adjacency matrix, edge list</p></td>
+<td><p>MACCS keys, ECFP, Morgan FP</p></td>
+<td><p>LogP, dipole moment, polar surface area (PSA)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Typical use</strong></p></td>
+<td><p>Database searching, input for descriptor calculations or other structure-based methods</p></td>
+<td><p>Input for descriptor calculations</p></td>
+<td><p>Similarity searching, QSAR, clustering</p></td>
+<td><p>QSAR/QSPR, toxicity prediction, virtual screening</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Information Captured</strong></p></td>
+<td><p>Atomic connectivity in text format</p></td>
+<td><p>Topological information, connectivity</p></td>
+<td><p>Substructural patterns, fragments</p></td>
+<td><p>Usually computed, but also experimental molecular properties</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="molecular-descriptors-classed-by-dimension">
+<h2>Molecular descriptors classed by dimension<a class="headerlink" href="#molecular-descriptors-classed-by-dimension" title="Link to this heading">#</a></h2>
+<p>Descriptors are often described in terms of their dimensionality, which depends on the level of information about the molecule required to generate the descriptor. For example, a 0D descriptor like molecular weight or the number of atoms present can be calculated just from the molecular formula; whereas a 1D property like the number of hydrogen bond donors required some information about the molecule’s connectivity.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Dimensionality</strong></p></th>
+<th class="head"><p><strong>What It Captures</strong></p></th>
+<th class="head"><p><strong>Examples</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>0D</strong> <em>(Constitutional Descriptors)</em></p></td>
+<td><p>Atomic composition only, no bonding info</p></td>
+<td><p>Molecular weight, atom counts (C, H, O, etc.), molecular formula</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>1D</strong> <em>(Global Properties)</em></p></td>
+<td><p>Molecular properties</p></td>
+<td><p>Number of rings, LogP, number of H-bond donors</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>2D</strong> <em>(Topological Descriptors)</em></p></td>
+<td><p>Connectivity, graph-based structure</p></td>
+<td><p>Wiener Index, Morgan fingerprint, number of rotatable bonds</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>3D</strong> <em>(Geometric &amp; Electronic Descriptors)</em></p></td>
+<td><p>3D shape, spatial arrangement</p></td>
+<td><p>TPSA, dipole moment, molecular volume</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>4D</strong> <em>(Conformational Ensembles)</em></p></td>
+<td><p>Multiple conformations, flexible structures</p></td>
+<td><p>Molecular interaction fields, ensemble pharmacophores</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</br>
+<p>There are many many different descriptors available. The Todeschini and Consonni book <a class="reference external" href="https://doi.org/10.1002/9783527628766"><em>Molecular Descriptors for Cheminformatics</em></a> [1] is an encyclopedic reference on descriptors, primarily those relevant in medicinal chemistry or drug discovery-related areas.</p>
+<p>One type of descriptor that finds broad use and has become extremely prevalent due to the rising application of AI and machine learning are molecular fingerprint. This is a very brief introduction to what they are and how they can be used for measuring the similarity of chemical compounds.</p>
+</section>
+<section id="molecular-fingerprints">
+<h2>Molecular fingerprints<a class="headerlink" href="#molecular-fingerprints" title="Link to this heading">#</a></h2>
+<p>A <strong>molecular fingerprint</strong> is a type of <strong>descriptor</strong> (rather than a representation).</p>
+<ul class="simple">
+<li><p>It is a <strong>computed numerical encoding</strong> of a molecule’s structure, typically represented as a <strong>bit vector</strong> or <strong>hashed feature vector</strong>.</p></li>
+<li><p>Unlike a <strong>molecular graph</strong>, which represent connectivity, fingerprints <strong>transform structural information into a numerical format</strong> for use in <strong>QSAR modeling, similarity searching, and machine learning</strong>.</p></li>
+<li><p>Fingerprints are <strong>derived from molecular structure</strong>, making them <strong>descriptors</strong> rather than raw representations.</p></li>
+</ul>
+<section id="types-of-molecular-fingerprints-a-non-exhaustive-list">
+<h3><strong>Types of Molecular Fingerprints</strong> (a non-exhaustive list)<a class="headerlink" href="#types-of-molecular-fingerprints-a-non-exhaustive-list" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Structural (key-based) fingerprints</strong></p>
+<ul class="simple">
+<li><p>Encode presence or absence of substructures specified in a pre-defined library.</p></li>
+<li><p>Example: <strong>MACCS keys</strong>.</p></li>
+</ul>
+</li>
+</ol>
+<div id="str-key">
+<p><img alt="Schematic example of structural key" src="../_images/structural_keys.png" /></p>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Path-based fingerprints</strong></p>
+<ul class="simple">
+<li><p>Compress all (usually linear) paths in a molecule up to a specified length into a fixed-length bit vector using hashing.</p></li>
+<li><p>Example: <strong>Daylight Fingerprints</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Circular (radial) fingerprints</strong></p>
+<ul class="simple">
+<li><p>Capture atomic environments iteratively (e.g., <a class="reference external" href="https://doi.org/10.1021/ci100050t">Extended Connectivity Fingerprint</a> ECFP [4] - nice primer <a class="reference external" href="https://chemicbook.com/2021/03/25/a-beginners-guide-for-understanding-extended-connectivity-fingerprints.html">here</a>).</p></li>
+<li><p>Example: <strong>Morgan fingerprints</strong> - probably the most prevalent molecular fingerprint currently.</p></li>
+</ul>
+</li>
+<li><p><strong>Pharmacophore-based fingerprints</strong></p>
+<ul class="simple">
+<li><p>Encode molecular features relevant to binding (e.g., hydrogen bond donors/acceptors, hydrophobicity) [5].</p></li>
+<li><p>Example: <strong>PH4 fingerprints</strong>.</p></li>
+</ul>
+</li>
+</ol>
+</br>
+<p><strong>Some other resources to learn about fingerprints</strong></p>
+<p>There is an intro to some of the molecular fingerprints available in the RDKit in the <a class="reference external" href="https://www.rdkit.org/docs/RDKit_Book.html#additional-information-about-the-fingerprints">RDKit book</a> and docs.</p>
+<p>This <a class="reference external" href="https://greglandrum.github.io/rdkit-blog/posts/2023-01-18-fingerprint-generator-tutorial.html#some-advanced-topics">RDKit blog post</a> details how to generate various types of fingerprint in the RDKit.
+The RDKit <a class="reference external" href="https://www.rdkit.org/docs/GettingStartedInPython.html#fingerprinting-and-molecular-similarity">Getting Started guide</a> also has info on fingerprints and similarity (see later section), and <a class="reference external" href="https://www.rdkit.org/docs/GettingStartedInPython.html#explaining-bits-from-fingerprints">understanding what bits</a> in the fingerprints mean with some visualisations.</p>
+</br>
+</section>
+</section>
+<section id="molecular-similarity">
+<h2>Molecular Similarity<a class="headerlink" href="#molecular-similarity" title="Link to this heading">#</a></h2>
+<p>One of the major uses of <strong>molecular fingerprints</strong> is to assess <strong>molecular similarity</strong> by comparing the bit vectors (or count vectors) of different molecules.</p>
+<section id="how-does-molecular-similarity-work-with-fingerprints">
+<h3><strong>How does molecular similarity work with fingerprints?</strong><a class="headerlink" href="#how-does-molecular-similarity-work-with-fingerprints" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Generate fingerprints</strong></p>
+<ul class="simple">
+<li><p>Convert molecules into fingerprints (e.g., <strong>Morgan fingerprints (ECFP)</strong>, <strong>MACCS keys</strong>).</p></li>
+</ul>
+</li>
+<li><p><strong>Compute a similarity metric to compare fingerprints</strong></p>
+<ul class="simple">
+<li><p>The <strong>Tanimoto coefficient</strong> (also called <strong>Jaccard similarity</strong>) is the most common measure used in combination with fingerprints</p></li>
+<li><p>Other similarity measure include <strong>Dice similarity, Cosine similarity, and Euclidean distance</strong> (see below)</p></li>
+</ul>
+</li>
+<li><p><strong>Interpret similarity scores</strong></p>
+<ul class="simple">
+<li><p>Decide what values of score indicates if molecule is similar or different enough.</p></li>
+<li><p>How similar is similar? [6] <a class="reference external" href="https://doi.org/10.1021/jm401411z">A Med Chem perspective</a> [7]</p></li>
+</ul>
+</li>
+</ol>
+<p>How similar two compounds (or other chemical entities) can be a rather contentious question, but it is at the heart of many areas of discovery and design in chemical and molecular sciences, even in processes as seemingly simple as database searching. Quantitative measures based on encoded representations or fingerprints are therefore essential, but it can be challenging to distil “similarity” down to a single measure.</p>
+</br>
+</section>
+<section id="similarity-measures">
+<h3>Similarity measures<a class="headerlink" href="#similarity-measures" title="Link to this heading">#</a></h3>
+<p>A variety of similarity measures are used in different applications and fields [8], and the choice of a particular measure might be dependent various factors, such as easy they are to compute, the information being compared and the type of similarity - or difference - they are assessing [7].</p>
+<p>Many studies show that similarity coefficient can also show different sensitivities depending on the representation or fingerprint on which they were calculated and the combination of representation/fingerprint and similarity measure might be more or less appropriate in different contexts [9-13].</p>
+<p><img alt="Venn diagram of two sets" src="../_images/fp_sets_cap.png" /></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a\)</span> = number of bits <strong>on</strong> in fingerprint <span class="math notranslate nohighlight">\(A\)</span> (<strong>i.e.,</strong> <span class="math notranslate nohighlight">\(|A|\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(b\)</span> = number of bits <strong>on</strong> in fingerprint <span class="math notranslate nohighlight">\(B\)</span> (<strong>i.e.,</strong> <span class="math notranslate nohighlight">\(|B|\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(c\)</span> = number of <strong>shared “on” bits</strong> between <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> (<strong>i.e.,</strong> <span class="math notranslate nohighlight">\(|A \cap B|\)</span>)</p></li>
+</ul>
+</br>
+<div id="similarity">
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Similarity Measure</p></th>
+<th class="head"><p>Formula</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Tanimoto-Jaccard coefficent</p></td>
+<td><p><span class="math notranslate nohighlight">\(S_{AB} = \frac{c}{a + b - c}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Dice coefficent</p></td>
+<td><p><span class="math notranslate nohighlight">\(S_{AB} = \frac{2c}{a + b}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Cosine coefficent</p></td>
+<td><p><span class="math notranslate nohighlight">\(S_{AB} = \frac{c}{\sqrt{a b}}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Euclidean distance</p></td>
+<td><p><span class="math notranslate nohighlight">\(D_{AB} = \sqrt{a + b - 2c}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Hamming (Manhattan) distance</p></td>
+<td><p><span class="math notranslate nohighlight">\(D_{AB} = a + b - 2c\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Tversky coefficent</p></td>
+<td><p><span class="math notranslate nohighlight">\(S_{AB} = \frac{c}{\alpha (a - c) + \beta (b - c) + c}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span class="math notranslate nohighlight">\(S_{AB}\)</span> are similarity metrics; <span class="math notranslate nohighlight">\(D_{AB}\)</span> are distance or dissimilarity measures.</p>
+</div>
+<section id="example-applications">
+<h4><strong>Example applications</strong><a class="headerlink" href="#example-applications" title="Link to this heading">#</a></h4>
+<p><strong>Virtual Screening</strong>: Find drug-like molecules similar to known active compounds.</p>
+<p><strong>Clustering</strong>: Group similar molecules in chemical databases.</p>
+<p><strong>QSAR Modeling</strong>: Identify structurally similar molecules with similar biological activity.</p>
+<p><strong>Diversity Analysis</strong>: Assess chemical diversity in compound libraries.</p>
+</br>
+</section>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>Molecular descriptors and similarity measures are central to data-driven chemistry, enabling drug design, materials discovery, and predictive modelling.</p>
+<p>No single fingerprint or similarity measure works universally across all fields, necessitating custom approaches for complex systems like crystals [14-16], polymers and soft matter [17, 18]. Graph-based methods and machine learning are key frontiers in tackling these challenges, offering new ways to encode and compare complex chemical structures.</p>
+<section id="for-you-to-consider">
+<h3>For you to consider<a class="headerlink" href="#for-you-to-consider" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>How applicable are the kind of molecular descriptors discussed here to inorganic compounds?</p></li>
+<li><p>What kinds of issues might need to be factored into representations or descriptors for extended materials?</p>
+<ul>
+<li><p>Are there particular considerations for polymers vs. crystalline solids?</p></li>
+<li><p>Are structure and property/activity related in the same way for materials as they are for (for example) bioactive molecules?</p></li>
+</ul>
+</li>
+</ul>
+<section id="references">
+<h4>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>R. Todeschini and V. Consonni, <em>Molecular Descriptors for Cheminformatics</em>, Wiley-VCH, Weinheim, 2009. <a class="reference external" href="https://doi.org/10.1002/9783527628766">https://doi.org/10.1002/9783527628766</a></p></li>
+<li><p>R. Todeschini and V. Consonni, <em>Handbook of Molecular Descriptors</em>, Wiley-VCH, Weinheim, 2000. <a class="reference external" href="https://doi.org/10.1002/9783527613106">https://doi.org/10.1002/9783527613106</a></p></li>
+<li><p>1 D. S. Wigh, J. M. Goodman and A. A. Lapkin, A review of molecular representation in the age of machine learning, <em>WIREs Comput Mol Sci</em>, 2022, 12, e1603. <a class="reference external" href="https://doi.org/10.1002/wcms.1603">https://doi.org/10.1002/wcms.1603</a></p></li>
+<li><p>D. Rogers and M. Hahn, Extended-Connectivity Fingerprints, <em>J. Chem. Inf. Model.</em>, 2010, 50, 742–754. <a class="reference external" href="https://doi.org/10.1021/ci100050t">https://doi.org/10.1021/ci100050t</a></p></li>
+<li><p>M. J. McGregor and S. M. Muskal, Pharmacophore Fingerprinting. 1. Application to QSAR and Focused Library Design, <em>J. Chem. Inf. Comput. Sci.</em>, 1999, 39, 569–574. <a class="reference external" href="https://doi.org/10.1021/ci980159j">https://doi.org/10.1021/ci980159j</a></p></li>
+<li><p>D. E. Patterson, R. D. Cramer, A. M. Ferguson, R. D. Clark and L. E. Weinberger, Neighborhood Behavior:  A Useful Concept for Validation of “Molecular Diversity” Descriptors, <em>J. Med. Chem.</em>, 1996, 39, 3049–3059. <a class="reference external" href="https://doi.org/10.1021/jm960290n">https://doi.org/10.1021/jm960290n</a></p></li>
+<li><p>G. Maggiora, M. Vogt, D. Stumpfe and J. Bajorath, Molecular Similarity in Medicinal Chemistry: Miniperspective, <em>J. Med. Chem.</em>, 2014, 57, 3186–3204. <a class="reference external" href="https://doi.org/10.1021/jm401411z">https://doi.org/10.1021/jm401411z</a></p></li>
+<li><p>1 P. Willett, J. M. Barnard and G. M. Downs, Chemical Similarity Searching, <em>J. Chem. Inf. Comput. Sci.</em>, 1998, 38, 983–996. <a class="reference external" href="https://doi.org/10.1021/ci9800211">https://doi.org/10.1021/ci9800211</a></p></li>
+<li><p>1 D. Bajusz, A. Rácz and K. Héberger, Why is Tanimoto index an appropriate choice for fingerprint-based similarity calculations?, <em>J. Cheminform.</em>, 2015, 7, 20. <a class="reference external" href="https://doi.org/10.1186/s13321-015-0069-3">https://doi.org/10.1186/s13321-015-0069-3</a></p></li>
+<li><p>1 D. Stumpfe and J. Bajorath, Similarity searching, <em>Wiley Interdiscip. Rev. Comput. Mol. Sci.</em>, 2011, 1, 260–282. <a class="reference external" href="https://doi.org/10.1002/wcms.23">https://doi.org/10.1002/wcms.23</a></p></li>
+<li><p>1 J. Bajorath, Molecular crime scene investigation – dusting for fingerprints, Drug Discovery Today: Technologies, 2013, 10, e491–e498. <a class="reference external" href="https://doi.org/10.1186/s13321-015-0069-3">https://doi.org/10.1186/s13321-015-0069-3</a></p></li>
+<li><p>1 R. Duke, C.-H. Yang, B. Ganapathysubramanian and C. Risko, Evaluating molecular similarity measures: Do similarity measures reflect electronic structure properties?, ChemRxiv, 2025, preprint. <a class="reference external" href="https://doi.org/10.26434/chemrxiv-2025-9zrh0">https://doi.org/10.26434/chemrxiv-2025-9zrh0</a>.</p></li>
+<li><p>1 C. L. Mellor, R. L. Marchese Robinson, R. Benigni, D. Ebbrell, S. J. Enoch, J. W. Firman, J. C. Madden, G. Pawar, C. Yang and M. T. D. Cronin, Molecular fingerprint-derived similarity measures for toxicological read-across: Recommendations for optimal use, <em>Regul. Toxic. Pharmacol.</em>, 2019, 101, 121–134. <a class="reference external" href="https://doi.org/10.1016/j.yrtph.2018.11.002">https://doi.org/10.1016/j.yrtph.2018.11.002</a></p></li>
+<li><p>1 A. P. Bartók, R. Kondor and G. Csányi, On representing chemical environments, <em>Phys. Rev. B</em>, 2013, 87, 184115. <a class="reference external" href="https://doi.org/10.1103/PhysRevB.87.184115">https://doi.org/10.1103/PhysRevB.87.184115</a>.</p></li>
+<li><p>K. T. Schütt, How to represent crystal structures for machine learning: Towards fast prediction of electronic properties, <em>Phys. Rev. B</em>, 2014, 89 <a class="reference external" href="https://doi.org/10.1103/PhysRevB.89.205118">https://doi.org/10.1103/PhysRevB.89.205118</a>.</p></li>
+<li><p>L. Himanen, M. O. J. Jäger, E. V. Morooka, F. Federici Canova, Y. S. Ranawat, D. Z. Gao, P. Rinke and A. S. Foster, DScribe: Library of descriptors for machine learning in materials science, <em>Computer Physics Communications</em>, 2020, 247, 106949. <a class="reference external" href="https://doi.org/10.1016/j.cpc.2019.106949">https://doi.org/10.1016/j.cpc.2019.106949</a></p></li>
+<li><p>S. Stuart, J. Watchorn and F. X. Gu, Sizing up feature descriptors for macromolecular machine learning with polymeric biomaterials, <em>npj Comput Mater</em>, 2023, 9, 1–10. <a class="reference external" href="https://doi.org/10.1038/s41524-023-01040-5">https://doi.org/10.1038/s41524-023-01040-5</a></p></li>
+<li><p>Y. Zhao, R. J. Mulder, S. Houshyar and T. C. Le, A review on the application of molecular descriptors and machine learning in polymer design, <em>Polym. Chem.</em>, 2023, 14, 3325–3346. <a class="reference external" href="https://doi.org/10.1039/D3PY00395G">https://doi.org/10.1039/D3PY00395G</a></p></li>
+</ol>
+<style>
+    #rep-desc table {
+        width: 90%;
+    }
+    #rep-desc table th {
+        width: 15%;
+    }
+    #similarity table {
+        width: 50%;    
+    }
+    #str-key img {
+        width: 600px;
+    }
+</style></section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./1-chem_data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="fingerprints.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chemical data - molecular descriptors</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-descriptors">Calculating descriptors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-descriptors-classed-by-dimension">Molecular descriptors classed by dimension</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-fingerprints">Molecular fingerprints</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-molecular-fingerprints-a-non-exhaustive-list"><strong>Types of Molecular Fingerprints</strong> (a non-exhaustive list)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-similarity">Molecular Similarity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-molecular-similarity-work-with-fingerprints"><strong>How does molecular similarity work with fingerprints?</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#similarity-measures">Similarity measures</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-applications"><strong>Example applications</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-you-to-consider">For you to consider</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sam Chong
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
