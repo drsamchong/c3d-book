@@ -245,7 +245,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/drsamchong/binder-test/HEAD/v2/gh/drsamchong/c3d-book/main?urlpath=lab/tree/book/2-data_fundamentals/visualisation_anscombe.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/drsamchong/c3d-book/HEAD/v2/gh/drsamchong/c3d-book/main?urlpath=lab/tree/book/2-data_fundamentals/visualisation_anscombe.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -258,6 +258,24 @@
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
 </li>
       
   </ul>
@@ -896,8 +914,8 @@ If we calculate a linear regression line through the data, do the coefficients o
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "drsamchong/c3d-book",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",

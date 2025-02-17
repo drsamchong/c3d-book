@@ -243,7 +243,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/drsamchong/binder-test/HEAD/v2/gh/drsamchong/c3d-book/main?urlpath=lab/tree/book/1-chem_data/fingerprints.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/drsamchong/c3d-book/HEAD/v2/gh/drsamchong/c3d-book/main?urlpath=lab/tree/book/1-chem_data/fingerprints.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -256,6 +256,24 @@
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
 </li>
       
   </ul>
@@ -809,8 +827,8 @@ Q 302.9 128.3, 304.5 128.3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="3dmolviewer_173976482575575"  style="position: relative; width: 400px; height: 400px;">
-        <p id="3dmolwarning_173976482575575" style="background-color:#ffcccc;color:black">3Dmol.js failed to load for some reason.  Please check your browser console for error messages.<br></p>
+<div class="output text_html"><div id="3dmolviewer_17397656548346071"  style="position: relative; width: 400px; height: 400px;">
+        <p id="3dmolwarning_17397656548346071" style="background-color:#ffcccc;color:black">3Dmol.js failed to load for some reason.  Please check your browser console for error messages.<br></p>
         </div>
 <script>
 
@@ -841,20 +859,20 @@ $3Dmolpromise = null;
   $3Dmolpromise = loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.4.2/3Dmol-min.js');
 }
 
-var viewer_173976482575575 = null;
-var warn = document.getElementById("3dmolwarning_173976482575575");
+var viewer_17397656548346071 = null;
+var warn = document.getElementById("3dmolwarning_17397656548346071");
 if(warn) {
     warn.parentNode.removeChild(warn);
 }
 $3Dmolpromise.then(function() {
-viewer_173976482575575 = $3Dmol.createViewer(document.getElementById("3dmolviewer_173976482575575"),{backgroundColor:"white"});
-viewer_173976482575575.zoomTo();
-	viewer_173976482575575.removeAllModels();
-	viewer_173976482575575.addModel("\n     RDKit          2D\n\n 13 13  0  0  0  0  0  0  0  0999 V2000\n    5.2500   -1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    3.7500   -1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    3.0000   -2.5981    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    3.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    1.5000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.7500   -1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.7500   -1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.5000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.7500    1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.7500    1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.5000    2.5981    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    3.0000    2.5981    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    0.7500    3.8971    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n  1  2  1  0\n  2  3  2  0\n  2  4  1  0\n  4  5  1  0\n  5  6  2  0\n  6  7  1  0\n  7  8  2  0\n  8  9  1  0\n  9 10  2  0\n 10 11  1  0\n 11 12  1  0\n 11 13  2  0\n 10  5  1  0\nM  END\n","sdf");
-	viewer_173976482575575.setStyle({"stick": {}});
-	viewer_173976482575575.setBackgroundColor("0xeeeeee");
-	viewer_173976482575575.zoomTo();
-viewer_173976482575575.render();
+viewer_17397656548346071 = $3Dmol.createViewer(document.getElementById("3dmolviewer_17397656548346071"),{backgroundColor:"white"});
+viewer_17397656548346071.zoomTo();
+	viewer_17397656548346071.removeAllModels();
+	viewer_17397656548346071.addModel("\n     RDKit          2D\n\n 13 13  0  0  0  0  0  0  0  0999 V2000\n    5.2500   -1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    3.7500   -1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    3.0000   -2.5981    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    3.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    1.5000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.7500   -1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.7500   -1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.5000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.7500    1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.7500    1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.5000    2.5981    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    3.0000    2.5981    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    0.7500    3.8971    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n  1  2  1  0\n  2  3  2  0\n  2  4  1  0\n  4  5  1  0\n  5  6  2  0\n  6  7  1  0\n  7  8  2  0\n  8  9  1  0\n  9 10  2  0\n 10 11  1  0\n 11 12  1  0\n 11 13  2  0\n 10  5  1  0\nM  END\n","sdf");
+	viewer_17397656548346071.setStyle({"stick": {}});
+	viewer_17397656548346071.setBackgroundColor("0xeeeeee");
+	viewer_17397656548346071.zoomTo();
+viewer_17397656548346071.render();
 });
 </script></div></div>
 </div>
@@ -1948,8 +1966,8 @@ Number of on bits (value is 1): 22
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "drsamchong/c3d-book",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
