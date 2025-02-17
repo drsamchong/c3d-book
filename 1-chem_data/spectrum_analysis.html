@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chemical data - spectra (or patterns) &#8212; CHEM502 - Chemical Data, Discovery and Design</title>
+    <title>Notebook exercise - working with spectral data (or patterns) &#8212; CHEM502 - Chemical Data, Discovery and Design</title>
   
   
   
@@ -175,7 +175,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="descriptors-similarity.html">Molecular descriptors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fingerprints.html">Notebook exercise - molecular fingerprints</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chemical data - spectra (or patterns)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Notebook exercise - working with spectral data (or patterns)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="least_squares_opt.html">Least squares optimisation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data fundamentals</span></p>
@@ -398,7 +398,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chemical data - spectra (or patterns)</h1>
+    <h1>Notebook exercise - working with spectral data (or patterns)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -432,8 +432,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chemical-data-spectra-or-patterns">
-<h1>Chemical data - spectra (or patterns)<a class="headerlink" href="#chemical-data-spectra-or-patterns" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="notebook-exercise-working-with-spectral-data-or-patterns">
+<h1>Notebook exercise - working with spectral data (or patterns)<a class="headerlink" href="#notebook-exercise-working-with-spectral-data-or-patterns" title="Link to this heading">#</a></h1>
 <p>Experimental characterisation methods like NMR and IR commonly produce datasets in the form of 1-dimensional (or sometimes 2D) spectra. For simple 1D NMR experiments, for example, the spectrum is usually output in the form of intensity vs. chemical shift <span class="math notranslate nohighlight">\(\delta\)</span> in ppm.</p>
 <section id="analysing-spectra">
 <h2>Analysing spectra<a class="headerlink" href="#analysing-spectra" title="Link to this heading">#</a></h2>
@@ -461,7 +461,7 @@
 </div>
 </div>
 </div>
-<p>The <sup>13</sup>C NMR spectrum of ethanol is stored as a csv file (<code class="docutils literal notranslate"><span class="pre">13C_EtOH.csv</span></code>) in the data directory in the parent folder <code class="docutils literal notranslate"><span class="pre">../data</span></code>.</p>
+<p>The <sup>13</sup>C NMR spectrum of ethanol is stored as a csv file (<code class="docutils literal notranslate"><span class="pre">13C_EtOH.csv</span></code>) in the data directory  <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
 <p>It is a good idea to check the contents of a file before you try to load it using Python.
 This is particularly the case with data files to get an idea of the structure of the file, whether it has
 any header lines that you might want to skip over or if the column names are present, for example.</p>
@@ -471,13 +471,7 @@ any header lines that you might want to skip over or if the column names are pre
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># It is a good idea to check the contents of a file before you try to load it using Python.</span>
-<span class="c1"># This is particularly the case with data files to get an idea of the structure of the file, whether it has</span>
-<span class="c1"># any header lines that you might want to skip over or if the column names are present, for example.</span>
-
-<span class="c1"># You can run shell (terminal) command from a Jupyter notebook. More info here: https://tinyurl.com/2yv37k2x</span>
-
-<span class="c1"># Use the `head` shell command to look at the first few lines of the file </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the `head` shell command to look at the first few lines of the file </span>
 </pre></div>
 </div>
 </div>
