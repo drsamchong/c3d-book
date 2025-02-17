@@ -1,4 +1,7 @@
-# Molecular descriptors
+# Molecular descriptors and similarity
+
+
+## Molecular descriptors
 
 Molecular descriptors provide a way of encoding information about the structure or properties of a molecule in a primarily numerical form.
 
@@ -9,7 +12,7 @@ encoded within a symbolic representation of a molecule into a useful number, or 
 
 </br>
 
-## Calculating descriptors
+### Calculating descriptors
 
 Molecular descriptors are usually calculated based on a molecular representation [3], like a SMILES string or a molecular graph.
 
@@ -30,7 +33,7 @@ You have worked with some notation systems to represent molecules, such as SMILE
 </div>
 
 
-## Molecular descriptors classed by dimension
+### Molecular descriptors classed by dimension
 
 Descriptors are often described in terms of their dimensionality, which depends on the level of information about the molecule required to generate the descriptor. For example, a 0D descriptor like molecular weight or the number of atoms present can be calculated just from the molecular formula; whereas a 1D property like the number of hydrogen bond donors required some information about the molecule's connectivity.
 
@@ -49,7 +52,7 @@ There are many many different descriptors available. The Todeschini and Consonni
 
 One type of descriptor that finds broad use and has become extremely prevalent due to the rising application of AI and machine learning are molecular fingerprint. This is a very brief introduction to what they are and how they can be used for measuring the similarity of chemical compounds.
 
-## Molecular fingerprints
+### Molecular fingerprints
 
 A **molecular fingerprint** is a type of **descriptor** (rather than a representation). 
 
@@ -59,7 +62,7 @@ A **molecular fingerprint** is a type of **descriptor** (rather than a represent
 
 - Fingerprints are **derived from molecular structure**, making them **descriptors** rather than raw representations.  
 
-### **Types of Molecular Fingerprints** (a non-exhaustive list)
+#### **Types of Molecular Fingerprints** (a non-exhaustive list)
 
 1. **Structural (key-based) fingerprints**  
    - Encode presence or absence of substructures specified in a pre-defined library.  
@@ -162,7 +165,7 @@ $S_{AB}$ are similarity metrics; $D_{AB}$ are distance or dissimilarity measures
 </br>
 
 
-## Summary
+### Summary
 
 Molecular descriptors and similarity measures are central to data-driven chemistry, enabling drug design, materials discovery, and predictive modelling. 
 
