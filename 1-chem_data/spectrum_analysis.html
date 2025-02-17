@@ -149,8 +149,8 @@
       
     
     
-    <img src="../_static/c3d_logo.png" class="logo__image only-light" alt="CHEM502 - Chemical Data, Discovery and Design - Home"/>
-    <img src="../_static/c3d_logo.png" class="logo__image only-dark pst-js-only" alt="CHEM502 - Chemical Data, Discovery and Design - Home"/>
+    <img src="../_static/c3d_logo_white.png" class="logo__image only-light" alt="CHEM502 - Chemical Data, Discovery and Design - Home"/>
+    <img src="../_static/c3d_logo_white.png" class="logo__image only-dark pst-js-only" alt="CHEM502 - Chemical Data, Discovery and Design - Home"/>
   
   
 </a></div>
@@ -167,7 +167,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Welcome to your Jupyter Book
+                    Chemical Data, Discovery and Design
                 </a>
             </li>
         </ul>
@@ -458,6 +458,13 @@
 </div>
 </div>
 <p>The <sup>13</sup>C NMR spectrum of ethanol is stored as a csv file (<code class="docutils literal notranslate"><span class="pre">13C_EtOH.csv</span></code>) in the data directory in the parent folder <code class="docutils literal notranslate"><span class="pre">../data</span></code>.</p>
+<p>It is a good idea to check the contents of a file before you try to load it using Python.
+This is particularly the case with data files to get an idea of the structure of the file, whether it has
+any header lines that you might want to skip over or if the column names are present, for example.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can run shell (terminal) command from a Jupyter notebook. More info here: <a class="reference external" href="https://tinyurl.com/2yv37k2x">https://tinyurl.com/2yv37k2x</a></p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># It is a good idea to check the contents of a file before you try to load it using Python.</span>
@@ -596,7 +603,7 @@ $<span class="math notranslate nohighlight">\(W = \sigma\sqrt{8\:\ln2}\)</span>$
 <p>We now know that the functions can model the shape of Lorentzian and Gaussian peaks. So we should be able to use them to try to fit the peaks in the NMR spectrum. The fitting process optimises the model’s parameters to obtain a calculated spectrum that is as close as possible to the experimentally observed data.</p>
 <p>Both the Lorentzian and Gaussian models have three parameters that can be varied to modify the peak shape: the amplitude, position of the peak’s centre and the peak’s width. Depending on the type of measurement, all three can provide information about the analyte.</p>
 <p>We will use <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html"><code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code></a> to fit the peaks in the spectrum. It uses <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html#scipy.optimize.least_squares">non-linear least squares</a> to fit a function - in this case the Lorentzian we defined - to a set of data.</p>
-<p>There’s a basic intro to Least Squares Optimisation here: [<a class="reference internal" href="#least_squares_opt.html"><span class="xref myst">html</span></a>] [<a class="reference internal" href="least_squares_opt.html"><span class="std std-doc">markdown</span></a>]</p>
+<p>Here is a basic intro to <a class="reference internal" href="least_squares_opt.html"><span class="doc std std-doc">Least Squares Optimisation</span></a>.</p>
 </br><section id="peak-finding-getting-initial-model-parameters">
 <h3>Peak finding - getting initial model parameters<a class="headerlink" href="#peak-finding-getting-initial-model-parameters" title="Link to this heading">#</a></h3>
 <p>You might remember that the optimisation needs a set of initial guesses to fit the curve. For one or two peaks, that is easily done by hand, but we can use scipy’s signal processing <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.find_peaks.html"><code class="docutils literal notranslate"><span class="pre">scipy.signal.find_peaks</span></code></a> to do this in Python.</p>

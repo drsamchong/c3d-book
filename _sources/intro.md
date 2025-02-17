@@ -1,8 +1,8 @@
-# Welcome to your Jupyter Book
+# Chemical Data, Discovery and Design
 
 [Canvas site](https://canvas.liverpool.ac.uk/courses/77489)
 
-Check out the content pages bundled with this sample book to see more.
+
 
 ```{tableofcontents}
 ```
