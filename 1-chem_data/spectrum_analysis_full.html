@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chemical data - spectra (or patterns) &#8212; CHEM502 - Chemical Data, Discovery and Design</title>
+    <title>Notebook exercise - working with spectral data (or patterns) &#8212; CHEM502 - Chemical Data, Discovery and Design</title>
   
   
   
@@ -417,7 +417,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chemical data - spectra (or patterns)</h1>
+    <h1>Notebook exercise - working with spectral data (or patterns)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -428,12 +428,15 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysing-spectra">Analysing spectra</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-spectra-involves-modelling-data">Processing spectra involves modelling data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aim-of-this-notebook-exercise">Aim of this notebook exercise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-processing-in-scipy">Peak processing in scipy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-finding-getting-initial-model-parameters">Peak finding - getting initial model parameters</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-fitting-optimising-the-model-to-get-precise-peak-information">Peak fitting - optimising the model to get precise peak information</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-the-fit">Assessing the fit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-points-summary"><strong>Key Points Summary:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-metrics">Performance metrics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-points-summary"><strong>Key Points Summary:</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#things-to-try-and-or-consider">Things to try and/or consider:</a></li>
 </ul>
 </li>
@@ -448,19 +451,18 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chemical-data-spectra-or-patterns">
-<h1>Chemical data - spectra (or patterns)<a class="headerlink" href="#chemical-data-spectra-or-patterns" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="notebook-exercise-working-with-spectral-data-or-patterns">
+<h1>Notebook exercise - working with spectral data (or patterns)<a class="headerlink" href="#notebook-exercise-working-with-spectral-data-or-patterns" title="Link to this heading">#</a></h1>
 <p>Experimental characterisation methods like NMR and IR commonly produce datasets in the form of 1-dimensional (or sometimes 2D) spectra. For simple 1D NMR experiments, for example, the spectrum is usually output in the form of intensity vs. chemical shift <span class="math notranslate nohighlight">\(\delta\)</span> in ppm.</p>
 <section id="analysing-spectra">
 <h2>Analysing spectra<a class="headerlink" href="#analysing-spectra" title="Link to this heading">#</a></h2>
 <p>Determining information about the structure of molecules in the sample usually starts with extracting information about the peaks present in the NMR spectrum. The peak information can then be interpreted to provide specific information about the composition and connectivity of the molecule.</p>
 <p>In general, fitting peaks with a function that models the shape serves several purposes including: to gain some fundamental understanding of the nature of the data (e.g. does the method and/or specific instrument produce a particular peak shape); if the peaks are modelled well, the information on their centres, amplitudes can be more precise.</p>
 </section>
-<section id="processing-spectra-involves-modelling-data">
-<h2>Processing spectra involves modelling data<a class="headerlink" href="#processing-spectra-involves-modelling-data" title="Link to this heading">#</a></h2>
+<section id="aim-of-this-notebook-exercise">
+<h2>Aim of this notebook exercise<a class="headerlink" href="#aim-of-this-notebook-exercise" title="Link to this heading">#</a></h2>
 <p>To get an overview how 1D spectral data can be analysed to acquire information about the peaks - positions of the centres, widths, intensities, etc. - we will look at a simple NMR spectrum and practise some pandas, matplotlib and scipy skills along the way.</p>
-<p>It also gives us a chance to look more closely at how a model is being applied to the data and see some of the considerations and issues you should be aware of as you work with even simple data problems.</p>
-<p>The <sup>13</sup>C NMR spectrum of ethanol is stored as a csv file (<code class="docutils literal notranslate"><span class="pre">13C_EtOH.csv</span></code>) in the data directory of the parent folder.</p>
+<p><em>Processing spectra involves modelling data.</em> This exercise also gives us a chance to look more closely at how a model is being applied to the data and see some of the considerations and issues you should be aware of as you work with even simple data problems.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import statements</span>
@@ -474,7 +476,13 @@
 </div>
 </div>
 </div>
-<p>It is a good idea to check the contents of a file before you try to load it using Python. This is particularly the case with data files to get an idea of the structure of the file, whether it has any header lines that you might want to skip over or if the column names are present, for example.</p>
+<p>The <sup>13</sup>C NMR spectrum of ethanol is stored as a csv file (<code class="docutils literal notranslate"><span class="pre">13C_EtOH.csv</span></code>) in the data directory <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
+<p>It is a good idea to check the contents of a file before you try to load it using Python.</p>
+<p>This is particularly the case with data files to get an idea of the structure of the file, whether it has any header lines that you might want to skip over or if the column names are present, for example.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can run shell (terminal) command from a Jupyter notebook. More info here: <a class="reference external" href="https://tinyurl.com/2yv37k2x">https://tinyurl.com/2yv37k2x</a></p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the `head` shell command to look at the first few lines of the file </span>
@@ -646,12 +654,15 @@
 <div class="math notranslate nohighlight">
 \[y = \frac{A}{\pi} \frac{W/2}{(x-x_0)^2+(W/2)^2}\]</div>
 <p>where <em>A</em> is the amplitude of the peak, <em>W</em> is the full width at half maximum (FWHM) and <em>x</em><sub>0</sub> is value of <em>x</em> at the peak centre.</p>
+</br>
 <p><a class="reference external" href="https://mathworld.wolfram.com/GaussianFunction.html"><strong>Gaussian</strong></a></p>
 <div class="math notranslate nohighlight">
 \[y = A \cdot \frac{1}{\sigma\sqrt{2\pi}}\;\exp(-\frac{(x-x_0)^2}{2\sigma^2})\]</div>
 <!---$$y = f(x) = A \cdot \frac{1}{\sigma\sqrt{2\pi}}\;e^{-\frac{(x-x_0)^2}{2\sigma^2}}$$--->
 <p>Here, <em>x</em><sub>0</sub> rather than <span class="math notranslate nohighlight">\(\mu\)</span> is used to represent the centre of the peak (for the normal PDF, <span class="math notranslate nohighlight">\(\mu\)</span> was the mean of the  distribution) and <span class="math notranslate nohighlight">\(\sigma\)</span> and the FWHM, <em>W</em>, of the peak are related by:
-$<span class="math notranslate nohighlight">\(W = \sigma\sqrt{8\:\ln2}\)</span>$</p>
+$<span class="math notranslate nohighlight">\(
+W = \sigma\sqrt{8\:\ln2}
+\)</span>$</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># These functions will calculate a peak using a Gaussian or Lorentzian function </span>
@@ -705,7 +716,7 @@ $<span class="math notranslate nohighlight">\(W = \sigma\sqrt{8\:\ln2}\)</span>$
 <p></br></br></p>
 <section id="peak-finding-getting-initial-model-parameters">
 <h3>Peak finding - getting initial model parameters<a class="headerlink" href="#peak-finding-getting-initial-model-parameters" title="Link to this heading">#</a></h3>
-<p>You might remember that the optimisation needs a set of initial guesses to fit the curve. For one or two peaks, that is easily done by hand, but we can use scipy’s signal processing <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.find_peaks.html"><code class="docutils literal notranslate"><span class="pre">scipy.signal.find_peaks</span></code></a> to do this in Python.</p>
+<p>You might remember that the optimisation needs a set of initial guesses for the parameters to fit the curve. For one or two peaks, that is easily done by hand, but we can use scipy’s signal processing <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.find_peaks.html"><code class="docutils literal notranslate"><span class="pre">scipy.signal.find_peaks</span></code></a> to do this in Python.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">find_peaks</span></code> function locates local maxima in the 1D array it is passed by comparing data points with neighbouring values.</p>
 <p>Try running the function on the intensity data of the NMR spectrum.</p>
 <div class="cell docutils container">
@@ -980,7 +991,10 @@ Width: 0.0307 +/- 0.0010
 </div>
 </div>
 <p>Does this look like a good fit? Try changing the x-limits to check the fit of the peaks more closely.</p>
-</br><p>We can also use a variety of metrics to assess how well the modelled spectrum fits the experimental data.</p>
+</br></section>
+<section id="performance-metrics">
+<h3>Performance metrics<a class="headerlink" href="#performance-metrics" title="Link to this heading">#</a></h3>
+<p>We can also use a variety of metrics to assess how well the modelled spectrum fits the experimental data.</p>
 <p><span class="math notranslate nohighlight">\(R\)</span><sup>2</sup> (coefficient of determination) is a statistical measure of how well the model explains the variability of the dependent variable (here, the intensity). Its form is quite intuitive and it is defined as follows:</p>
 <div class="math notranslate nohighlight">
 \[R^2 = 1 - \frac{SSR}{SST}\]</div>
@@ -1036,8 +1050,9 @@ Width: 0.0307 +/- 0.0010
 </div>
 </div>
 </section>
+</section>
 <section id="key-points-summary">
-<h3><strong>Key Points Summary:</strong><a class="headerlink" href="#key-points-summary" title="Link to this heading">#</a></h3>
+<h2><strong>Key Points Summary:</strong><a class="headerlink" href="#key-points-summary" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Real-World Data Modeling</strong>: In many areas of chemistry (e.g., NMR, IR spectroscopy), fitting models to experimental data is crucial for extracting meaningful information, such as peak positions and intensities.</p></li>
 <li><p><strong>Peak Fitting</strong>: Fitting peaks to a model function helps extract more precise information about the data (e.g., determining peak centers, amplitudes, and widths) compared to raw data points.</p></li>
@@ -1045,7 +1060,6 @@ Width: 0.0307 +/- 0.0010
 <li><p><strong>Practical Considerations</strong>: When fitting models, especially in noisy or complex data, it’s important to consider the quality of the fit and how well the model reflects the underlying data. This exercise highlights common issues in fitting, such as choosing an appropriate model and evaluating the fit.</p></li>
 <li><p><strong>Iterative Process</strong>: Fitting is often an iterative process. You may need to try different initial guesses for the model parameters, refine the model, and evaluate how well the fit matches the data.</p></li>
 </ul>
-</section>
 <section id="things-to-try-and-or-consider">
 <h3>Things to try and/or consider:<a class="headerlink" href="#things-to-try-and-or-consider" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -1108,12 +1122,15 @@ Width: 0.0307 +/- 0.0010
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analysing-spectra">Analysing spectra</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-spectra-involves-modelling-data">Processing spectra involves modelling data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aim-of-this-notebook-exercise">Aim of this notebook exercise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-processing-in-scipy">Peak processing in scipy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-finding-getting-initial-model-parameters">Peak finding - getting initial model parameters</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-fitting-optimising-the-model-to-get-precise-peak-information">Peak fitting - optimising the model to get precise peak information</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-the-fit">Assessing the fit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-points-summary"><strong>Key Points Summary:</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-metrics">Performance metrics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-points-summary"><strong>Key Points Summary:</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#things-to-try-and-or-consider">Things to try and/or consider:</a></li>
 </ul>
 </li>

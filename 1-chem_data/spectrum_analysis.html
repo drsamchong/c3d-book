@@ -431,10 +431,8 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aim-of-this-notebook-exercise">Aim of this notebook exercise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-processing-in-scipy">Peak processing in scipy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-finding-getting-initial-model-parameters">Peak finding - getting initial model parameters</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-fitting-optimising-the-model-to-get-precise-peak-information">Peak fitting - optimising the model to get precise peak information</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-the-fit">Assessing the fit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-fitting-optimising-the-model-to-get-precise-peak-information">Peak fitting - optimising the model to get precise peak information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-the-fit">Assessing the fit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-metrics">Performance metrics</a></li>
 </ul>
 </li>
@@ -480,10 +478,9 @@
 </div>
 </div>
 </div>
-<p>The <sup>13</sup>C NMR spectrum of ethanol is stored as a csv file (<code class="docutils literal notranslate"><span class="pre">13C_EtOH.csv</span></code>) in the data directory  <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
-<p>It is a good idea to check the contents of a file before you try to load it using Python.
-This is particularly the case with data files to get an idea of the structure of the file, whether it has
-any header lines that you might want to skip over or if the column names are present, for example.</p>
+<p>The <sup>13</sup>C NMR spectrum of ethanol is stored as a csv file (<code class="docutils literal notranslate"><span class="pre">13C_EtOH.csv</span></code>) in the data directory <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
+<p>It is a good idea to check the contents of a file before you try to load it using Python.</p>
+<p>This is particularly the case with data files to get an idea of the structure of the file, whether it has any header lines that you might want to skip over or if the column names are present, for example.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>You can run shell (terminal) command from a Jupyter notebook. More info here: <a class="reference external" href="https://tinyurl.com/2yv37k2x">https://tinyurl.com/2yv37k2x</a></p>
@@ -500,21 +497,6 @@ any header lines that you might want to skip over or if the column names are pre
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the NMR spectrum from the csv into a pandas dataframe called nmr_spec</span>
 
 <span class="c1"># nmr_spec = ...</span>
-
-<span class="n">nmr_spec</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Read the NMR spectrum from the csv into a pandas dataframe called nmr_spec</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># nmr_spec = ...</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">nmr_spec</span>
-
-<span class="ne">NameError</span>: name &#39;nmr_spec&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -541,6 +523,21 @@ any header lines that you might want to skip over or if the column names are pre
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Plot the spectrum</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">nmr_spec</span><span class="p">[</span><span class="s2">&quot;ppm&quot;</span><span class="p">],</span> <span class="n">nmr_spec</span><span class="p">[</span><span class="s2">&quot;intensity&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Chemical shift $</span><span class="se">\\</span><span class="s2">delta$ / ppm&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Intensity&quot;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;nmr_spec&#39; is not defined
+</pre></div>
+</div>
+<img alt="../_images/8852035462ddaea257dd94f8f88f277b0993cb5e85d77d5a256d5d65b3ca98dc.png" src="../_images/8852035462ddaea257dd94f8f88f277b0993cb5e85d77d5a256d5d65b3ca98dc.png" />
 </div>
 </div>
 <p>The code above uses matplotlib’s <code class="docutils literal notranslate"><span class="pre">pyplot.plot</span></code> to graph the spectrum. This might be how you have mostly seen plotting in matplotlib so far.</p>
@@ -579,7 +576,9 @@ any header lines that you might want to skip over or if the column names are pre
 \[y = A \cdot \frac{1}{\sigma\sqrt{2\pi}}\;\exp(-\frac{(x-x_0)^2}{2\sigma^2})\]</div>
 <!---$$y = f(x) = A \cdot \frac{1}{\sigma\sqrt{2\pi}}\;e^{-\frac{(x-x_0)^2}{2\sigma^2}}$$--->
 <p>Here, <em>x</em><sub>0</sub> rather than <span class="math notranslate nohighlight">\(\mu\)</span> is used to represent the centre of the peak (for the normal PDF, <span class="math notranslate nohighlight">\(\mu\)</span> was the mean of the  distribution) and <span class="math notranslate nohighlight">\(\sigma\)</span> and the FWHM, <em>W</em>, of the peak are related by:
-$<span class="math notranslate nohighlight">\(W = \sigma\sqrt{8\:\ln2}\)</span>$</p>
+$<span class="math notranslate nohighlight">\(
+W = \sigma\sqrt{8\:\ln2}
+\)</span>$</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># These functions will calculate a peak using a Gaussian or Lorentzian function as defined above.</span>
@@ -626,7 +625,7 @@ $<span class="math notranslate nohighlight">\(W = \sigma\sqrt{8\:\ln2}\)</span>$
 </div>
 </br><section id="peak-finding-getting-initial-model-parameters">
 <h3>Peak finding - getting initial model parameters<a class="headerlink" href="#peak-finding-getting-initial-model-parameters" title="Link to this heading">#</a></h3>
-<p>You might remember that the optimisation needs a set of initial guesses to fit the curve. For one or two peaks, that is easily done by hand, but we can use scipy’s signal processing <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.find_peaks.html"><code class="docutils literal notranslate"><span class="pre">scipy.signal.find_peaks</span></code></a> to do this in Python.</p>
+<p>You might remember that the optimisation needs a set of initial guesses for the parameters to fit the curve. For one or two peaks, that is easily done by hand, but we can use scipy’s signal processing <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.find_peaks.html"><code class="docutils literal notranslate"><span class="pre">scipy.signal.find_peaks</span></code></a> to do this in Python.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">find_peaks</span></code> function locates local maxima in the 1D array it is passed by comparing data points with neighbouring values.</p>
 <p>Try running the function on the intensity data of the NMR spectrum.</p>
 <div class="cell docutils container">
@@ -714,9 +713,8 @@ Check the <a class="reference external" href="https://docs.scipy.org/doc/scipy/r
 </div>
 <p>OK! Finally, let’s try fitting the Lorentzian model to the NMR peaks.</p>
 </br></section>
-</section>
 <section id="peak-fitting-optimising-the-model-to-get-precise-peak-information">
-<h2>Peak fitting - optimising the model to get precise peak information<a class="headerlink" href="#peak-fitting-optimising-the-model-to-get-precise-peak-information" title="Link to this heading">#</a></h2>
+<h3>Peak fitting - optimising the model to get precise peak information<a class="headerlink" href="#peak-fitting-optimising-the-model-to-get-precise-peak-information" title="Link to this heading">#</a></h3>
 <p>Now you are ready to run the least squares optimisation to fit the curves to the peaks in the spectrum.</p>
 <p>For this simple spectrum, the peaks are well separated so can be fitted separately and the baseline is very low and flat. Check the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html"><code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> docs</a> if you need a reminder of how to call the function, passing in the information from the peak_info dictionary as the initial values for the parameters.</p>
 <p>One thing to note: The amplitude of the fitted curve will be the integrated intensity - the area under the peak. You can estimate the initial area as that of a rectangle of <em>height = peak height</em> and <em>width = peak width</em>.</p>
@@ -743,7 +741,7 @@ Check the <a class="reference external" href="https://docs.scipy.org/doc/scipy/r
 </div>
 </section>
 <section id="assessing-the-fit">
-<h2>Assessing the fit<a class="headerlink" href="#assessing-the-fit" title="Link to this heading">#</a></h2>
+<h3>Assessing the fit<a class="headerlink" href="#assessing-the-fit" title="Link to this heading">#</a></h3>
 <p>Check the optimised parameters of the fitted Lorentzian peaks stored in <code class="docutils literal notranslate"><span class="pre">popt_list</span></code>. These will be <code class="docutils literal notranslate"><span class="pre">[amplitude,</span> <span class="pre">centre,</span> <span class="pre">width]</span></code> for each peak.</p>
 <p>Take another look at the spectrum. Do these values look reasonable? It might be difficult to tell with the areas, but
 remember the rectangular approximation.</p>
@@ -820,7 +818,8 @@ remember the rectangular approximation.</p>
 </div>
 </div>
 <p>Does this look like a good fit? Try changing the x-limits to check the fit of the peaks more closely.</p>
-</br><section id="performance-metrics">
+</br></section>
+<section id="performance-metrics">
 <h3>Performance metrics<a class="headerlink" href="#performance-metrics" title="Link to this heading">#</a></h3>
 <p>We can also use a variety of metrics to assess how well the modelled spectrum fits the experimental data.</p>
 <p><span class="math notranslate nohighlight">\(R\)</span><sup>2</sup> (coefficient of determination) is a statistical measure of how well the model explains the variability of the dependent variable (here, the intensity). Its form is quite intuitive and it is defined as follows:</p>
@@ -962,10 +961,8 @@ remember the rectangular approximation.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aim-of-this-notebook-exercise">Aim of this notebook exercise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-processing-in-scipy">Peak processing in scipy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-finding-getting-initial-model-parameters">Peak finding - getting initial model parameters</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-fitting-optimising-the-model-to-get-precise-peak-information">Peak fitting - optimising the model to get precise peak information</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-the-fit">Assessing the fit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#peak-fitting-optimising-the-model-to-get-precise-peak-information">Peak fitting - optimising the model to get precise peak information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assessing-the-fit">Assessing the fit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-metrics">Performance metrics</a></li>
 </ul>
 </li>

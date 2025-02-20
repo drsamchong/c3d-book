@@ -1,0 +1,1072 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Workshop - Exploratory Data Analysis &#8212; CHEM502 - Chemical Data, Discovery and Design</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=89ec2937" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'workshop_files/eda_workshop';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/c3d_logo_white.png" class="logo__image only-light" alt="CHEM502 - Chemical Data, Discovery and Design - Home"/>
+    <img src="../_static/c3d_logo_white.png" class="logo__image only-dark pst-js-only" alt="CHEM502 - Chemical Data, Discovery and Design - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Chemical Data, Discovery and Design
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chemical data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1-chem_data/descriptors-similarity.html">Molecular descriptors and similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-chem_data/fingerprints.html">Notebook exercise - molecular fingerprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-chem_data/spectrum_analysis.html">Notebook exercise - working with spectral data (or patterns)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-chem_data/least_squares_opt.html">Least squares optimisation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data fundamentals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2-data_fundamentals/eda.html">Exploratory Data Analysis (EDA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-data_fundamentals/eda_visualisation.html">Notebook - Visualisation in EDA</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro to ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3-ml_intro/ml_models.html">ML intro</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/drsamchong/c3d-book/HEAD/v2/gh/drsamchong/c3d-book/main?urlpath=lab/tree/book/workshop_files/eda_workshop.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/drsamchong/c3d-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/drsamchong/c3d-book/issues/new?title=Issue%20on%20page%20%2Fworkshop_files/eda_workshop.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/workshop_files/eda_workshop.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Workshop - Exploratory Data Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-resources">Useful resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data">Loading the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-the-data">Cleaning the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualising-the-data">Visualising the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-some-descriptors">Adding some descriptors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-visualisation">Back to visualisation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="workshop-exploratory-data-analysis">
+<h1>Workshop - Exploratory Data Analysis<a class="headerlink" href="#workshop-exploratory-data-analysis" title="Link to this heading">#</a></h1>
+<p>In this workshop, we will work with a dataset of thermochemical data for some molecules to explore what features or descriptors are influential in their melting and/or boiling points.</p>
+<section id="useful-resources">
+<h2>Useful resources<a class="headerlink" href="#useful-resources" title="Link to this heading">#</a></h2>
+<p>We will be using some of the python libraries you have already seen and Seaborn, which you might not have yet. Here are some quick start guides and/or tutorials that might come in useful.</p>
+<ul class="simple">
+<li><p>Pandas</p>
+<ul>
+<li><p><a class="reference external" href="https://pandas.pydata.org/docs/user_guide/10min.html">10 minutes to pandas</a></p></li>
+</ul>
+</li>
+<li><p>Matplotlib</p>
+<ul>
+<li><p><a class="reference external" href="https://matplotlib.org/stable/users/explain/quick_start.html">Quick start guide</a></p></li>
+</ul>
+</li>
+<li><p>RDKit</p>
+<ul>
+<li><p><a class="reference external" href="https://www.rdkit.org/docs/GettingStartedInPython.html">Getting started with the RDKit in Python</a></p></li>
+<li><p><a class="reference external" href="https://github.com/greglandrum/AIDD_RDKit_Tutorial_2021/blob/b4c4661ff7980721823654f54cd0c28031c5884c/RDKit_Intro.ipynb">RDKit tutorial from 2021</a> - this covers a lot of ground. We won’t be talking about reactions (towards end of notebook)</p></li>
+<li><p>There are also lots of videos on YouTube and of course ChatGPT (though I am not sure how well it does with RDKit, probably because the documentation is patchy).</p></li>
+</ul>
+</li>
+</ul>
+<p>You might also find some useful bits and pieces in the <a class="reference external" href="https://drsamchong.github.io/c3d-book/1-chem_data/fingerprints.html">Molecular fingerprints notebook</a> in the module book.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can find a notebook with code for the data cleaning, visualisation of the initial data and calculation of molecular descriptors <a class="reference internal" href="eda_workshop_complete.html"><span class="doc std std-doc">here</span></a>.</p>
+</div>
+<p>Let’s start by importing some libraries:</p>
+<ul class="simple">
+<li><p>time (needed to include a sleep)</p></li>
+<li><p>requests</p></li>
+<li><p>pandas</p></li>
+<li><p>numpy</p></li>
+<li><p>matplotlib</p></li>
+<li><p>seaborn</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: Write your import statements here.</span>
+
+
+<span class="c1"># rdkit has a complicated structure, so we will start with these and maybe add some later</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+                        <span class="n">AllChem</span><span class="p">,</span>
+                        <span class="n">rdCoordGen</span><span class="p">,</span>
+                        <span class="n">Draw</span><span class="p">,</span>
+                        <span class="n">rdFingerprintGenerator</span><span class="p">,</span>
+                        <span class="n">PandasTools</span><span class="p">,</span>
+                        <span class="n">Descriptors</span>
+                        <span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem.Draw</span><span class="w"> </span><span class="kn">import</span> <span class="n">IPythonConsole</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataStructs</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVG</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interact</span><span class="p">,</span><span class="n">fixed</span><span class="p">,</span><span class="n">IntSlider</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="loading-the-data">
+<h3>Loading the data<a class="headerlink" href="#loading-the-data" title="Link to this heading">#</a></h3>
+<p>The data is stored in a flat csv file in the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory called <code class="docutils literal notranslate"><span class="pre">alcohol_acid_phys_data.csv</span></code>.</p>
+<ol class="arabic simple" start="0">
+<li><p>Check the data in the file (try the ‘head’ command)</p></li>
+<li><p>Read the data into a pandas dataframe</p></li>
+<li><p>Display the dataframe</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO:</span>
+
+<span class="c1"># 0. Check the data in the file (try the &#39;head&#39; command)</span>
+<span class="c1"># 1. Read the data into a pandas dataframe</span>
+<span class="c1"># 2. Display the dataframe</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cleaning-the-data">
+<h3>Cleaning the data<a class="headerlink" href="#cleaning-the-data" title="Link to this heading">#</a></h3>
+<p>We need to do at least a little cleaning of the data. We can check the data for the number of rows and the data types in each column using <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html"><code class="docutils literal notranslate"><span class="pre">DataFrame.info()</span></code></a> method.</p>
+<p>There are lots of pKa values missing. We are not going to use the pKa values, so we can drop those columns.</p>
+<p>Some rows are missing densities. And more importantly, some are missing melting and/or boiling points, which is the property we are interested in.</p>
+<p>It might be possible to look these up somewhere, like the <a class="reference external" href="https://webbook.nist.gov/chemistry/">NIST Chemistry WebBook</a> which unfortunately does seem not have a convenient API (there are unofficial ones if you search on the web). For now we can also drop these rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO:</span>
+<span class="c1"># 1. Drop the two pKa columns</span>
+<span class="c1"># 2. Drop the rows with NaN values in density, melting point and boiling point columns.</span>
+<span class="c1"># 3. Check the info again to see if the changes have been made.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Still a few issues:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Class</span></code> and <code class="docutils literal notranslate"><span class="pre">IUPAC</span> <span class="pre">name</span></code> columns have some odd characters which appear to encode whitespace, e.g. Alkanedioic\r\nacid.</p></li>
+<li><p>The .info() shows that the melting and boiling points have object, i.e. string data types, which suggests there are non-numerical values. If you look at the columns, some numbers have “d” or “s” sometimes with a number, probably to denote “decomposed” or “sublimed” maybe.</p></li>
+</ul>
+<p>Pandas has <code class="docutils literal notranslate"><span class="pre">str.contains</span></code> and <code class="docutils literal notranslate"><span class="pre">str.replace</span></code> methods for its <code class="docutils literal notranslate"><span class="pre">Series</span></code> structure. Try using these to check and remove the encoded characters in those columns.</p>
+<p>Can you think of a way to deal with the non- or partly numeric phase change values?</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Could <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.to_numeric.html">this</a> help?</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO:</span>
+
+<span class="c1"># 1. Ensure only numeric values are present in the melting point, boiling point columns</span>
+<span class="c1"># 2. Remove the encoded whitespace characters from the &#39;Class&#39; and &#39;IUPAC name&#39; columns</span>
+<span class="c1"># 3. Convert the melting point, boiling point columns to numeric values.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Some of the compounds do not have common names. We could either drop the column or fill the missing values with something like “unknown” or “none”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO:</span>
+
+<span class="c1"># Clean column with missing compounds&#39; common names</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you converted the mp and bp columns to numeric types using <code class="docutils literal notranslate"><span class="pre">pd.to_numeric</span></code> with <code class="docutils literal notranslate"><span class="pre">errors=&quot;coerce&quot;</span></code> then you will probably now have some additional null values in those columns, so those rows can be dropped.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: Drop any remaining rows with NaN values in mp/bp columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we have a clean dataset with no missing values and the correct dtypes.</p>
+<p>We can look at the summary statistics for the numerical columns we currently have, but there’s not much there yet.</p>
+<p>There is one more thing we can do to tidy this data.</p>
+<p>You may not be so familiar with the pandas <code class="docutils literal notranslate"><span class="pre">category</span></code> dtype. It is used when a variable takes a limited number of values.</p>
+<p>Check the number of unique values for the columns. Which one could be treated as categorical data?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: Check for categorical columns and change the data type to &#39;category&#39; if necessary</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualising-the-data">
+<h3>Visualising the data<a class="headerlink" href="#visualising-the-data" title="Link to this heading">#</a></h3>
+<p>Have a look at this brilliant <a class="reference external" href="https://weisscharlesj.github.io/SciCompforChemists/notebooks/chapter_10/chap_10_notebook.html">seaborn tutorial</a> developed as by Charles J. Weiss at Augustana University in South Dakota.</p>
+<p>Some of the data used has a similar structure to this dataset.</p>
+<p>There are no hard and fast rules about which types of plots to use to visualise your data, but the data types of the columns will mean some are more suitable to look at the data and relationships for certain variables.</p>
+<p>Try plotting the data to visualise some of the following:</p>
+<ul class="simple">
+<li><p>The distribution of different classes of compound in the data set</p></li>
+<li><p>Identify if there are any outliers for the thermochemical data or density</p></li>
+<li><p>The distribution of boiling points, melting point and/or density with the class of the compound</p></li>
+<li><p>Identify any correlations between the numerical features and the melting and/or boiling point.</p>
+<ul>
+<li><p>Is there any difference for different classes of compound?</p></li>
+</ul>
+</li>
+</ul>
+<p>Are there any other interesting patterns or trends in the data that you have observed?</p>
+</section>
+<section id="adding-some-descriptors">
+<h3>Adding some descriptors<a class="headerlink" href="#adding-some-descriptors" title="Link to this heading">#</a></h3>
+<p>We have a list of compounds and a small number of observed values and descriptors. We can add a few more by calculating them using RDKit, but we only have IUPAC names, so we need to obtain a more rigorous representation to use with RDKit.</p>
+<p>The <a class="reference external" href="https://cactus.nci.nih.gov/chemical/structure">Chemical Identifier Resolver</a> (CIR) service is run by the CADD Group at the NCI/NIH as part of their <a class="reference external" href="https://cactus.nci.nih.gov">Cactus server</a>. It is used in the <a class="reference external" href="https://drsamchong.github.io/c3d-book/1-chem_data/fingerprints.html">Molecular fingerprints notebook</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here is a function so the process of getting the SMILES can be repeated for multiple compounds.</span>
+<span class="c1"># It includes a sleep time (`time.sleep`) to avoid overloading the server.</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_smiles_from_name</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gets SMILES string from the Cactus API given a chemical name.&quot;&quot;&quot;</span>
+    
+    <span class="n">ROOT_URL</span> <span class="o">=</span> <span class="s2">&quot;https://cactus.nci.nih.gov/chemical/structure/&quot;</span>
+    <span class="n">identifier</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="n">representation</span> <span class="o">=</span> <span class="s2">&quot;smiles&quot;</span>
+
+    <span class="n">query_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ROOT_URL</span><span class="si">}{</span><span class="n">identifier</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">representation</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">query_url</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">response</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed to get SMILES for </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;not found&quot;</span>
+        <span class="c1"># raise Exception(f&quot;Cactus request failed for {name}: {response.status_code}&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: Get a list of SMILES strings for the compounds in the dataframe and add this to the </span>
+<span class="c1"># dataframe as a new column.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s generate some descriptors for these molecules using RDKit.</p>
+<p>There is a <a class="reference external" href="https://greglandrum.github.io/rdkit-blog/posts/2022-12-23-descriptor-tutorial.html">tutorial</a> on calculating descriptors, and they are listed in the <a class="reference external" href="https://www.rdkit.org/docs/GettingStartedInPython.html#list-of-available-descriptors">Getting Started guide</a>.</p>
+<p>RDKit needs a <code class="docutils literal notranslate"><span class="pre">RDKit.molecule</span></code> to calculate the descriptors. You can create a separate list of molecules based on the SMILES strings in the dataframe, or you can use RDKit’s <a class="reference external" href="https://www.rdkit.org/docs/source/rdkit.Chem.PandasTools.html">PandasTools module</a> to work with them in a DataFrame.</p>
+<p>Have a look at the <a class="reference external" href="https://drsamchong.github.io/c3d-book/1-chem_data/fingerprints.html">molecular fingerprints notebook</a> for some code to get started getting the RDKit molecules.</p>
+<ul class="simple">
+<li><p>Choose around 5 additional descriptors to calculate for each compound.</p></li>
+<li><p>It is up to you how you handle the calculations and getting the new data combined with the existing dataframe.</p></li>
+</ul>
+<p>Here is one option:</p>
+<ul class="simple">
+<li><p>You could use the getMolDescriptors function in the <a class="reference external" href="https://greglandrum.github.io/rdkit-blog/posts/2022-12-23-descriptor-tutorial.html">descriptors tutorial</a> as starting point to calculate the new descriptors and add them to dictionary that can be read into a dataframe.</p></li>
+<li><p>You can then use <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.concat.html"><code class="docutils literal notranslate"><span class="pre">pd.concat</span></code></a> to combine the dataframe with your thermochemical data with the new descriptors.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add RDKit molecule objects to the dataframe</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">desc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Descriptors</span><span class="o">.</span><span class="n">descList</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">desc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 MaxAbsEStateIndex
+1 MaxEStateIndex
+2 MinAbsEStateIndex
+3 MinEStateIndex
+4 qed
+5 SPS
+6 MolWt
+7 HeavyAtomMolWt
+8 ExactMolWt
+9 NumValenceElectrons
+10 NumRadicalElectrons
+11 MaxPartialCharge
+12 MinPartialCharge
+13 MaxAbsPartialCharge
+14 MinAbsPartialCharge
+15 FpDensityMorgan1
+16 FpDensityMorgan2
+17 FpDensityMorgan3
+18 BCUT2D_MWHI
+19 BCUT2D_MWLOW
+20 BCUT2D_CHGHI
+21 BCUT2D_CHGLO
+22 BCUT2D_LOGPHI
+23 BCUT2D_LOGPLOW
+24 BCUT2D_MRHI
+25 BCUT2D_MRLOW
+26 AvgIpc
+27 BalabanJ
+28 BertzCT
+29 Chi0
+30 Chi0n
+31 Chi0v
+32 Chi1
+33 Chi1n
+34 Chi1v
+35 Chi2n
+36 Chi2v
+37 Chi3n
+38 Chi3v
+39 Chi4n
+40 Chi4v
+41 HallKierAlpha
+42 Ipc
+43 Kappa1
+44 Kappa2
+45 Kappa3
+46 LabuteASA
+47 PEOE_VSA1
+48 PEOE_VSA10
+49 PEOE_VSA11
+50 PEOE_VSA12
+51 PEOE_VSA13
+52 PEOE_VSA14
+53 PEOE_VSA2
+54 PEOE_VSA3
+55 PEOE_VSA4
+56 PEOE_VSA5
+57 PEOE_VSA6
+58 PEOE_VSA7
+59 PEOE_VSA8
+60 PEOE_VSA9
+61 SMR_VSA1
+62 SMR_VSA10
+63 SMR_VSA2
+64 SMR_VSA3
+65 SMR_VSA4
+66 SMR_VSA5
+67 SMR_VSA6
+68 SMR_VSA7
+69 SMR_VSA8
+70 SMR_VSA9
+71 SlogP_VSA1
+72 SlogP_VSA10
+73 SlogP_VSA11
+74 SlogP_VSA12
+75 SlogP_VSA2
+76 SlogP_VSA3
+77 SlogP_VSA4
+78 SlogP_VSA5
+79 SlogP_VSA6
+80 SlogP_VSA7
+81 SlogP_VSA8
+82 SlogP_VSA9
+83 TPSA
+84 EState_VSA1
+85 EState_VSA10
+86 EState_VSA11
+87 EState_VSA2
+88 EState_VSA3
+89 EState_VSA4
+90 EState_VSA5
+91 EState_VSA6
+92 EState_VSA7
+93 EState_VSA8
+94 EState_VSA9
+95 VSA_EState1
+96 VSA_EState10
+97 VSA_EState2
+98 VSA_EState3
+99 VSA_EState4
+100 VSA_EState5
+101 VSA_EState6
+102 VSA_EState7
+103 VSA_EState8
+104 VSA_EState9
+105 FractionCSP3
+106 HeavyAtomCount
+107 NHOHCount
+108 NOCount
+109 NumAliphaticCarbocycles
+110 NumAliphaticHeterocycles
+111 NumAliphaticRings
+112 NumAmideBonds
+113 NumAromaticCarbocycles
+114 NumAromaticHeterocycles
+115 NumAromaticRings
+116 NumAtomStereoCenters
+117 NumBridgeheadAtoms
+118 NumHAcceptors
+119 NumHDonors
+120 NumHeteroatoms
+121 NumHeterocycles
+122 NumRotatableBonds
+123 NumSaturatedCarbocycles
+124 NumSaturatedHeterocycles
+125 NumSaturatedRings
+126 NumSpiroAtoms
+127 NumUnspecifiedAtomStereoCenters
+128 Phi
+129 RingCount
+130 MolLogP
+131 MolMR
+132 fr_Al_COO
+133 fr_Al_OH
+134 fr_Al_OH_noTert
+135 fr_ArN
+136 fr_Ar_COO
+137 fr_Ar_N
+138 fr_Ar_NH
+139 fr_Ar_OH
+140 fr_COO
+141 fr_COO2
+142 fr_C_O
+143 fr_C_O_noCOO
+144 fr_C_S
+145 fr_HOCCN
+146 fr_Imine
+147 fr_NH0
+148 fr_NH1
+149 fr_NH2
+150 fr_N_O
+151 fr_Ndealkylation1
+152 fr_Ndealkylation2
+153 fr_Nhpyrrole
+154 fr_SH
+155 fr_aldehyde
+156 fr_alkyl_carbamate
+157 fr_alkyl_halide
+158 fr_allylic_oxid
+159 fr_amide
+160 fr_amidine
+161 fr_aniline
+162 fr_aryl_methyl
+163 fr_azide
+164 fr_azo
+165 fr_barbitur
+166 fr_benzene
+167 fr_benzodiazepine
+168 fr_bicyclic
+169 fr_diazo
+170 fr_dihydropyridine
+171 fr_epoxide
+172 fr_ester
+173 fr_ether
+174 fr_furan
+175 fr_guanido
+176 fr_halogen
+177 fr_hdrzine
+178 fr_hdrzone
+179 fr_imidazole
+180 fr_imide
+181 fr_isocyan
+182 fr_isothiocyan
+183 fr_ketone
+184 fr_ketone_Topliss
+185 fr_lactam
+186 fr_lactone
+187 fr_methoxy
+188 fr_morpholine
+189 fr_nitrile
+190 fr_nitro
+191 fr_nitro_arom
+192 fr_nitro_arom_nonortho
+193 fr_nitroso
+194 fr_oxazole
+195 fr_oxime
+196 fr_para_hydroxylation
+197 fr_phenol
+198 fr_phenol_noOrthoHbond
+199 fr_phos_acid
+200 fr_phos_ester
+201 fr_piperdine
+202 fr_piperzine
+203 fr_priamide
+204 fr_prisulfonamd
+205 fr_pyridine
+206 fr_quatN
+207 fr_sulfide
+208 fr_sulfonamd
+209 fr_sulfone
+210 fr_term_acetylene
+211 fr_tetrazole
+212 fr_thiazole
+213 fr_thiocyan
+214 fr_thiophene
+215 fr_unbrch_alkane
+216 fr_urea
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># From https://greglandrum.github.io/rdkit-blog/posts/2022-12-23-descriptor-tutorial.html</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">getMolDescriptors</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">descriptor_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">missingVal</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39; calculate the full list of descriptors for a molecule</span>
+<span class="sd">    </span>
+<span class="sd">        missingVal is used if the descriptor cannot be calculated</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">descriptor_list</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">nm</span><span class="p">,</span><span class="n">fn</span> <span class="ow">in</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">_descList</span><span class="p">:</span>
+            <span class="c1"># some of the descriptor fucntions can throw errors if they fail, catch those here:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="c1"># print the error message:</span>
+                <span class="kn">import</span><span class="w"> </span><span class="nn">traceback</span>
+                <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+                <span class="c1"># and set the descriptor value to whatever missingVal is</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">missingVal</span>
+            <span class="n">res</span><span class="p">[</span><span class="n">nm</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+    <span class="c1"># TODO: Add else clause to handle a list numbers corresponding to the descriptor indices</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">res</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: Add the descriptors to the dataframe as new columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="back-to-visualisation">
+<h3>Back to visualisation<a class="headerlink" href="#back-to-visualisation" title="Link to this heading">#</a></h3>
+<p>Using your new seaborn skills, visualise the distributions and identify any correlations in your new data.</p>
+<p>You will probably find plots like pairplots or heatmaps of more use now that you have a few more variables.</p>
+</section>
+<section id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>You have used the pandas library to clean and prepare a dataset, and to get descriptive statistics for the data.</p></li>
+<li><p>You have visualised distributions and relationships in the data to look for anomalies and patterns.</p></li>
+<li><p>You have used an API to obtain molecular identifiers/representations for a set of compounds.</p></li>
+<li><p>You have generated molecular descriptors for a set of compounds using RDKit.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "drsamchong/c3d-book",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./workshop_files"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-resources">Useful resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data">Loading the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-the-data">Cleaning the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualising-the-data">Visualising the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-some-descriptors">Adding some descriptors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-visualisation">Back to visualisation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sam Chong
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
