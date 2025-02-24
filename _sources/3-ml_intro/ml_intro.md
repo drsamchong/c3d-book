@@ -96,7 +96,7 @@ In data vocabulary, the variables are often referred to as features and the targ
 :::
 
 
-As we will see shortly, the model's performance in predicting for seen and new data is assessed separately. So the complete dataset needs to be split into separate parts so that the accuracy of the model's predictions are evaluated fairly. [Splitting the data into training and test sets](#test-train-split). 
+As we will see shortly, the model's performance at predicting for data it has seen and new data is assessed separately. So the complete dataset needs to be split into separate parts so that the accuracy of the model's predictions are evaluated fairly. [Splitting the data into training and test sets](#test-train-split). 
 
 ### Model
 
