@@ -184,7 +184,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro to ML</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../3-ml_intro/ml_models.html">ML intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3-ml_intro/ml_intro.html">Introduction to Machine Learning</a></li>
 </ul>
 
     </div>
@@ -828,8 +828,8 @@ Q 302.9 128.3, 304.5 128.3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="3dmolviewer_1740092438861692"  style="position: relative; width: 400px; height: 400px;">
-        <p id="3dmolwarning_1740092438861692" style="background-color:#ffcccc;color:black">3Dmol.js failed to load for some reason.  Please check your browser console for error messages.<br></p>
+<div class="output text_html"><div id="3dmolviewer_1740387928111985"  style="position: relative; width: 400px; height: 400px;">
+        <p id="3dmolwarning_1740387928111985" style="background-color:#ffcccc;color:black">3Dmol.js failed to load for some reason.  Please check your browser console for error messages.<br></p>
         </div>
 <script>
 
@@ -860,20 +860,20 @@ $3Dmolpromise = null;
   $3Dmolpromise = loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.4.2/3Dmol-min.js');
 }
 
-var viewer_1740092438861692 = null;
-var warn = document.getElementById("3dmolwarning_1740092438861692");
+var viewer_1740387928111985 = null;
+var warn = document.getElementById("3dmolwarning_1740387928111985");
 if(warn) {
     warn.parentNode.removeChild(warn);
 }
 $3Dmolpromise.then(function() {
-viewer_1740092438861692 = $3Dmol.createViewer(document.getElementById("3dmolviewer_1740092438861692"),{backgroundColor:"white"});
-viewer_1740092438861692.zoomTo();
-	viewer_1740092438861692.removeAllModels();
-	viewer_1740092438861692.addModel("\n     RDKit          2D\n\n 13 13  0  0  0  0  0  0  0  0999 V2000\n    5.2500   -1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    3.7500   -1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    3.0000   -2.5981    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    3.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    1.5000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.7500   -1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.7500   -1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.5000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.7500    1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.7500    1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.5000    2.5981    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    3.0000    2.5981    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    0.7500    3.8971    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n  1  2  1  0\n  2  3  2  0\n  2  4  1  0\n  4  5  1  0\n  5  6  2  0\n  6  7  1  0\n  7  8  2  0\n  8  9  1  0\n  9 10  2  0\n 10 11  1  0\n 11 12  1  0\n 11 13  2  0\n 10  5  1  0\nM  END\n","sdf");
-	viewer_1740092438861692.setStyle({"stick": {}});
-	viewer_1740092438861692.setBackgroundColor("0xeeeeee");
-	viewer_1740092438861692.zoomTo();
-viewer_1740092438861692.render();
+viewer_1740387928111985 = $3Dmol.createViewer(document.getElementById("3dmolviewer_1740387928111985"),{backgroundColor:"white"});
+viewer_1740387928111985.zoomTo();
+	viewer_1740387928111985.removeAllModels();
+	viewer_1740387928111985.addModel("\n     RDKit          2D\n\n 13 13  0  0  0  0  0  0  0  0999 V2000\n    5.2500   -1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    3.7500   -1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    3.0000   -2.5981    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    3.0000    0.0000    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    1.5000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.7500   -1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.7500   -1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -1.5000    0.0000    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n   -0.7500    1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    0.7500    1.2990    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    1.5000    2.5981    0.0000 C   0  0  0  0  0  0  0  0  0  0  0  0\n    3.0000    2.5981    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    0.7500    3.8971    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n  1  2  1  0\n  2  3  2  0\n  2  4  1  0\n  4  5  1  0\n  5  6  2  0\n  6  7  1  0\n  7  8  2  0\n  8  9  1  0\n  9 10  2  0\n 10 11  1  0\n 11 12  1  0\n 11 13  2  0\n 10  5  1  0\nM  END\n","sdf");
+	viewer_1740387928111985.setStyle({"stick": {}});
+	viewer_1740387928111985.setBackgroundColor("0xeeeeee");
+	viewer_1740387928111985.zoomTo();
+viewer_1740387928111985.render();
 });
 </script></div></div>
 </div>
