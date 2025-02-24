@@ -18,3 +18,5 @@ parts:
   - caption: Intro to ML
     chapters:
     - file: 3-ml_intro/ml_intro
+    - file: 3-ml_intro/ML_demo
+  
