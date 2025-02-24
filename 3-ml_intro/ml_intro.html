@@ -1,0 +1,939 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to Machine Learning &#8212; CHEM502 - Chemical Data, Discovery and Design</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=89ec2937" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '3-ml_intro/ml_intro';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Workshop - Exploratory Data Analysis" href="../workshop_files/eda_workshop.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/c3d_logo_white.png" class="logo__image only-light" alt="CHEM502 - Chemical Data, Discovery and Design - Home"/>
+    <img src="../_static/c3d_logo_white.png" class="logo__image only-dark pst-js-only" alt="CHEM502 - Chemical Data, Discovery and Design - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Chemical Data, Discovery and Design
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chemical data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1-chem_data/descriptors-similarity.html">Molecular descriptors and similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-chem_data/fingerprints.html">Notebook exercise - molecular fingerprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-chem_data/spectrum_analysis.html">Notebook exercise - working with spectral data (or patterns)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-chem_data/least_squares_opt.html">Least squares optimisation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data fundamentals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2-data_fundamentals/eda.html">Exploratory Data Analysis (EDA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-data_fundamentals/eda_visualisation.html">Notebook - Visualisation in EDA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workshop_files/eda_workshop.html">Workshop - Exploratory Data Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro to ML</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Machine Learning</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/drsamchong/c3d-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/drsamchong/c3d-book/issues/new?title=Issue%20on%20page%20%2F3-ml_intro/ml_intro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/3-ml_intro/ml_intro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to Machine Learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-machine-learning">What is machine learning?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-examples">Some examples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-machine-learning">Types of machine learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning">Supervised learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-learning">Unsupervised learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement learning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-process">Machine learning process</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-a-dataset">Preparing a dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-selection">Feature selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-the-dataset">Splitting the dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-train-split"><code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">train</span> <span class="pre">split</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">Cross-validation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-challenges-in-developing-an-ml-solution">Key challenges in developing an ML solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting-vs-underfitting-bias-variance-tradeoff">Overfitting vs. Underfitting (Bias-Variance tradeoff)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-quality-feature-selection"><strong>Data Quality &amp; Feature Selection</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation"><strong>Model Evaluation</strong></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-machine-learning">
+<h1>Introduction to Machine Learning<a class="headerlink" href="#introduction-to-machine-learning" title="Link to this heading">#</a></h1>
+<section id="what-is-machine-learning">
+<h2>What is machine learning?<a class="headerlink" href="#what-is-machine-learning" title="Link to this heading">#</a></h2>
+<dl class="simple myst">
+<dt>Machine learning</dt><dd><p>A subset of AI that involves the development of computer algorithms that enable computers to learn from data without being explicitly programmed.</p>
+</dd>
+</dl>
+<p><img alt="model maps input to output" src="../_images/input-mod-output.png" /></p>
+<p>The basic aim is to develop a model that maps an input (which is the data) to an output (the variable or target to be predicted).</p>
+<p>In many cases, the model is a mathematical function - or a collection of functions - and to obtain a model that works effectively to map the input to the output.</p>
+<section id="some-examples">
+<h3>Some examples<a class="headerlink" href="#some-examples" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Given a dog’s breed, height and age, predict their weight.</p></li>
+<li><p>Given a compound’s SMILES, molecular weight and total polar surface area, predict its boiling point.</p></li>
+</ul>
+</br>
+<ul class="simple">
+<li><p>From a customer’s balance, income and employment status, predict whether they will become overdrawn in the next month.</p></li>
+<li><p>Based on an ionic compound’s formula, the charge and radii of its ions, predict if it will form a rock salt structure.</p></li>
+</ul>
+</section>
+</section>
+<section id="types-of-machine-learning">
+<h2>Types of machine learning<a class="headerlink" href="#types-of-machine-learning" title="Link to this heading">#</a></h2>
+<section id="supervised-learning">
+<h3>Supervised learning<a class="headerlink" href="#supervised-learning" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Trains a model on a labelled dataset.</p></li>
+<li><p>Each input (set of features) is associated with a known output (target variable).</p></li>
+<li><p>Aims to learn a function that maps inputs to outputs so that the model can make accurate predictions on unseen data.</p></li>
+<li><p>Training minimises a loss function, which measures how far the model’s predictions are from true values.</p></li>
+<li><p>Widely used for both</p>
+<ul>
+<li><p><strong>regression</strong> tasks (predicting continuous values).</p></li>
+<li><p><strong>classification</strong> tasks (assigning categories).</p></li>
+</ul>
+</li>
+<li><p>Useful when clear relationships exist between inputs and outputs</p></li>
+</ul>
+</section>
+<section id="unsupervised-learning">
+<h3>Unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Involves learning from unlabelled data.</p></li>
+<li><p>Aims to identify patterns or structures in the data without predefined categories or values.</p></li>
+<li><p>Most common applications are</p>
+<ul>
+<li><p><strong>clustering</strong> (grouping similar data points)</p></li>
+<li><p><strong>dimensionality reduction</strong> (simplifying data while retaining significant information)</p></li>
+</ul>
+</li>
+<li><p>Because known “true” values are not available, there is no explicit error to guide the model training.</p>
+<ul>
+<li><p>Learning maximises similarity within clusters (clustering) or preserving variance in the data (dimensionality reduction).</p></li>
+</ul>
+</li>
+<li><p>Useful for exploratory analysis when relationships in the data are unknown.</p></li>
+</ul>
+</section>
+<section id="reinforcement-learning">
+<h3>Reinforcement learning<a class="headerlink" href="#reinforcement-learning" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Involves an agent interacts with an environment to achieve a goal.</p></li>
+<li><p>The agent takes actions and receives feedback in the form of rewards or penalties.</p></li>
+<li><p>Reinforcent learning learns through trial and error, improving its strategy over time.</p></li>
+<li><p>The algorithm aims to maximise the cumulative reward; this may require balancing short-term and long-term gains.</p></li>
+<li><p>It is applied in fields such as robotics, game playing (e.g. AlphaGo) and self-driving cars.</p></li>
+<li><p>Useful when an explicit mapping from inputs to outputs is not available, but optimal decision-making is needed.</p></li>
+</ul>
+</br>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><strong>Supervised Learning</strong></p></th>
+<th class="head"><p><strong>Unsupervised Learning</strong></p></th>
+<th class="head"><p><strong>Reinforcement Learning</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Data type</strong></p></td>
+<td><p>Labelled (input-output pairs)</p></td>
+<td><p>Unlabelled (no predefined outputs)</p></td>
+<td><p>No predefined labels, learns from rewards</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Goal</strong></p></td>
+<td><p>Learn a function to map inputs to known outputs</p></td>
+<td><p>Discover hidden patterns or structures</p></td>
+<td><p>Learn best actions to maximise cumulative rewards</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Examples tasks</strong></p></td>
+<td><p>Regression, classification</p></td>
+<td><p>Clustering, dimensionality reduction</p></td>
+<td><p>Decision-making, control problems</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Training process</strong></p></td>
+<td><p>Minimises a loss function based on known outputs</p></td>
+<td><p>Finds structure without explicit output labels</p></td>
+<td><p>Learns via trial and error with rewards/penalties</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Common algorithms</strong></p></td>
+<td><p>Linear regression, decision trees, neural networks</p></td>
+<td><p>k-means clustering, PCA, DBSCAN</p></td>
+<td><p>Q-learning, deep Q-networks (DQN), policy gradient methods</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Use cases</strong></p></td>
+<td><p>Predicting chemical properties, image recognition</p></td>
+<td><p>Grouping molecules by structure, anomaly detection</p></td>
+<td><p>Robotics, game AI, self-driving cars</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="machine-learning-process">
+<h2>Machine learning process<a class="headerlink" href="#machine-learning-process" title="Link to this heading">#</a></h2>
+<p>We can summarise a generalised machine learning process as having four main components:</p>
+<ul class="simple">
+<li><p>Dataset</p></li>
+<li><p>Model</p></li>
+<li><p>Training</p></li>
+<li><p>[Validation] - not always required, depending on model/context</p></li>
+<li><p>Testing</p></li>
+</ul>
+<section id="data">
+<h3>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h3>
+<p><img alt="Table of data as samples and features/target" src="../_images/table_as_data.png" /></p>
+<p>Using a familiar example of tabular data, we are used to seeing the rows in the table as representing observations or samples.</p>
+<p>The columns then represent variables, which as scientists, we often split into independent variables (those we control) and dependent or response variables (those we expect to vary in response).</p>
+<p>In data vocabulary, the variables are often referred to as features and the target variable:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<dl class="simple myst">
+<dt><strong>Features</strong>, <strong>predictors</strong> (predictor variables)</dt><dd><p>Independent variables</p>
+</dd>
+<dt><strong>Target</strong></dt><dd><p>Dependent variable (or whatever you want to predict)</p>
+</dd>
+</dl>
+</div>
+<p>As we will see shortly, the model’s performance in predicting for seen and new data is assessed separately. So the complete dataset needs to be split into separate parts so that the accuracy of the model’s predictions are evaluated fairly. <a class="reference internal" href="#test-train-split"><span class="xref myst">Splitting the data into training and test sets</span></a>.</p>
+</section>
+<section id="model">
+<h3>Model<a class="headerlink" href="#model" title="Link to this heading">#</a></h3>
+<p><img alt="Model is a function that maps input to output" src="../_images/input-modfn-output_simpl.png" /></p>
+<ul class="simple">
+<li><p>A model maps the input data (features) to the target output</p></li>
+<li><p>The model usually takes the form of a mathematical function</p></li>
+<li><p>Training the model involves finding its best parameters to minimise loss</p>
+<ul>
+<li><p>The internal model parameters are adjusted to minimise the difference between predictions and true values (if available)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="training">
+<h3>Training<a class="headerlink" href="#training" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Training involves adjusting the model’s parameters to fit the data.</p></li>
+<li><p>The model is given a subset of the data called the <strong>training set</strong>.</p></li>
+<li><p>The process adjusts the model’s parameters to minimise a <strong>loss function</strong>.</p>
+<ul>
+<li><p>Loss represents the difference between true values and prediction.</p></li>
+<li><p>More complicated for unlabelled data (where true values are not available).</p></li>
+</ul>
+</li>
+<li><p>Aims to produce a model that <strong>generalises</strong> well to unseen data.</p>
+<ul>
+<li><p>Avoid <strong>overfitting</strong> – where the model performs well in training by ‘memorising’ training data, but will perform poorly against unseen data.</p></li>
+<li><p>Avoid <strong>underfitting</strong> – there the model does not capture the patterns in the data.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="validation">
+<h3>Validation<a class="headerlink" href="#validation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Validation</strong> assesses how well the model generalises before final testing.</p></li>
+<li><p>The model is given a subset of the data called the <strong>validation set</strong> (this is separate from training data).</p></li>
+<li><p>The process guides <strong>model tuning</strong>, helping to optimise hyperparameters (these parameters control how the model learns, but are not learned from the data itself e.g., regularisation strength, learning rate).</p></li>
+<li><p>Aims to find a model that performs well on unseen data by preventing overfitting.</p>
+<ul>
+<li><p><strong>Overfitting detection</strong> – if validation error is much higher than training error, the model is too complex.</p></li>
+<li><p><strong>Underfitting detection</strong> – if both training and validation errors are high, the model may be too simple.</p></li>
+</ul>
+</li>
+<li><p>Sometimes uses <strong>cross-validation</strong>, where different subsets of data are used for validation in turns, particularly if the quantity of data is limited.</p></li>
+<li><p><strong>Not used for final model evaluation</strong> – that is the role of <strong>testing</strong>.</p></li>
+<li><p>Validation is sometimes skipped, e.g. for simple models without hyperparameters to tune, models where hyperparameters are fixed, model is used for EDA or prototyping.</p></li>
+</ul>
+</section>
+<section id="testing">
+<h3>Testing<a class="headerlink" href="#testing" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Testing</strong> evaluates the final model’s performance on previously unseen data.</p></li>
+<li><p>The model is given a subset of the data called the <strong>test set</strong> (separate from training and validation data).</p></li>
+<li><p>The aim is to <strong>assess generalisation</strong>, estimating how well the model will perform on real-world data it has not seen before.</p></li>
+<li><p>Unlike validation, <strong>no further adjustments</strong> of the model are made based on test results.</p></li>
+<li><p>Key performance metrics are calculated, such as:</p>
+<ul>
+<li><p>For <strong>regression:</strong> Mean Squared Error (MSE), R²</p></li>
+<li><p>For <strong>classification:</strong> Accuracy, Precision, Recall, F1-score</p></li>
+</ul>
+</li>
+<li><p>The test set should be used <strong>only once</strong> to ensure an unbiased evaluation.</p></li>
+<li><p>A good test score <strong>does not guarantee real-world success</strong>.</p>
+<ul>
+<li><p>New data might show shifts in distribution or contain different patterns, which can still cause issues.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="preparing-a-dataset">
+<h2>Preparing a dataset<a class="headerlink" href="#preparing-a-dataset" title="Link to this heading">#</a></h2>
+<section id="feature-selection">
+<h3>Feature selection<a class="headerlink" href="#feature-selection" title="Link to this heading">#</a></h3>
+<p>Feature selection aims to choose the most relevant input variables (features) to improve model performance.</p>
+<p>You saw previously that EDA can be important in identifying which variables of a dataset are important and whether there are strong correlations between variables.</p>
+<p>This is important when selecting which features to include in the dataset to develop a ML model.</p>
+<p>Feature selection can:</p>
+<ul class="simple">
+<li><p>reduce overfitting by removing irrelevant/noisy features.</p></li>
+<li><p>improve model efficiency and reduce computation time.</p></li>
+<li><p>enhance interpretability, especially in scientific applications.</p></li>
+</ul>
+<p>Features can be selected on the basis of EDA or specific statistical tests (e.g. correlation, mutual information) to rank features. Alternatively, you can train models with different feature subsets and select the best-performing set.</p>
+<p>For some models, e.g. lasso regression, decision trees, feature selection is built into the model.</p>
+</section>
+<section id="splitting-the-dataset">
+<h3>Splitting the dataset<a class="headerlink" href="#splitting-the-dataset" title="Link to this heading">#</a></h3>
+<p>As we saw in the overview, the trained model needs to generalise to make predictions for data it has not previously seem.</p>
+<p>Splitting the data into separate training and test sets helps assess whether the model generalises well and avoids misleading performance estimates.</p>
+<p><strong>Training Set</strong></p>
+<ul class="simple">
+<li><p>The model learns patterns in the training data by adjusting its parameters.</p></li>
+<li><p>If the model is only assessed against the data it has trained on, the model might perform well by memorises the data (overfitting) rather than generalising.</p></li>
+</ul>
+<p><strong>Validation Set</strong></p>
+<ul class="simple">
+<li><p>Used to tune hyperparameters and make adjustments without seeing the test set.</p></li>
+<li><p>Helps detect overfitting: If training performance is good but validation performance is poor, the model is memorising rather than learning.</p></li>
+<li><p>Ensures best version of the model is selected before final testing.</p></li>
+</ul>
+<p><strong>Test Set</strong></p>
+<ul class="simple">
+<li><p>Using a separate test set provides a more realistic measure of how well the model will perform on unseen data.</p></li>
+<li><p>Using the same data for training and testing, risks optimistic and misleading results.</p></li>
+<li><p>Ensures we the model is not “tweaked” based on test performance, avoiding hidden overfitting.</p></li>
+</ul>
+</section>
+<section id="test-train-split">
+<h3><code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">train</span> <span class="pre">split</span></code><a class="headerlink" href="#test-train-split" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> provides a convenient method <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html"><code class="docutils literal notranslate"><span class="pre">test_train_split</span></code></a> to ensure the dataset order is shuffled and then splits the full dataset into test and training set.</p>
+<p>If a validation set is needed, the initial train set can be further split to form the final training and validation set.</p>
+<section id="cross-validation">
+<h4>Cross-validation<a class="headerlink" href="#cross-validation" title="Link to this heading">#</a></h4>
+<p>Splitting the data into three separate sets for training, validation and testing limits the data available for training the model. It also means the outcome can be dependent on the specific (albeit random) split to form the training and validation sets.</p>
+<p><a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html">Cross-validation</a> (CV) is an alternative to using a fixed validation set. Instead of separating a single validation set, it rotates through different subsets of data to get a more reliable estimate of model performance and removes the need to remove a portion of the data from training.</p>
+<p><strong>Common cross-validation methods</strong></p>
+<ul class="simple">
+<li><p>k-Fold Cross-Validation</p>
+<ul>
+<li><p>The training data is split into k subsets (folds).</p></li>
+<li><p>The model is trained on (k-1) folds and validated on the remaining fold.</p></li>
+<li><p>This repeats k times, using a different validation fold each time.</p></li>
+<li><p>The final model performance is the average across all folds.</p></li>
+</ul>
+</li>
+<li><p>Leave-One-Out Cross-Validation (LOOCV):</p>
+<ul>
+<li><p>Uses only one data point as validation in each iteration.</p></li>
+<li><p>More computationally expensive but useful for very small datasets.</p></li>
+</ul>
+</li>
+</ul>
+<p>Many other methods are <a class="reference external" href="https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-iterators">available in sklearn</a></p>
+</section>
+</section>
+</section>
+<section id="key-challenges-in-developing-an-ml-solution">
+<h2>Key challenges in developing an ML solution<a class="headerlink" href="#key-challenges-in-developing-an-ml-solution" title="Link to this heading">#</a></h2>
+<section id="overfitting-vs-underfitting-bias-variance-tradeoff">
+<h3>Overfitting vs. Underfitting (Bias-Variance tradeoff)<a class="headerlink" href="#overfitting-vs-underfitting-bias-variance-tradeoff" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Variance</strong></p>
+<ul>
+<li><p>Error due to <strong>overly complex models</strong> that are highly sensitive to training data. Leads to <strong>overfitting</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Overfitting</strong></p>
+<ul>
+<li><p>The model learns patterns <strong>too specific</strong> to the training data, including noise, leading to poor generalisation to new data.</p></li>
+</ul>
+</li>
+</ul>
+</br>
+<ul class="simple">
+<li><p><strong>Bias</strong></p>
+<ul>
+<li><p>Error due to <strong>oversimplified models</strong> (e.g., assuming linearity where relationships are nonlinear). Leads to <strong>underfitting</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Underfitting</strong></p>
+<ul>
+<li><p>The model is <strong>too simple</strong> and fails to capture underlying patterns, resulting in poor performance on both training and test data.</p></li>
+</ul>
+</li>
+<li><p><strong>Tradeoff</strong></p>
+<ul>
+<li><p>A balance is needed—reducing bias increases variance, and vice versa. Cross-validation helps find the right complexity.</p></li>
+</ul>
+</li>
+<li><p><strong>Possible solutions</strong></p>
+<ul>
+<li><p>Regularisation (e.g., L1/L2 penalties) for overfitting</p></li>
+<li><p>Reduce (overfitting) /increase (underfitting) model complexity</p></li>
+<li><p>Increasing training data (overfitting)</p></li>
+<li><p>Cross-validation, e.g. to reduce overfitting of single training split and better estimate of generalisation.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="data-quality-feature-selection">
+<h3><strong>Data Quality &amp; Feature Selection</strong><a class="headerlink" href="#data-quality-feature-selection" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Garbage In, Garbage Out</strong></p>
+<ul>
+<li><p>Poor data (missing values, noise, irrelevant features) leads to unreliable models.</p></li>
+</ul>
+</li>
+<li><p><strong>Feature Selection</strong></p>
+<ul>
+<li><p>Choosing the most informative features improves accuracy and reduces overfitting.</p></li>
+</ul>
+</li>
+<li><p><strong>Dimensionality Reduction</strong></p>
+<ul>
+<li><p>Techniques like PCA help manage high-dimensional data while retaining essential information.</p></li>
+</ul>
+</li>
+<li><p><strong>Imbalanced Data</strong></p>
+<ul>
+<li><p>In classification tasks, skewed class distributions can bias the model toward majority classes.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="model-evaluation">
+<h3><strong>Model Evaluation</strong><a class="headerlink" href="#model-evaluation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Metrics vary by task</strong></p>
+<ul>
+<li><p><strong>Regression</strong>: RMSE, MAE, R²</p></li>
+<li><p><strong>Classification</strong>: Accuracy, Precision, Recall, F1-score, Confusion Matrix</p></li>
+</ul>
+</li>
+<li><p><strong>Overreliance on Accuracy</strong></p>
+<ul>
+<li><p>In imbalanced datasets, accuracy alone can be misleading—alternative metrics like Precision-Recall or ROC-AUC should be considered.</p></li>
+</ul>
+</li>
+<li><p><strong>Cross-validation</strong></p>
+<ul>
+<li><p>ensures robust performance estimation, preventing reliance on a single data split.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "drsamchong/c3d-book",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./3-ml_intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../workshop_files/eda_workshop.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Workshop - Exploratory Data Analysis</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-machine-learning">What is machine learning?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-examples">Some examples</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-machine-learning">Types of machine learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning">Supervised learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-learning">Unsupervised learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reinforcement-learning">Reinforcement learning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-process">Machine learning process</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-a-dataset">Preparing a dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-selection">Feature selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#splitting-the-dataset">Splitting the dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-train-split"><code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">train</span> <span class="pre">split</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">Cross-validation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-challenges-in-developing-an-ml-solution">Key challenges in developing an ML solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting-vs-underfitting-bias-variance-tradeoff">Overfitting vs. Underfitting (Bias-Variance tradeoff)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-quality-feature-selection"><strong>Data Quality &amp; Feature Selection</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation"><strong>Model Evaluation</strong></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sam Chong
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
