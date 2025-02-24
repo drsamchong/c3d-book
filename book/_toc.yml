@@ -17,4 +17,4 @@ parts:
     - file: workshop_files/eda_workshop
   - caption: Intro to ML
     chapters:
-    - file: 3-ml_intro/ml_models
+    - file: 3-ml_intro/ml_intro
