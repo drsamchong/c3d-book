@@ -238,7 +238,7 @@ Splitting the data into three separate sets for training, validation and testing
   - Uses only one data point as validation in each iteration.
   - More computationally expensive but useful for very small datasets.
 
-Many other methods are [available in sklearn](https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-iterators)
+More details and info on many other methods are [available in sklearn](https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-iterators)
 
 
 ## Key challenges in developing an ML solution
