@@ -1,0 +1,974 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Workshop - ML predictions of aqueous solubility &#8212; CHEM502 - Chemical Data, Discovery and Design</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=89ec2937" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'workshop_files/ml_workshop';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/c3d_logo_white.png" class="logo__image only-light" alt="CHEM502 - Chemical Data, Discovery and Design - Home"/>
+    <img src="../_static/c3d_logo_white.png" class="logo__image only-dark pst-js-only" alt="CHEM502 - Chemical Data, Discovery and Design - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Chemical Data, Discovery and Design
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chemical data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1-chem_data/descriptors-similarity.html">Molecular descriptors and similarity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-chem_data/fingerprints.html">Notebook exercise - molecular fingerprints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-chem_data/spectrum_analysis.html">Notebook exercise - working with spectral data (or patterns)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-chem_data/least_squares_opt.html">Least squares optimisation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data fundamentals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2-data_fundamentals/eda.html">Exploratory Data Analysis (EDA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-data_fundamentals/eda_visualisation.html">Notebook - Visualisation in EDA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eda_workshop.html">Workshop - Exploratory Data Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro to ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3-ml_intro/ml_intro.html">Introduction to Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3-ml_intro/ML_demo.html">Notebook - ML for thermochemical data prediction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/drsamchong/c3d-book/main?urlpath=lab/tree/book/workshop_files/ml_workshop.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/drsamchong/c3d-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/drsamchong/c3d-book/issues/new?title=Issue%20on%20page%20%2Fworkshop_files/ml_workshop.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/workshop_files/ml_workshop.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Workshop - ML predictions of aqueous solubility</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data">The data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-task">The task</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#steps">Steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data-and-perform-exploratory-analysis">Load the data and perform exploratory analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#things-to-consider">Things to consider</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">1. Linear regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-data">Prepare data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#separate-features-and-target">Separate features and target</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-training-and-test-sets">Create the training and test sets</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-model">Training the model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-models-performance-on-unseen-data">Test the model’s performance on unseen data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-models-performance">Evaluating the model’s performance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Questions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">2. Logistic regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Prepare data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#separate-features-and-target-and-test-train-split">Separate features and target and test-train split</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Questions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nn-clasification">k-NN clasification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#devise-your-evaluation-strategy-for-the-k-nn-model">Devise your evaluation strategy for the k-NN model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-questions">Final questions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">choice</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">linear_model</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If you do nothave scikit-learn installed, uncomment the following line</span>
+<span class="c1"># !conda install -y -c conda-forge scikit-learn</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you have issues with VSCode notebook cell outputs being truncated:</p>
+<ul class="simple">
+<li><p>Go to Settings (via menubar or cmd-, on Mac)</p></li>
+<li><p>Search for cell output settings: try &#64;tag:notebookOutputLayout</p></li>
+<li><p>Adjust settings, e.g. scrolling, number of lines to display</p></li>
+</ul>
+<section class="tex2jax_ignore mathjax_ignore" id="workshop-ml-predictions-of-aqueous-solubility">
+<h1>Workshop - ML predictions of aqueous solubility<a class="headerlink" href="#workshop-ml-predictions-of-aqueous-solubility" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>In this workshop, you will get some hands on practice of applying some of the major machine learning (ML) models to a chemical dataset.</p>
+<section id="the-data">
+<h3>The data<a class="headerlink" href="#the-data" title="Link to this heading">#</a></h3>
+<p>AqSolDB (<a class="reference external" href="https://doi.org/10.1038/s41597-019-0151-1">Sorkun et al.</a>) is a curated dataset of experimentally-determined aqueous solubility values, with calculated descriptors for the molecules.</p>
+<p>The paper gives details on how the data was acquired and processed, and its availability on a number of platforms including <a class="reference external" href="https://github.com/mcsorkun/AqSolDB">github</a></p>
+</section>
+<section id="the-task">
+<h3>The task<a class="headerlink" href="#the-task" title="Link to this heading">#</a></h3>
+<p>Prepare the data for training and evaulating a set of machine learning models to predict the solubilty of the compounds based on the features supplied (and others if you would like to calculate additional descriptors as features).</p>
+<p>You will use scikit-learn to train and evaluate the following models:</p>
+<p><strong>Supervised learning</strong></p>
+<ul class="simple">
+<li><p>Linear regression</p></li>
+<li><p>Logistic regression</p></li>
+<li><p>k-Nearest neighbors</p></li>
+</ul>
+<p><strong>Unsupervised learning</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is a separate notebook for this, if we get on to it. It will not be assessed.</p>
+</div>
+<ul class="simple">
+<li><p>k-Means clustering</p></li>
+<li><p>PCA for dimensionality reduction</p></li>
+</ul>
+<section id="steps">
+<h4>Steps<a class="headerlink" href="#steps" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>Load the data</p></li>
+<li><p>Perform some EDA to gain initial understanding of the distribution of features and relationships between features, and with the target.</p></li>
+</ol>
+<p>For each model (may require additional stages depending on the model)</p>
+<ol class="arabic simple" start="3">
+<li><p>Prepare the data</p></li>
+<li><p>Train the model</p></li>
+<li><p>Make predictions</p></li>
+<li><p>Evaluate performance</p></li>
+<li><p>Analyse the performance of the models. Draw conclusions about the chemical problem, e.g. from the feature importances.</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="load-the-data-and-perform-exploratory-analysis">
+<h2>Load the data and perform exploratory analysis<a class="headerlink" href="#load-the-data-and-perform-exploratory-analysis" title="Link to this heading">#</a></h2>
+<p>You can perform some initial exploratory analysis of the dataset using some of the methods you saw last week.</p>
+<p>In addition to looking for distribution and patterns in the data, look at what the columns actually contain. Some will include metadata about the source of the observation and its processing, which will not be relevant to the target variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: </span>
+<span class="c1"># - Check the data and load into a DataFrame</span>
+<span class="c1"># - Check the data types</span>
+<span class="c1"># - Check for missing values</span>
+<span class="c1"># - Check summary statistics</span>
+<span class="c1"># - Identify redundant columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO:</span>
+<span class="c1"># - Visualise the data to look for distributions of features, check for outliers</span>
+<span class="c1"># - Visualise the data to look for correlations</span>
+<span class="c1"># - Visualise the data to look for relationships between features and target</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="questions">
+<h3>Questions:<a class="headerlink" href="#questions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Explain your approach to EDA for the dataset. What questions can this process answer and suggest how it can aid the subsequent analysis and modelling.</p></li>
+<li><p>What are the most significant correlations in this dataset? Discuss any strong relationships between the features and the target variable that are apparent.</p></li>
+<li><p>If you were selecting features from the data, are there any that you would remove? Explain why/why not.</p></li>
+</ul>
+<section id="things-to-consider">
+<h4>Things to consider<a class="headerlink" href="#things-to-consider" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Note the distributions of values of features (e.g. the measures of centre, the magnitude and shape of the distribution and the range of the values).</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="linear-regression">
+<h2>1. Linear regression<a class="headerlink" href="#linear-regression" title="Link to this heading">#</a></h2>
+<p>The first model we will apply is a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html">linear regression</a>.</p>
+<p>Linear regression models the relationship between input features and a continuous target variable using a linear function.</p>
+<p>The function looks like:</p>
+<div class="math notranslate nohighlight">
+\[
+y = w_0 + w_1x_1 + w_2x_2 + \dots + w_nx_n + \epsilon
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( y \)</span> = <strong>Predicted output</strong> (target variable)</p></li>
+<li><p><span class="math notranslate nohighlight">\( x_1, x_2, \dots, x_n \)</span> = <strong>Input features</strong> (independent variables)</p></li>
+<li><p><span class="math notranslate nohighlight">\( w_0 \)</span> = <strong>Intercept</strong> (bias term)</p></li>
+<li><p><span class="math notranslate nohighlight">\( w_1, w_2, \dots, w_n \)</span> = <strong>Coefficients</strong> (weights)</p></li>
+<li><p><span class="math notranslate nohighlight">\( \epsilon \)</span> = <strong>Error term</strong> (accounts for noise in data)</p></li>
+</ul>
+<p>The goal is to find weights <span class="math notranslate nohighlight">\(w_{i}\)</span> that minimize the error, typically using Ordinary Least Squares (OLS).</p>
+<p>It finds a best-fit line by minimising the difference between predictions and actual values, typically using least squares.</p>
+<p>It is widely used for trend analysis, forecasting, and understanding feature impact on outcomes.</p>
+<section id="prepare-data">
+<h3>Prepare data<a class="headerlink" href="#prepare-data" title="Link to this heading">#</a></h3>
+<p>To prepare the data, create a new dataframe containing only the numerical features of the AqSolDB dataset.</p>
+<section id="separate-features-and-target">
+<h4>Separate features and target<a class="headerlink" href="#separate-features-and-target" title="Link to this heading">#</a></h4>
+<p>You can now separate your data into the features (the predictor variables) and target (the variable you want to predict).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO:</span>
+<span class="c1"># - Read the target column into a separate variable</span>
+<span class="c1"># - Read the feature columns into a different variable - remember to drop the target column</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-the-training-and-test-sets">
+<h4>Create the training and test sets<a class="headerlink" href="#create-the-training-and-test-sets" title="Link to this heading">#</a></h4>
+<p>Run <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html"><code class="docutils literal notranslate"><span class="pre">train_test_split</span></code></a> to create separate training and test sets, with 20% of the samples in the test set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO Split the data into training (80%) and testing (20%) sets</span>
+<span class="c1"># and check the size of the resulting datasets</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="training-the-model">
+<h3>Training the model<a class="headerlink" href="#training-the-model" title="Link to this heading">#</a></h3>
+<p>It is time to train the first ML model.</p>
+<p>You will need to create a new LinearRegression model and train it using its <code class="docutils literal notranslate"><span class="pre">fit</span></code> method on the training data’s features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: Create a linear regression model</span>
+
+
+<span class="c1"># TODO: Fit the model to the training data</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="test-the-models-performance-on-unseen-data">
+<h3>Test the model’s performance on unseen data<a class="headerlink" href="#test-the-models-performance-on-unseen-data" title="Link to this heading">#</a></h3>
+<p>You can now get the model to predict the solubilities for the subset of data you withheld for the test set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: Predict the solubility of the test set</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluating-the-models-performance">
+<h3>Evaluating the model’s performance<a class="headerlink" href="#evaluating-the-models-performance" title="Link to this heading">#</a></h3>
+<p>We can visualise how closely the predicted solubility values for both the training and/or test set match the real values.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You will need to also generate predictions for the test set if you want to visualise</p>
+</div>
+<p>There are a variety of metrics that can be used to quantify the model’s performance.</p>
+<p>One commonly used metric for regression tasks is <span class="math notranslate nohighlight">\(r^2\)</span> which expresses how well the model fits the data. It ranges from 0 to 1, with 1 indicating a perfect fit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: Calculate r^2 value is a measure of how well the model fits the data. It ranges from 0 to 1, </span>
+<span class="c1"># with 1 indicating a perfect fit.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h3>Questions<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>What other metrics might be useful for evaluating the model’s performance? Choose one other metric and calculate it for the model’s perform on the test data. Briefly explain the form and meaning of the metric.</p></li>
+<li><p>Comment on the performance of the model on the training vs. the test data. Is there anything you can infer from the comparison?</p></li>
+<li><p>What information can you gain from the model coefficients? (If you want to do this, you will need to scale the features to compare them - see the <a class="reference internal" href="#../book/3-ml_intro/ML_demo"><span class="xref myst">notebook</span></a> ) How could you use this to improve model or the training process?</p></li>
+</ul>
+</section>
+</section>
+<section id="logistic-regression">
+<h2>2. Logistic regression<a class="headerlink" href="#logistic-regression" title="Link to this heading">#</a></h2>
+<p>Logistic regression is used for binary classification: predict to which of two classes an input belongs.</p>
+<p>In the context of AqSolDB, we can convert solubility values (logS) into two classes:</p>
+<p>Soluble (1): logS above a certain threshold (e.g., logS &gt; -2)
+Insoluble (0): logS below the threshold</p>
+<p>This allows us to predict solubility as a classification problem.</p>
+<section id="id2">
+<h3>Prepare data<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Get a copy of the dataframe after you had dropped the non-numeric features.</p>
+<p>You will need to add a new target variable based on the current <code class="docutils literal notranslate"><span class="pre">solubility</span></code> column, where the new column value is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">1</span></code> if <code class="docutils literal notranslate"><span class="pre">logS</span> <span class="pre">&gt;=</span> <span class="pre">-2</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">0</span></code> if <code class="docutils literal notranslate"><span class="pre">logS</span> <span class="pre">&lt;</span> <span class="pre">-2</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: </span>
+<span class="c1"># - Create a copy of the original DataFrame with numeric columns only</span>
+<span class="c1"># - Add a new column with binary solubility values</span>
+<span class="c1"># - Drop the original solubility column</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="separate-features-and-target-and-test-train-split">
+<h3>Separate features and target and test-train split<a class="headerlink" href="#separate-features-and-target-and-test-train-split" title="Link to this heading">#</a></h3>
+<p>Follow the same process as for the linear regression and separate the target and feature columns.</p>
+<p>Then split the data into training and testing sets. Make sure you run this with <code class="docutils literal notranslate"><span class="pre">stratify=&lt;name</span> <span class="pre">of</span> <span class="pre">your</span> <span class="pre">target</span> <span class="pre">array&gt;</span></code>. (What does <a class="reference external" href="https://machinelearningmastery.com/train-test-split-for-evaluating-machine-learning-algorithms#:~:text=stratified%20train-test%20split"><code class="docutils literal notranslate"><span class="pre">stratify</span></code></a> do?)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO:</span>
+<span class="c1"># - Separate features and target column</span>
+<span class="c1"># - Split the data into training and testing sets - split first</span>
+<span class="c1"># - Scale the features using StandardScaler - scale the test and training sets separately</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: </span>
+<span class="c1"># - Create a logistic regression model</span>
+<span class="c1"># - Fit the model to the training data</span>
+<span class="c1"># - Predict the solubility of the test set</span>
+<span class="c1"># - Calculate the accuracy of the model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.classification_report.html"><code class="docutils literal notranslate"><span class="pre">classification</span> <span class="pre">report</span></code></a> provides a set of metrics for classification tasks.</p>
+</section>
+<section id="id3">
+<h3>Questions<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Briefly explain the meaning of the metrics in the classification report.</p></li>
+<li><p>Comment on the performance of the regression and classification models. Why might this approach be useful for some types of problems?</p></li>
+</ul>
+</section>
+</section>
+<section id="k-nn-clasification">
+<h2>k-NN clasification<a class="headerlink" href="#k-nn-clasification" title="Link to this heading">#</a></h2>
+<p>Over to you for this one. Here is the documentation for sklearn’s <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html"><code class="docutils literal notranslate"><span class="pre">KNeighboursClassifier</span></code></a></p>
+<p>The process follows a very similar process to the models you have already seen.</p>
+<p>You can either stick with the binary classification or use the classes described in the AqSolDB paper:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Category</p></th>
+<th class="head"><p>logS range</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Highly soluble</strong></p></td>
+<td><p>logS &gt; 0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Soluble</strong></p></td>
+<td><p>0 &gt; logS &gt; -2</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Slightly soluble</strong></p></td>
+<td><p>-2 &gt; logS &gt; -4</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Insoluble</strong></p></td>
+<td><p>logS &lt; -4</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>There are a few important points:</p>
+<ol class="arabic simple">
+<li><p>Make sure you use <code class="docutils literal notranslate"><span class="pre">stratify</span></code> when you split the data and pass it the full target array.</p></li>
+<li><p>You must scale the features using StandardScaler after splitting.</p></li>
+<li><p>k-NN has a hyperparameter, so you will need to use cross-validation to adjust the value of k. There is a quick tutorial <a class="reference external" href="https://www.datacamp.com/tutorial/k-nearest-neighbor-classification-scikit-learn">here</a></p></li>
+</ol>
+<section id="devise-your-evaluation-strategy-for-the-k-nn-model">
+<h3>Devise your evaluation strategy for the k-NN model<a class="headerlink" href="#devise-your-evaluation-strategy-for-the-k-nn-model" title="Link to this heading">#</a></h3>
+<p>Scikit-learn has a variety of methods to <a class="reference external" href="https://scikit-learn.org/stable/api/sklearn.metrics.html">measure and present</a> model performance, e.g.</p>
+<ul class="simple">
+<li><p>classification report</p></li>
+<li><p>confusion matrix</p></li>
+</ul>
+</section>
+<section id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h3>
+<p>As you have worked through this notebook, you have</p>
+<ul class="simple">
+<li><p>Used exploratory analysis to identify and understand the structure of and trends within a moderately-sized chemical dataset.</p></li>
+<li><p>Prepared a dataset to apply predictive modelling.</p></li>
+<li><p>Trained, tested and evaluated some frequently-used ML models to predict a chemical property.</p></li>
+</ul>
+<p>In addition to the practical and technical skills you will have acquired in applying machine learning for this task, as part of the process, you have seen that it is important to critically consider how best to use the data you have available to address the scientific problem that you have.</p>
+<p>The process of structuring your data, selecting a model, selecting features, etc. can be a highly iterative process. It is important to think critically about how your data is being processed, how the model is learning from it, and how well the model’s predictions align with the real-world problem you are addressing.</p>
+<p>Machine learning is not a black-box tool but a structured approach that requires careful decision-making at every stage. This includes selecting appropriate features, choosing a suitable model, and ensuring rigorous evaluation of performance. Model results should not be taken at face value: It is essential to assess accuracy, biases, and generalisation.</p>
+<p>By approaching ML critically and iteratively, you can refine your models, improve predictions, and ensure that the insights gained are scientifically meaningful and reliable.</p>
+</section>
+<section id="final-questions">
+<h3>Final questions<a class="headerlink" href="#final-questions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Based on the models you have trained and tested, how would you decide which model is most appropriate for predicting solubility categories? Consider the evaluation metrics, feature selection, and any limitations you observed.</p></li>
+<li><p>Suggest one way that you could you iteratively refine your approach - e.g. adjusting models, features, or preprocessing steps - to improve predictive performance?</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "drsamchong/c3d-book",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./workshop_files"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data">The data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-task">The task</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#steps">Steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data-and-perform-exploratory-analysis">Load the data and perform exploratory analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">Questions:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#things-to-consider">Things to consider</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">1. Linear regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-data">Prepare data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#separate-features-and-target">Separate features and target</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-training-and-test-sets">Create the training and test sets</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-model">Training the model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-the-models-performance-on-unseen-data">Test the model’s performance on unseen data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-the-models-performance">Evaluating the model’s performance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Questions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">2. Logistic regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Prepare data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#separate-features-and-target-and-test-train-split">Separate features and target and test-train split</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Questions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-nn-clasification">k-NN clasification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#devise-your-evaluation-strategy-for-the-k-nn-model">Devise your evaluation strategy for the k-NN model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-questions">Final questions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sam Chong
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
