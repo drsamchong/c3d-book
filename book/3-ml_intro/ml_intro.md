@@ -214,9 +214,9 @@ Splitting the data into separate training and test sets helps assess whether the
 - Ensures we the model is not "tweaked" based on test performance, avoiding hidden overfitting.  
 
 
-### `Test train split`
+### `Train test split`
 
-`scikit-learn` provides a convenient method [`test_train_split`](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) to ensure the dataset order is shuffled and then splits the full dataset into test and training set.
+`scikit-learn` provides a convenient method [`train_test_split`](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) to ensure the dataset order is shuffled and then splits the full dataset into test and training set.
 
 If a validation set is needed, the initial train set can be further split to form the final training and validation set.
 
