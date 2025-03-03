@@ -1,0 +1,6 @@
+﻿experiment_code,date,coformer_1,CAS_1,coformer_2,CAS_2,solvent,temperature,ratio,nmr,pxrd,safety,outcome,notes
+spk-001,12/12/2021,urea,4744-36-9,theophylline,58-55-9,methanol,303,2:1,C:/spk/nmr/cfs_112/spk-001.csv,C:/spk/pxrd/cfs_112/spk-001.xrdml,tbc,amorphous,none
+spk-002,09/01/2022,caffeine,71701-02-5,theophylline,58-55-9,methanol,303,2:1,C:/spk/nmr/cfs_112/spk-002.csv,C:/spk/pxrd/cfs_112/spk-002.xrdml,tbc,crystalline mix,none
+gtl-121,12/03/2019,roy,138564-59-7,benzoic acid,65-85-0,methanol,298,1:1,C:/gail/nmr/screen_2/gtl-121.csv,C:/gail/xrd/screen_2/gtl-121.xrdml,tbc,-,under analysis
+gtl-1334,12/03/2019,nicotinamide,98-92-0,resorcinol,108-46-3,ethanol,298,2:1,C:/gail/nmr/screen_3/gtl-1334.csv,C:/gail/xrd/screen_3/gtl-1334.xrdml,tbc,-,under analysis
+gtl-382,12/03/2019,resorcinol,108-46-3,theophylline,58-55-9,ethanol,303,1:1,C:/gail/nmr/screen_2/gtl-382.csv,C:/gail/xrd/screen_2/gtl-382.xrdml,tbc,-,under analysis
