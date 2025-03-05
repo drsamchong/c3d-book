@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Least squares optimisation &#8212; CHEM502 - Chemical Data, Discovery and Design</title>
+    <title>Preprocessing data - scaling &#8212; CHEM502 - Chemical Data, Discovery and Design</title>
   
   
   
@@ -63,11 +63,9 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '1-chem_data/least_squares_opt';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '3-ml_intro/scaling';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Exploratory Data Analysis (EDA)" href="../2-data_fundamentals/eda.html" />
-    <link rel="prev" title="Notebook exercise - working with spectral data (or patterns)" href="spectrum_analysis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -118,6 +116,8 @@
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -172,13 +172,13 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chemical data</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="descriptors-similarity.html">Molecular descriptors and similarity</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="fingerprints.html">Notebook exercise - molecular fingerprints</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../1-chem_data/descriptors-similarity.html">Molecular descriptors and similarity</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1-chem_data/fingerprints.html">Notebook exercise - molecular fingerprints</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="spectrum_analysis.html">Notebook exercise - working with spectral data (or patterns)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Least squares optimisation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../1-chem_data/spectrum_analysis.html">Notebook exercise - working with spectral data (or patterns)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1-chem_data/least_squares_opt.html">Least squares optimisation</a></li>
 </ul>
 </details></li>
 </ul>
@@ -190,8 +190,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro to ML</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../3-ml_intro/ml_intro.html">Introduction to Machine Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3-ml_intro/ML_demo.html">Notebook - ML for thermochemical data prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ml_intro.html">Introduction to Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ML_demo.html">Notebook - ML for thermochemical data prediction</a></li>
 </ul>
 
     </div>
@@ -268,7 +268,7 @@
       
       
       
-      <li><a href="https://github.com/drsamchong/c3d-book/issues/new?title=Issue%20on%20page%20%2F1-chem_data/least_squares_opt.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/drsamchong/c3d-book/issues/new?title=Issue%20on%20page%20%2F3-ml_intro/scaling.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -298,7 +298,7 @@
       
       
       
-      <li><a href="../_sources/1-chem_data/least_squares_opt.md" target="_blank"
+      <li><a href="../_sources/3-ml_intro/scaling.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -374,7 +374,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Least squares optimisation</h1>
+    <h1>Preprocessing data - scaling</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -384,14 +384,16 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-line-through-two-points-as-a-system-of-equations">1. Fitting a Line Through Two Points as a System of Equations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-line-through-two-points-in-matrix-form">2. Fitting a Line Through Two Points in Matrix Form</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-if-there-are-more-than-two-points">3. What If There Are More Than Two Points?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-methods">Direct methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-scale-features">Why Scale Features?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-common-scaling-methods">Two Common Scaling Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisation-min-max-scaling">Normalisation (min-max scaling)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardisation-z-score-scaling">Standardisation (Z-score scaling)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-methods-for-least-squares-optimisation">4. Iterative Methods for Least Squares Optimisation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-points"><strong>Key points</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-scale-features-using-scikit-learn">How to scale features using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-scalers-from-scikit-learn">Import scalers from scikit-learn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-scaling">Apply scaling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data-for-ml">Preprocessing data for ML</a></li>
 </ul>
 </li>
 </ul>
@@ -405,96 +407,90 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="least-squares-optimisation">
-<h1>Least squares optimisation<a class="headerlink" href="#least-squares-optimisation" title="Link to this heading">#</a></h1>
-<p>Least squares optimisation is used extensively in chemistry and other fields to find best-fit solutions for modelling datasets.</p>
-<p>Given a function to model observed data, least squares methods find the best-fit solution by adjusting the model’s parameters to minimise its error. This is done by reducing the total sum of the squared differences (the residuals) between the model’s predictions and the data.</p>
-<p>To get an idea of what is actually going on, we can look a simple case of fitting a straight line through a set of points <span class="math notranslate nohighlight">\(n\)</span> defined by their <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> values <span class="math notranslate nohighlight">\((x_n, y_n)\)</span>. These could represent set of experimental observations like the yield of a reaction as a function of reaction temperature.</p>
-<section id="fitting-a-line-through-two-points-as-a-system-of-equations">
-<h2>1. Fitting a Line Through Two Points as a System of Equations<a class="headerlink" href="#fitting-a-line-through-two-points-as-a-system-of-equations" title="Link to this heading">#</a></h2>
-<p>Let’s say we observe two data points <span class="math notranslate nohighlight">\((x_1, y_1)\)</span> and <span class="math notranslate nohighlight">\((x_2, y_2)\)</span>.</p>
-<p>We will assume the data follows a straight-line model:</p>
-<div class="math notranslate nohighlight">
-\[
-y = mx + c
-\]</div>
-<p>For the two points, this gives two equations:</p>
-<div class="math notranslate nohighlight">
-\[
-m x_1 + c = y_1
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-m x_2 + c = y_2
-\]</div>
-<p>This is simply a <strong>system of two linear equations</strong> with two unknowns (<span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span>), which we can solve exactly: We use standard algebra to solve the simultaneous equations to find <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span>.</p>
-</section>
-<section id="fitting-a-line-through-two-points-in-matrix-form">
-<h2>2. Fitting a Line Through Two Points in Matrix Form<a class="headerlink" href="#fitting-a-line-through-two-points-in-matrix-form" title="Link to this heading">#</a></h2>
-<p>We can rewrite the same system in matrix notation:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix} x_1 &amp; 1 \\ x_2 &amp; 1 \end{bmatrix}  
-\begin{bmatrix} m \\ c \end{bmatrix}  
-=  \begin{bmatrix} y_1 \\ y_2 \end{bmatrix}
-\end{split}\]</div>
-<p>or more generally:</p>
-<div class="math notranslate nohighlight">
-\[
-A x = b
-\]</div>
-<p>where:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-A = \begin{bmatrix} x_1 &amp; 1 \\ x_2 &amp; 1 \end{bmatrix}, \quad
-x = \begin{bmatrix} m \\ c \end{bmatrix}, \quad
-b = \begin{bmatrix} y_1 \\ y_2 \end{bmatrix}
-\end{split}\]</div>
-<p>Since we have <strong>exactly two equations for two unknowns</strong>, we can solve this directly using algebra (e.g. by inverting the matrix <span class="math notranslate nohighlight">\(A\)</span> assuming it is non-singular).</p>
-</section>
-<section id="what-if-there-are-more-than-two-points">
-<h2>3. What If There Are More Than Two Points?<a class="headerlink" href="#what-if-there-are-more-than-two-points" title="Link to this heading">#</a></h2>
-<p>Now, suppose we have <strong>more than two</strong> data points <span class="math notranslate nohighlight">\((x_1, y_1), (x_2, y_2), \dots, (x_n, y_n)\)</span>.</p>
-<p>We still use the same setup for the matrices:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix} x_1 &amp; 1 \\ x_2 &amp; 1 \\ \vdots &amp; \vdots \\ x_n &amp; 1 \end{bmatrix}  
-\begin{bmatrix} m \\ c \end{bmatrix}  
-=  \begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{bmatrix}
-\end{split}\]</div>
-<p>But now there are <strong>more equations than unknowns</strong> (this is known as an <strong>overdetermined system</strong>). It means that there is <strong>no exact solution</strong>.</p>
-<p>Imagine you have done this reaction at 20 different temperatures and worked out the yield for each one. You are trying to find the line of best fit through those points. There will always be some distance between at least some of those points and whatever line you have drawn, even if the straight line model is the best representation of the relationship.</p>
-<p><img alt="Yield vs. T plot" src="../_images/YvsT.png" /></p>
-<p>Instead of finding an exact solution, we look for the <strong>best approximate solution</strong> by minimising the error between the predicted values and the observed data.</p>
-<p>So instead solving <span class="math notranslate nohighlight">\(Ax = b\)</span> exactly, <strong>least squares methods</strong> do this by trying to solve</p>
-<div class="math notranslate nohighlight">
-\[
-A^T A x = A^T b
-\]</div>
-<p>This equation gives the values of <span class="math notranslate nohighlight">\(x\)</span> (containing the parameters of our model, <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span>) that minimise the error, as quantified by the sum of squared residuals (SSR) (the difference between the model and the observed data).</p>
-<section id="direct-methods">
-<h3>Direct methods<a class="headerlink" href="#direct-methods" title="Link to this heading">#</a></h3>
-<p>For some problems, it is possible to solve this equation directly.</p>
-<p>If <span class="math notranslate nohighlight">\(A^T A\)</span> is invertible and it is computationally feasible, you can solve for <span class="math notranslate nohighlight">\(x\)</span> directly <a class="reference external" href="https://statisticsbyjim.com/regression/least-squares-regression-line/">using algebra</a>, which is the approach used by <a class="reference external" href="https://www.analyticsvidhya.com/blog/2023/01/a-comprehensive-guide-to-ols-regression-part-1/"><strong>Ordinary Least Squares</strong></a> (OLS). This would give us the <strong>best-fit values for <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span></strong>.</p>
-<p>Other <strong>direct methods</strong> for solving least squares problems include <a class="reference external" href="https://gregorygundersen.com/blog/2018/12/10/svd/"><strong>Singular Value Decomposition</strong></a> (SVD), which can improve stability when <span class="math notranslate nohighlight">\(A^T A\)</span> is ill conditioned. SVD also has advantages when working with noisy data, offers greater computationally efficiency and can enhance the interpretability of the results.</p>
-</section>
-</section>
-<section id="iterative-methods-for-least-squares-optimisation">
-<h2>4. Iterative Methods for Least Squares Optimisation<a class="headerlink" href="#iterative-methods-for-least-squares-optimisation" title="Link to this heading">#</a></h2>
-<p>For some minimisation problems, computing the inverse of <span class="math notranslate nohighlight">\(A^T A\)</span>, i.e. <span class="math notranslate nohighlight">\((A^T A)^{-1}\)</span>, can be computationally expensive (e.g. for very large datasets) or <span class="math notranslate nohighlight">\(A^T A\)</span> is ill-conditioned (close to singular, making it unstable to inversion). In these cases, an <strong>iterative approach</strong> can be used instead.</p>
-<p>Iterative methods - as the name suggests - adjust the value of <span class="math notranslate nohighlight">\(x\)</span> step-by-step gradually minimising the sum of squared residuals until a minimum is located.</p>
-<p><strong>Steepest Descent</strong> adjusts <span class="math notranslate nohighlight">\(x\)</span> using the gradient of the squared error. The algorithm moves in the direction largest downward - most negative - gradient to minimise the error. While effective, it can be inefficient due to slow convergence compared to other iterative methods. (“Steepest descent” and “gradient descent” are often used interchangably in some areas. Strictly, they are different as steepest descent is a special case of gradient descent. I’d suggest asking a mathematician, or ChatGPT failing that.)</p>
-<p><a class="reference external" href="https://www.statisticshowto.com/levenberg-marquardt-algorithm/"><strong>Levenberg-Marquardt</strong></a> is a more advanced technique that dynamically adjusts the step size depending on how close it is to a solution. This means it offers <strong>faster convergence</strong> than Steepest Descent. It is commonly used for nonlinear curve fitting and is the default method for least squares fitting in <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> due to its fast and stable performance.</p>
-<section id="key-points">
-<h3><strong>Key points</strong><a class="headerlink" href="#key-points" title="Link to this heading">#</a></h3>
+  <section class="tex2jax_ignore mathjax_ignore" id="preprocessing-data-scaling">
+<h1>Preprocessing data - scaling<a class="headerlink" href="#preprocessing-data-scaling" title="Link to this heading">#</a></h1>
+<section id="why-scale-features">
+<h2>Why Scale Features?<a class="headerlink" href="#why-scale-features" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Fitting a line through two points</strong> is just solving two simultaneous equations.</p></li>
-<li><p><strong>Fitting a line through many points</strong> leads to an <strong>overdetermined system</strong>, where we use <strong>least squares</strong> to find the best fit.</p></li>
-<li><p>Least squares methods find an <strong>approximate solution</strong> that minimises the error between the predictions and the observed data.</p></li>
-<li><p><strong>Direct methods</strong> such as <strong>OLS</strong> and <strong>SVD</strong> solve a set of equations that mathematically express the least squares condition, providing the best-fit parameters in a single calculation.</p></li>
-<li><p><strong>Iterative methods</strong> offer an alternative approach by making step-by-step adjustments to the solution until the error is minimised.</p></li>
+<li><p>Features with larger magnitudes can dominate features with smaller values, leading to, for example, biased coefficients in linear/logistic regression or the principal components (in PCA).</p></li>
+<li><p>Distance-based models (like k-NN) are sensitive to scale differences. A feature with large values (e.g., molecular weight in thousands) will dominate features with smaller values (e.g., logS).</p></li>
+<li><p>Some models, e.g. logistic regression, uses gradient-based optimisation. Large differences in feature scales can slow convergence.</p></li>
+<li><p>Helps avoid issues with very large or small values leading to numerical instability.</p></li>
 </ul>
-<p><br></br></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://scikit-learn.org/stable/auto_examples/preprocessing/plot_scaling_importance.html#sphx-glr-auto-examples-preprocessing-plot-scaling-importance-py">Importance of Feature Scaling</a> in scikit-learn examples.</p>
+</div>
+<hr class="docutils" />
+</section>
+<section id="two-common-scaling-methods">
+<h2>Two Common Scaling Methods<a class="headerlink" href="#two-common-scaling-methods" title="Link to this heading">#</a></h2>
+<section id="normalisation-min-max-scaling">
+<h3>Normalisation (min-max scaling)<a class="headerlink" href="#normalisation-min-max-scaling" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Rescales features to a <strong>fixed range</strong> (typically [0,1] or [-1,1]).</p></li>
+<li><p>Formula:<br />
+$<span class="math notranslate nohighlight">\(
+X' = \frac{X - X_{\min}}{X_{\max} - X_{\min}}
+\)</span>$</p></li>
+<li><p>Best when data is <strong>not normally distributed</strong> and you want to keep all values within a bounded range.</p></li>
+</ul>
+</section>
+<section id="standardisation-z-score-scaling">
+<h3>Standardisation (Z-score scaling)<a class="headerlink" href="#standardisation-z-score-scaling" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Centers data to <strong>mean = 0</strong> and scales to <strong>standard deviation = 1</strong>.</p></li>
+<li><p>Formula:<br />
+$<span class="math notranslate nohighlight">\(
+X' = \frac{X - \mu}{\sigma}
+\)</span>$</p></li>
+<li><p>Best when data follows a <strong>normal distribution</strong> or when dealing with <strong>PCA, linear models</strong>.</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+</section>
+<section id="how-to-scale-features-using-scikit-learn">
+<h2>How to scale features using <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling"><code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></a><a class="headerlink" href="#how-to-scale-features-using-scikit-learn" title="Link to this heading">#</a></h2>
+<section id="import-scalers-from-scikit-learn">
+<h3>Import scalers from scikit-learn<a class="headerlink" href="#import-scalers-from-scikit-learn" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span><span class="p">,</span> <span class="n">StandardScaler</span>
+</pre></div>
+</div>
+</section>
+<section id="apply-scaling">
+<h3>Apply scaling<a class="headerlink" href="#apply-scaling" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Normalisation</strong> (Min-max scaling)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">min_max_scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">features_scaled</span> <span class="o">=</span> <span class="n">min_max_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Standardisation (Z-score scaling)</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">standard_scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">features_standardized</span> <span class="o">=</span> <span class="n">standard_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="preprocessing-data-for-ml">
+<h3>Preprocessing data for ML<a class="headerlink" href="#preprocessing-data-for-ml" title="Link to this heading">#</a></h3>
+<p><strong>It is important to scale <em>after</em> <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code></strong></p>
+<p>If the full data is scaled <strong>before</strong> splitting, information from the test set (its mean and standard deviation) will “leak” into the training process, leading to <a class="reference external" href="https://www.ibm.com/think/topics/data-leakage-machine-learning"><strong>data leakage</strong></a>.</p>
+<p>Instead:</p>
+<ol class="arabic simple">
+<li><p>Fit the scaler <strong>only on the training set</strong> (<code class="docutils literal notranslate"><span class="pre">scaler.fit(X_train)</span></code>).</p></li>
+<li><p>Transform <strong>both</strong> the training and test sets, but separately.(<code class="docutils literal notranslate"><span class="pre">scaler.transform(X_train)</span></code> and <code class="docutils literal notranslate"><span class="pre">scaler.transform(X_test)</span></code>).</p></li>
+</ol>
+</br>
+<p>Following this order:</p>
+<ul class="simple">
+<li><p>Prevents <strong>data leakage</strong> by ensuring the model only sees training data during fitting.</p></li>
+<li><p><strong>Maintains independence</strong> of train and test sets, ensuring a fair evaluation.</p></li>
+<li><p>Makes real-world predictions more reliable, since real test data does not influence earlier preprocessing steps.</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -512,7 +508,7 @@ A^T A x = A^T b
         },
         kernelOptions: {
             name: "python3",
-            path: "./1-chem_data"
+            path: "./3-ml_intro"
         },
         predefinedOutput: true
     }
@@ -529,24 +525,6 @@ A^T A x = A^T b
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="spectrum_analysis.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Notebook exercise - working with spectral data (or patterns)</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../2-data_fundamentals/eda.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exploratory Data Analysis (EDA)</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -564,14 +542,16 @@ A^T A x = A^T b
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-line-through-two-points-as-a-system-of-equations">1. Fitting a Line Through Two Points as a System of Equations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-line-through-two-points-in-matrix-form">2. Fitting a Line Through Two Points in Matrix Form</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-if-there-are-more-than-two-points">3. What If There Are More Than Two Points?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-methods">Direct methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-scale-features">Why Scale Features?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-common-scaling-methods">Two Common Scaling Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisation-min-max-scaling">Normalisation (min-max scaling)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardisation-z-score-scaling">Standardisation (Z-score scaling)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-methods-for-least-squares-optimisation">4. Iterative Methods for Least Squares Optimisation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-points"><strong>Key points</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-scale-features-using-scikit-learn">How to scale features using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-scalers-from-scikit-learn">Import scalers from scikit-learn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-scaling">Apply scaling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data-for-ml">Preprocessing data for ML</a></li>
 </ul>
 </li>
 </ul>

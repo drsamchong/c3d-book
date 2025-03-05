@@ -1,0 +1,1377 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Structured data and digital chemistry &#8212; CHEM502 - Chemical Data, Discovery and Design</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=89ec2937" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'workshop_files/lab_data_structure_complete';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/c3d_logo_white.png" class="logo__image only-light" alt="CHEM502 - Chemical Data, Discovery and Design - Home"/>
+    <img src="../_static/c3d_logo_white.png" class="logo__image only-dark pst-js-only" alt="CHEM502 - Chemical Data, Discovery and Design - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Chemical Data, Discovery and Design
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chemical data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../1-chem_data/descriptors-similarity.html">Molecular descriptors and similarity</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1-chem_data/fingerprints.html">Notebook exercise - molecular fingerprints</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../1-chem_data/spectrum_analysis.html">Notebook exercise - working with spectral data (or patterns)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1-chem_data/least_squares_opt.html">Least squares optimisation</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data fundamentals</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2-data_fundamentals/eda.html">Exploratory Data Analysis (EDA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-data_fundamentals/eda_visualisation.html">Notebook - Visualisation in EDA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eda_workshop.html">Workshop - Exploratory Data Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro to ML</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3-ml_intro/ml_intro.html">Introduction to Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3-ml_intro/ML_demo.html">Notebook - ML for thermochemical data prediction</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/drsamchong/c3d-book/main?urlpath=lab/tree/book/workshop_files/lab_data_structure_complete.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/drsamchong/c3d-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/drsamchong/c3d-book/issues/new?title=Issue%20on%20page%20%2Fworkshop_files/lab_data_structure_complete.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/workshop_files/lab_data_structure_complete.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Structured data and digital chemistry</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage-in-the-automated-lab">Data storage in the automated lab</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-systems-for-chemistry">Database systems for chemistry</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-relational-databases">Advantages of Relational Databases</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-sql-python"><strong>Part 1</strong> SQL + Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-database-structure"><strong>Part 2</strong> Database structure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Part 1 SQL + Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-query-language-sql">Structured Query Language (SQL)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sql-and-python">SQL and Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sqlalchemy">SQLAlchemy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">Tasks</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-flavours-of-sql">Other flavours of SQL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Part 2 Database structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#brief-introduction-to-data-normalisation">Brief introduction to data normalisation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-normalise-data">Why normalise data?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-experiment-data-example">The experiment data example</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-you-to-consider">For you to consider</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#design-a-normalised-structure-for-the-example-data">Design a normalised structure for the example data</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#if-you-have-time">If you have time</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-you-to-think-about">For you to think about</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If you do not have sqlite installed, you can install it by uncommenting the following command:</span>
+<span class="c1">#!conda install -y sqlite</span>
+
+<span class="c1"># If you do not have sqlalchemy installed, you can install it by uncommenting the following command:</span>
+<span class="c1">#!conda install -y sqlalchemy</span>
+
+<span class="c1"># only needed for mySQL</span>
+<span class="c1">#!conda install -y mysql-connector-python</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">db</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">inspect</span>
+<span class="c1"># from sqlalchemy import create_engine</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="structured-data-and-digital-chemistry">
+<h1>Structured data and digital chemistry<a class="headerlink" href="#structured-data-and-digital-chemistry" title="Link to this heading">#</a></h1>
+<section id="data-storage-in-the-automated-lab">
+<h2>Data storage in the automated lab<a class="headerlink" href="#data-storage-in-the-automated-lab" title="Link to this heading">#</a></h2>
+<p>Being able to carry out data processing and analysis in python and then adding the transformed data to a database management system (DBMS) can not only makes the data flows in research labs more effective, but also aligns with FAIR principles.</p>
+<p>The importance of effective data storage becomes increasingly important with the increasing integration of automation and to make the most of advances in data analysis and prediction.[<a class="reference external" href="https://pubs.rsc.org/en/content/articlelanding/2022/sc/d2sc05142g">1</a>, <a class="reference external" href="https://doi.org/10.1038/s41557-022-00910-7">2</a>]</p>
+<p>Computationally-generated data can its own issues, particularly in terms of volume. As discussed previously, experimentally-generated and measured data comes in many different forms, from varied sources and can vary greatly in terms of its structure; for example, instrument readings, reaction conditions, experimental outcomes, and metadata about samples</p>
+<p>Managing the processing and storage of data from a lab setting is complex, even for relatively simple experimental workflows. Keeping the data structured, persistent, and easily accessible is crucial for reproducibility, analysis, and automation. The integration of automated processes might alleviate issues around structuring metadata and organising measurements, but can increase challenges in terms of the volume of data produced.</p>
+<section id="database-systems-for-chemistry">
+<h3>Database systems for chemistry<a class="headerlink" href="#database-systems-for-chemistry" title="Link to this heading">#</a></h3>
+<p>Relational database management systems (RDBMS) offer one approach to structuring data storage: They store data in tables, where relationships between data points are explicitly defined. Unlike spreadsheets, which can contain duplicated or inconsistent information, relational databases enforce data integrity and reduce redundancy through <strong>normalisation</strong>.</p>
+<section id="advantages-of-relational-databases">
+<h4>Advantages of Relational Databases<a class="headerlink" href="#advantages-of-relational-databases" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Persistence</strong> Data is stored safely and remains available even after the program or system shuts down.</p></li>
+<li><p><strong>Structure and integrity</strong> Data is organised into tables with clearly defined relationships, reducing errors and inconsistencies.</p></li>
+<li><p><strong>Scalability and Efficiency</strong> Efficient querying through SQL (Structured Query Language) allows rapid retrieval and filtering of large datasets.</p></li>
+<li><p><strong>Accessibility</strong> Multiple users and systems can access and manipulate the data concurrently without conflicts.</p></li>
+</ul>
+<p>Using a structured storage system like a relational database (db) enables a transition from unstructured data (e.g. scattered experimental records in spreadsheets) to a system where data is systematically stored, so that it remains accessible and useful for downstream automation and decision-making.</p>
+</section>
+</section>
+<section id="aims">
+<h3>Aims<a class="headerlink" href="#aims" title="Link to this heading">#</a></h3>
+<section id="part-1-sql-python">
+<h4><strong>Part 1</strong> SQL + Python<a class="headerlink" href="#part-1-sql-python" title="Link to this heading">#</a></h4>
+<p>A sample of data from a set of lab experiments is available in the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory as a flat file: <code class="docutils literal notranslate"><span class="pre">cox_experiments.csv</span></code>.</p>
+<ul class="simple">
+<li><p>Use the SQLAlchemy package to connect to a SQLite database</p></li>
+<li><p>Read a sample of data from an experimental lab study into a pandas dataframe</p></li>
+<li><p>Process the data in pandas</p></li>
+<li><p>Load the data into the SQLite database to store in a structured, persistent format</p></li>
+</ul>
+</section>
+<section id="part-2-database-structure">
+<h4><strong>Part 2</strong> Database structure<a class="headerlink" href="#part-2-database-structure" title="Link to this heading">#</a></h4>
+<p>One of the key advantages of using a relational database system is that it imposes some degree of structure on the data. This can help with ensuring the data is complete and avoids redundancy. Simply storing available data in a single table is not the most effective way to achieve those goals. Designing the structure of the database using concepts such as data normalisation can help to avoid inconsistencies in the data and overly complex relationships between tables, for example.</p>
+<p>Using the experiments table as a starting point</p>
+<ul class="simple">
+<li><p>Consider how the data could be organised using the concept of normalisation</p></li>
+<li><p>Using the current columns, propose a design that achieves at least 3rd form normalisation</p>
+<ul>
+<li><p>List the tables required</p></li>
+<li><p>Columns in each table</p></li>
+<li><p>Any primary and foreign key relationships you think would be needed</p></li>
+</ul>
+</li>
+<li><p>Suggest additional columns and/or tables you would add to improve the completeness or functionality of the database</p></li>
+<li><p>Investigate ways to visualise the design a database, such as EER diagrams</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="id1">
+<h2>Part 1 SQL + Python<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="structured-query-language-sql">
+<h3>Structured Query Language (SQL)<a class="headerlink" href="#structured-query-language-sql" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://www.ibm.com/think/topics/structured-query-language">Structured Query Language</a> (SQL) is a language used to query and manipulate databases. In CHEM501, you used a <a class="reference external" href="https://www.sqlite.org">SQLite</a> database to store data in a structured form. You were able to connect to the database using python and execute queries in raw SQL, and this included adding data from a pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> to a table in an SQL database.</p>
+<section id="sql-and-python">
+<h4>SQL and Python<a class="headerlink" href="#sql-and-python" title="Link to this heading">#</a></h4>
+<p>Being able to connect Python with a database such as a SQL db, offers the advantages of being able carry out data processing, analysis and modelling using the wide range of Python libraries, standardising data processes before storing the processed and analysed data in a persistent, structured format that is accessible to multiple users.</p>
+<ol class="arabic simple">
+<li><p>Automation and integration with data sources and workflows</p>
+<ul class="simple">
+<li><p>Python can enable integration with lab instruments, data pipelines, and machine learning models.</p></li>
+<li><p>This can faciliate automated data entry, validation, and retrieval without manual intervention.</p></li>
+</ul>
+</li>
+<li><p>Data processing and analysis</p>
+<ul class="simple">
+<li><p>Python provides a wide variety of libraries (e.g. NumPy, Pandas, SciPy, etc.) for analysing and visualising stored data.</p></li>
+<li><p>Data can be accessed directly from the database, processed, and piped into further optimisation or scientific models.</p></li>
+</ul>
+</li>
+<li><p>Reproducibility &amp; Consistency</p>
+<ul class="simple">
+<li><p>Developing Python scripts for data processing can ensure that it is standardised and reproducible across experiments.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="sqlalchemy">
+<h4>SQLAlchemy<a class="headerlink" href="#sqlalchemy" title="Link to this heading">#</a></h4>
+<p><a class="reference external" href="https://www.sqlalchemy.org">SQLalchemy</a> is a package that lets you interact with a SQL database using python. It provides an abstraction layer over the raw SQL: It distances you from SQL, so you do not need to write raw SQL. This can make database interactions easier and more ‘Pythonic’.</p>
+<p>It also means that it is more straightforward to change the underlying SQL database (e.g. from SQLite to mySQL or PostgreSQL) if you decide to later.</p>
+<p>SQLAlchemy manages connections to the database, so you do not need to worry about closing connections. The abstraction away from raw SQL queries means data validation can be built in and can prevent security issues like SQL injection.</p>
+<p>Here is an <a class="reference external" href="https://builtin.com/data-science/python-sqlalchemy">SQLalchemy with sqlite tutorial </a> that will help as you work through the notebook. The main points you will see in this notebook focus on getting started quickly using familiar data structures in Python, by showing how straightforward working with pandas dataframes and a sql database can be.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: read the data into a dataframe</span>
+<span class="n">experiment_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/cox_experiments.csv&quot;</span><span class="p">)</span>
+<span class="n">experiment_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>experiment_code</th>
+      <th>date</th>
+      <th>coformer_1</th>
+      <th>CAS_1</th>
+      <th>coformer_2</th>
+      <th>CAS_2</th>
+      <th>solvent</th>
+      <th>temperature</th>
+      <th>ratio</th>
+      <th>nmr</th>
+      <th>pxrd</th>
+      <th>safety</th>
+      <th>outcome</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>spk-001</td>
+      <td>12/12/2021</td>
+      <td>urea</td>
+      <td>4744-36-9</td>
+      <td>theophylline</td>
+      <td>58-55-9</td>
+      <td>methanol</td>
+      <td>303</td>
+      <td>2:1</td>
+      <td>C:/spk/nmr/cfs_112/spk-001.csv</td>
+      <td>C:/spk/pxrd/cfs_112/spk-001.xrdml</td>
+      <td>tbc</td>
+      <td>amorphous</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>spk-002</td>
+      <td>09/01/2022</td>
+      <td>caffeine</td>
+      <td>71701-02-5</td>
+      <td>theophylline</td>
+      <td>58-55-9</td>
+      <td>methanol</td>
+      <td>303</td>
+      <td>2:1</td>
+      <td>C:/spk/nmr/cfs_112/spk-002.csv</td>
+      <td>C:/spk/pxrd/cfs_112/spk-002.xrdml</td>
+      <td>tbc</td>
+      <td>crystalline mix</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>gtl-121</td>
+      <td>12/03/2019</td>
+      <td>roy</td>
+      <td>138564-59-7</td>
+      <td>benzoic acid</td>
+      <td>65-85-0</td>
+      <td>methanol</td>
+      <td>298</td>
+      <td>1:1</td>
+      <td>C:/gail/nmr/screen_2/gtl-121.csv</td>
+      <td>C:/gail/xrd/screen_2/gtl-121.xrdml</td>
+      <td>tbc</td>
+      <td>-</td>
+      <td>under analysis</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>gtl-1334</td>
+      <td>12/03/2019</td>
+      <td>nicotinamide</td>
+      <td>98-92-0</td>
+      <td>resorcinol</td>
+      <td>108-46-3</td>
+      <td>ethanol</td>
+      <td>298</td>
+      <td>2:1</td>
+      <td>C:/gail/nmr/screen_3/gtl-1334.csv</td>
+      <td>C:/gail/xrd/screen_3/gtl-1334.xrdml</td>
+      <td>tbc</td>
+      <td>-</td>
+      <td>under analysis</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>gtl-382</td>
+      <td>12/03/2019</td>
+      <td>resorcinol</td>
+      <td>108-46-3</td>
+      <td>theophylline</td>
+      <td>58-55-9</td>
+      <td>ethanol</td>
+      <td>303</td>
+      <td>1:1</td>
+      <td>C:/gail/nmr/screen_2/gtl-382.csv</td>
+      <td>C:/gail/xrd/screen_2/gtl-382.xrdml</td>
+      <td>tbc</td>
+      <td>-</td>
+      <td>under analysis</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Pandas can output a dataframe directly to a sql table using the dataframe’s <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_sql.html"><code class="docutils literal notranslate"><span class="pre">to_sql</span></code></a> method and a SQLAlchemy connection.</p>
+</section>
+<section id="tasks">
+<h4>Tasks<a class="headerlink" href="#tasks" title="Link to this heading">#</a></h4>
+<ol class="arabic">
+<li><p>Create an engine to connect to the sqlite database</p>
+<p>SQLAlchemy’s <code class="docutils literal notranslate"><span class="pre">create_engine</span></code> method makes an engine object representing a way to connect to a db. If the database does not already exist, it will be created.</p>
+</li>
+<li><p>Connect to the database</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">engine</span></code> object is then instructed to make the connection using the <code class="docutils literal notranslate"><span class="pre">connect</span></code> function.</p>
+</li>
+<li><p>Create an object for the metadata</p>
+<p>Information about the structure of the database can be accessed or manipulated via a <code class="docutils literal notranslate"><span class="pre">MetaData</span></code> object.</p>
+</li>
+<li><p>Output the contents of the dataframe to a database table</p>
+<p>Use the pandas dataframe <code class="docutils literal notranslate"><span class="pre">to_sql</span></code> method to load the dataframe contents into a table in the SQL db. The <code class="docutils literal notranslate"><span class="pre">if_exists</span></code> argument specifies what happens if the table already exists. It returns the number of rows added to the database.</p>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: create a connection to the database</span>
+<span class="c1"># Call the engine and connection objects engine and connection</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;sqlite:///workshop.db&#39;</span><span class="p">)</span>
+<span class="n">connection</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+<span class="c1"># Create an object to hold the table metadata</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">MetaData</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If you want to list all existing tables in the database</span>
+<span class="n">inspector</span> <span class="o">=</span> <span class="n">inspect</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+<span class="n">inspector</span><span class="o">.</span><span class="n">get_table_names</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: Load the contents of the experiment_df DataFrame into a table called test_experiments in the database</span>
+
+<span class="n">table_name</span> <span class="o">=</span> <span class="s2">&quot;test_experiments&quot;</span>
+<span class="n">experiment_df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can check the columns of the new table in the SQL database by reading the table and printing their name and the data types:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This code assumes the SQL db table you created is called test_experiments</span>
+<span class="c1"># It creates a table object that you can use to query the database and uses</span>
+<span class="c1"># the metadata object to reflect the table from the db so you can see the </span>
+<span class="c1"># existing structure of the table and columns</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s1">&#39;test_experiments&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">autoload_with</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">col</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test_experiments.experiment_code TEXT
+test_experiments.date TEXT
+test_experiments.coformer_1 TEXT
+test_experiments.CAS_1 TEXT
+test_experiments.coformer_2 TEXT
+test_experiments.CAS_2 TEXT
+test_experiments.solvent TEXT
+test_experiments.temperature BIGINT
+test_experiments.ratio TEXT
+test_experiments.nmr TEXT
+test_experiments.pxrd TEXT
+test_experiments.safety TEXT
+test_experiments.outcome TEXT
+test_experiments.notes TEXT
+</pre></div>
+</div>
+</div>
+</div>
+<p>The pandas <code class="docutils literal notranslate"><span class="pre">to_csv</span></code> method uses the data types for the columns to set the column types in the SQL table. The pandas dtypes need to be correct to ensure the correct structure of the db table is created.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: Check the dtypes of the pandas DataFrame columns and compare them to the dtypes of the columns in the SQL table</span>
+<span class="c1"># experiment_df.info()</span>
+<span class="n">experiment_df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>experiment_code    object
+date               object
+coformer_1         object
+CAS_1              object
+coformer_2         object
+CAS_2              object
+solvent            object
+temperature         int64
+ratio              object
+nmr                object
+pxrd               object
+safety             object
+outcome            object
+notes              object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">date</span></code> column of the dataframe, is currently stored as a string, so should be converted to a datetime.</p>
+<p><code class="docutils literal notranslate"><span class="pre">temperature</span></code> is an <code class="docutils literal notranslate"><span class="pre">int64</span></code>, but using a <code class="docutils literal notranslate"><span class="pre">float</span></code> would better allow for higher precision in future data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: change the date column to datetime and temperature to float</span>
+<span class="n">experiment_df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">experiment_df</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">])</span>
+<span class="n">experiment_df</span><span class="p">[</span><span class="s2">&quot;temperature&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">experiment_df</span><span class="p">[</span><span class="s2">&quot;temperature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">experiment_df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 5 entries, 0 to 4
+Data columns (total 14 columns):
+ #   Column           Non-Null Count  Dtype         
+---  ------           --------------  -----         
+ 0   experiment_code  5 non-null      object        
+ 1   date             5 non-null      datetime64[ns]
+ 2   coformer_1       5 non-null      object        
+ 3   CAS_1            5 non-null      object        
+ 4   coformer_2       5 non-null      object        
+ 5   CAS_2            5 non-null      object        
+ 6   solvent          5 non-null      object        
+ 7   temperature      5 non-null      float64       
+ 8   ratio            5 non-null      object        
+ 9   nmr              5 non-null      object        
+ 10  pxrd             5 non-null      object        
+ 11  safety           5 non-null      object        
+ 12  outcome          5 non-null      object        
+ 13  notes            5 non-null      object        
+dtypes: datetime64[ns](1), float64(1), object(12)
+memory usage: 692.0+ bytes
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is possible to change the data types of the table, but as the table has very little data, we can just delete/replace it to start again.</p>
+<p>Here, any the existing table will be replaced by the <code class="docutils literal notranslate"><span class="pre">to_sql</span></code> function, so you do not have to explicitly delete (drop) the table. You do need to clear the MetaData object so that it does not impose the previous structure of the table.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The line below explicitly deletes the table from the database.</span>
+<span class="c1"># table.drop(engine)</span>
+
+<span class="c1"># TODO: use the clear method to remove the previous table metadata from the metadata object</span>
+<span class="c1"># This allows the table to be redefined with the new datatypes</span>
+<span class="n">metadata</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: Check that data types have been changed in the SQL table</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s1">&#39;test_experiments&#39;</span><span class="p">,</span> <span class="n">metadata</span><span class="p">,</span> <span class="n">autoload_with</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">col</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test_experiments.experiment_code TEXT
+test_experiments.date TEXT
+test_experiments.coformer_1 TEXT
+test_experiments.CAS_1 TEXT
+test_experiments.coformer_2 TEXT
+test_experiments.CAS_2 TEXT
+test_experiments.solvent TEXT
+test_experiments.temperature BIGINT
+test_experiments.ratio TEXT
+test_experiments.nmr TEXT
+test_experiments.pxrd TEXT
+test_experiments.safety TEXT
+test_experiments.outcome TEXT
+test_experiments.notes TEXT
+</pre></div>
+</div>
+</div>
+</div>
+<p>At this point, you have created a SQLite database and a table within it to store the sample experimental data from a csv file.</p>
+<p>You have imposed a specific structure on the data so that specific data types are required for some columns.</p>
+<p>As well as loading data directly from a pandas dataframe into an sql database table, you can do the opposite process: Read the contents of the db table into a dataframe to check that the data does actually persist in the database.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: Read data from the SQLite database into a dataframe. Try the read_sql_table method or use</span>
+<span class="c1"># a query to read the data.</span>
+
+<span class="n">result_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_table</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+<span class="n">result_df</span>
+
+
+<span class="c1"># or use a query to read the data</span>
+<span class="c1"># query = &quot;SELECT * FROM test_experiments&quot;</span>
+<span class="c1"># result_df = pd.read_sql(query, engine)</span>
+<span class="c1"># result_df</span>
+
+<span class="c1"># This gives you an idea of how to filter the data returned from the database, e.g.</span>
+<span class="c1"># query = &quot;SELECT * FROM test_experiments WHERE temperature &gt; 20&quot;</span>
+<span class="c1"># result_df = pd.read_sql(query, engine)</span>
+<span class="c1"># result_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>experiment_code</th>
+      <th>date</th>
+      <th>coformer_1</th>
+      <th>CAS_1</th>
+      <th>coformer_2</th>
+      <th>CAS_2</th>
+      <th>solvent</th>
+      <th>temperature</th>
+      <th>ratio</th>
+      <th>nmr</th>
+      <th>pxrd</th>
+      <th>safety</th>
+      <th>outcome</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>spk-001</td>
+      <td>12/12/2021</td>
+      <td>urea</td>
+      <td>4744-36-9</td>
+      <td>theophylline</td>
+      <td>58-55-9</td>
+      <td>methanol</td>
+      <td>303</td>
+      <td>2:1</td>
+      <td>C:/spk/nmr/cfs_112/spk-001.csv</td>
+      <td>C:/spk/pxrd/cfs_112/spk-001.xrdml</td>
+      <td>tbc</td>
+      <td>amorphous</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>spk-002</td>
+      <td>09/01/2022</td>
+      <td>caffeine</td>
+      <td>71701-02-5</td>
+      <td>theophylline</td>
+      <td>58-55-9</td>
+      <td>methanol</td>
+      <td>303</td>
+      <td>2:1</td>
+      <td>C:/spk/nmr/cfs_112/spk-002.csv</td>
+      <td>C:/spk/pxrd/cfs_112/spk-002.xrdml</td>
+      <td>tbc</td>
+      <td>crystalline mix</td>
+      <td>none</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>gtl-121</td>
+      <td>12/03/2019</td>
+      <td>roy</td>
+      <td>138564-59-7</td>
+      <td>benzoic acid</td>
+      <td>65-85-0</td>
+      <td>methanol</td>
+      <td>298</td>
+      <td>1:1</td>
+      <td>C:/gail/nmr/screen_2/gtl-121.csv</td>
+      <td>C:/gail/xrd/screen_2/gtl-121.xrdml</td>
+      <td>tbc</td>
+      <td>-</td>
+      <td>under analysis</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>gtl-1334</td>
+      <td>12/03/2019</td>
+      <td>nicotinamide</td>
+      <td>98-92-0</td>
+      <td>resorcinol</td>
+      <td>108-46-3</td>
+      <td>ethanol</td>
+      <td>298</td>
+      <td>2:1</td>
+      <td>C:/gail/nmr/screen_3/gtl-1334.csv</td>
+      <td>C:/gail/xrd/screen_3/gtl-1334.xrdml</td>
+      <td>tbc</td>
+      <td>-</td>
+      <td>under analysis</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>gtl-382</td>
+      <td>12/03/2019</td>
+      <td>resorcinol</td>
+      <td>108-46-3</td>
+      <td>theophylline</td>
+      <td>58-55-9</td>
+      <td>ethanol</td>
+      <td>303</td>
+      <td>1:1</td>
+      <td>C:/gail/nmr/screen_2/gtl-382.csv</td>
+      <td>C:/gail/xrd/screen_2/gtl-382.xrdml</td>
+      <td>tbc</td>
+      <td>-</td>
+      <td>under analysis</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="other-flavours-of-sql">
+<h3>Other flavours of SQL<a class="headerlink" href="#other-flavours-of-sql" title="Link to this heading">#</a></h3>
+<p>SQLite is an excellent option for local storage, prototyping, and simple applications. It is lightweight, does not require any setup, so is perfect for single-user applications or embedded systems.</p>
+<p>More fully-featured versions of SQL are available, both commercial (e.g. Microsoft SQL Server, Oracle DB, IBM Db2) and open source (PostgreSQL, MySQL, MariaDB), in addition to versions for cloud and big data.</p>
+<p><a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> and <a class="reference external" href="https://www.mysql.com">MySQL</a> are both widely-used open source, true server-based databases designed for multi-user environments. They support concurrency, security, and large-scale operations.</p>
+<p>If you have time or you want to try out a real SQL database system, you can install MySQL and connect to it using SQLAlchemy. The <a class="reference external" href="https://dev.mysql.com/downloads/">MySQL Community Edition</a> is free to use under the GPL licence. It has a very user-friendly user interface <a class="reference external" href="https://youtu.be/X_umYKqKaF0">MySQL Workbench</a> that makes it easy to visualise the database contents and structure.</p>
+<p>To use SQLAlchemy with MySQL, you will also need to install a python driver such as <a class="reference external" href="https://dev.mysql.com/doc/connector-python/en/">MySql Connector</a> (available on pip or conda as <a class="reference external" href="https://pypi.org/project/mysql-connector-python/">mysql-connector-python</a>) or <a class="reference external" href="https://pymysql.readthedocs.io/en/latest/">PyMySQL</a>.</p>
+<p>A major advantage of using SQLAlchemy is that it makes swapping the underlying SQL db system relatively pain-free (usually). The code below shows how to create a new connection to a MySQL database and</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DB password is stored in a separate file - add this file to gitignore if you are using git</span>
+
+<span class="c1"># from db_cred import mspwd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># DB password is stored in a separate file - add this file to gitignore if you are using git</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span><span class="w"> </span><span class="nn">db_cred</span><span class="w"> </span><span class="kn">import</span> <span class="n">mspwd</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;db_cred&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # only needed for mySQL</span>
+<span class="c1"># connection_string = f&quot;mysql+mysqlconnector://root:{mspwd}@127.0.0.1:3306/chem_test&quot;</span>
+<span class="c1"># engine = db.create_engine(connection_string) # add for logging db actions: echo=True)</span>
+<span class="c1"># metadata = db.MetaData()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># experiment_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># experiment_df.to_sql(&quot;experiments&quot;, engine, if_exists=&#39;append&#39;, index=False)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id2">
+<h2>Part 2 Database structure<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="brief-introduction-to-data-normalisation">
+<h3>Brief introduction to data normalisation<a class="headerlink" href="#brief-introduction-to-data-normalisation" title="Link to this heading">#</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://www.datacamp.com/tutorial/normalization-in-sql">DataCamp - Normalization in SQL (1NF - 5NF): A Beginner’s Guide</a></p>
+<p><a class="reference external" href="https://popsql.com/blog/normalization-in-sql">PopSQL - Normalization in SQL DBMS</a></p>
+</div>
+<p>When designing a relational database, a key goal is <strong>eliminating redundancy</strong> and ensuring <strong>data integrity</strong>. This process is called <strong>normalisation</strong>. It involves organising data into multiple related tables instead of storing everything in a single, unstructured table.</p>
+<section id="why-normalise-data">
+<h4>Why normalise data?<a class="headerlink" href="#why-normalise-data" title="Link to this heading">#</a></h4>
+<p><strong>Reduces redundancy</strong>: Avoids storing the same information multiple times (e.g., CAS numbers for chemicals).<br />
+<strong>Improves consistency</strong>: Changes in one place update automatically across the database.<br />
+<strong>Enhances scalability</strong>: Structured data is easier to query, update, and expand.</p>
+</section>
+<section id="the-experiment-data-example">
+<h4>The experiment data example<a class="headerlink" href="#the-experiment-data-example" title="Link to this heading">#</a></h4>
+<p>The experimental data you looked at in the earlier part has several issues in the way it is currently structured.
+It <strong>repeats</strong> chemical names and CAS numbers** for coformers, and <strong>stores file paths as plain text</strong>, which can make querying difficult. A normalised database would separate:</p>
+<ol class="arabic simple">
+<li><p><strong>Experiments</strong> - linked to unique chemicals, solvents, and  characterisation data.</p></li>
+<li><p><strong>Chemicals</strong> - each chemical has a unique CAS number, reducing repetition.</p></li>
+<li><p><strong>Characterisation Data</strong> - storing file paths separately allows easy retrieval.</p></li>
+</ol>
+</section>
+<section id="for-you-to-consider">
+<h4>For you to consider<a class="headerlink" href="#for-you-to-consider" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>What issues might arise if the same chemical has multiple CAS numbers in different rows?</p></li>
+<li><p>How could we store characterisation data (NMR, PXRD) in a structured way instead of file paths in a single table?</p></li>
+<li><p>How can we design a system where adding a new solvent does not require changing existing experiment records?</p></li>
+<li><p>What other information could be included in the database that would make the current data more complete or useful?</p></li>
+</ul>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>This post introduces several common schema for database design.
+<a class="reference external" href="https://www.integrate.io/blog/database-schema-examples/">6 Database Schema Designs and How to Use Them</a></p>
+</div>
+</section>
+<section id="design-a-normalised-structure-for-the-example-data">
+<h4>Design a normalised structure for the example data<a class="headerlink" href="#design-a-normalised-structure-for-the-example-data" title="Link to this heading">#</a></h4>
+<p>The experimental dataset you have looked at is a flat file that stores all information in a single table.</p>
+<ul class="simple">
+<li><p>Suggest a new set of tables to accommodate the data</p></li>
+<li><p>Decide what columns (and think about data types) the tables need</p></li>
+<li><p>The structure should normalise the data up to at least normal form 3</p></li>
+<li><p>Identify primary keys and/or foreign keys that can be used to embed relationships between tables</p></li>
+<li><p>Sketch or explore ways to visualise the database structure, such as <a class="reference external" href="https://www.geeksforgeeks.org/introduction-of-er-model/">ER diagrams</a></p>
+<ul>
+<li><p><a class="reference external" href="https://dbeaver.io">DBeaver</a> might be an option for generating an ER diagram for an SQLite database.</p></li>
+<li><p>MySQL Workbench has a built in <a class="reference external" href="https://dev.mysql.com/doc/workbench/en/wb-eer-diagrams-section.html">ER tool</a> if you have tried out an MySQL db. If you have an existing MySQL db, go to Database &gt; Reverse engineer to get the ER for an existing db.</p></li>
+</ul>
+</li>
+</ul>
+<section id="if-you-have-time">
+<h5>If you have time<a class="headerlink" href="#if-you-have-time" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Create a new SQLite or MySQL database with the normalised structure</p>
+<ul>
+<li><p>You can use raw SQL with sqlite or SQLAlchemy using Python</p></li>
+<li><p><strong>OR</strong> if you have MySQL installed, create the database in MySQL Workbench and generate the structure</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h3>
+<p>As you worked through this notebook, you have</p>
+<ul class="simple">
+<li><p>used the SQLAlchemy package to interact with a SQLite database</p></li>
+<li><p>loaded data from a pandas dataframe directly into a SQL database</p></li>
+<li><p>read data from an SQL database table into a dataframe</p></li>
+<li><p>gained awareness of core principles of database design</p></li>
+<li><p>considered an example of data normalisation based on a typical flat file containing experimental lab information</p></li>
+</ul>
+<section id="for-you-to-think-about">
+<h4>For you to think about<a class="headerlink" href="#for-you-to-think-about" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>In your project, what are the sources of the data you will be working with?</p></li>
+<li><p>How will they be processed before you store them?</p></li>
+<li><p>How will they be stored? As flat files distributed across locations/servers or consolidated somehow?</p></li>
+<li><p>How will you deal with metadata and connecting data from different sources, experiments, calculations?</p></li>
+<li><p>If you were designing a data management system, where would you start? What kind of structure would be appropriate?</p></li>
+<li><p>How could this improve the quality of the data (e.g. reduce errors, redundancy) or improve accessibility in the context of your project and/or research group?</p></li>
+</ul>
+</section>
+<section id="references">
+<h4>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>R. Duke, V. Bhat and C. Risko, Data storage architectures to accelerate chemical discovery: data accessibility for individual laboratories and the community, <em>Chem. Sci.</em>, 2022, <strong>13</strong>, 13646–13656.</p></li>
+<li><p>1 K. M. Jablonka, L. Patiny and B. Smit, Making the collective knowledge of chemistry open and machine actionable, <em>Nat. Chem.</em>, 2022, <strong>14</strong>, 365–376.</p></li>
+</ol>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "drsamchong/c3d-book",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./workshop_files"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-storage-in-the-automated-lab">Data storage in the automated lab</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-systems-for-chemistry">Database systems for chemistry</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-relational-databases">Advantages of Relational Databases</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-sql-python"><strong>Part 1</strong> SQL + Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-database-structure"><strong>Part 2</strong> Database structure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Part 1 SQL + Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-query-language-sql">Structured Query Language (SQL)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sql-and-python">SQL and Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sqlalchemy">SQLAlchemy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">Tasks</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-flavours-of-sql">Other flavours of SQL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Part 2 Database structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#brief-introduction-to-data-normalisation">Brief introduction to data normalisation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#why-normalise-data">Why normalise data?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-experiment-data-example">The experiment data example</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-you-to-consider">For you to consider</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#design-a-normalised-structure-for-the-example-data">Design a normalised structure for the example data</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#if-you-have-time">If you have time</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-you-to-think-about">For you to think about</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sam Chong
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
