@@ -21,4 +21,8 @@ parts:
     chapters:
     - file: 3-ml_intro/ml_intro
     - file: 3-ml_intro/ML_demo
+  - caption: Data in the digital chemistry lab
+    chapters:
+    - file: workshops/lab_data_structure
+    
   
